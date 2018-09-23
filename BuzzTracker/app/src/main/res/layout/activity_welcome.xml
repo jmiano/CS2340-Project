@@ -20,6 +20,7 @@
         app:layout_constraintEnd_toEndOf="@+id/welcomeText"
         android:textAllCaps="false"
         android:textColor="@color/white"
+        android:textSize="60px"
         app:layout_constraintTop_toBottomOf="@+id/welcomeText" />
 
     <Button
@@ -28,6 +29,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text="Login"
+        android:textSize="60px"
         android:background="@drawable/btn_bg"
         android:fontFamily="sans-serif-medium"
         app:layout_constraintEnd_toEndOf="@+id/welcomeText"
