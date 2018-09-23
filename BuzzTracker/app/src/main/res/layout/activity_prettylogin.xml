@@ -17,17 +17,19 @@
         <ImageView
             android:id="@+id/imgView_dummy_logo"
             android:layout_width="80dp"
-            android:layout_height="80dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
             android:adjustViewBounds="true"
             android:scaleType="fitCenter"
             android:src="@drawable/dummy_logo" />
 
         <RelativeLayout
             android:id="@+id/relay1"
-            android:visibility="gone"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/imgView_dummy_logo">
+            android:layout_below="@+id/imgView_dummy_logo"
+            android:visibility="gone">
 
             <TextView
                 android:id="@+id/tv_login"
@@ -53,6 +55,7 @@
                     android:orientation="vertical">
 
                     <TextView
+                        android:id="@+id/username"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="sans-serif-light"
@@ -62,6 +65,7 @@
                         android:textColor="@color/white" />
 
                     <EditText
+                        android:id="@+id/Username"
                         android:layout_width="match_parent"
                         android:layout_height="40dp"
                         android:layout_marginTop="5dp"
@@ -81,6 +85,7 @@
                     android:orientation="vertical">
 
                     <TextView
+                        android:id="@+id/password"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="sans-serif-light"
@@ -90,6 +95,7 @@
                         android:textColor="@color/white" />
 
                     <EditText
+                        android:id="@+id/Password"
                         android:layout_width="match_parent"
                         android:layout_height="40dp"
                         android:layout_marginTop="5dp"
@@ -139,5 +145,15 @@
         </RelativeLayout>
 
     </RelativeLayout>
+
+    <TextView
+        android:id="@+id/logininfor"
+        android:layout_width="158dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="140dp"
+        android:layout_marginStart="131dp"
+        android:text="TextView" />
 
 </RelativeLayout>
