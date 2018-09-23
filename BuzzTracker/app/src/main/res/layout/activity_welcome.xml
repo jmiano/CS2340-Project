@@ -28,13 +28,13 @@
     <TextView
         android:id="@+id/welcomeText"
         android:layout_width="207dp"
-        android:layout_height="34dp"
+        android:layout_height="60dp"
         android:layout_marginTop="44dp"
         android:text="Welcome to BuzzTracker!"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-        android:textSize="36px"
+        android:textSize="86px"
+        android:gravity="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:text="Welcome to BuzzTracker!" />
+        app:layout_constraintTop_toTopOf="parent" />
 </android.support.constraint.ConstraintLayout>
