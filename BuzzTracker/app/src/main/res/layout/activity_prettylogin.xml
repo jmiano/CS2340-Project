@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:animateLayoutChanges="true"
     android:background="@drawable/grad_bg"
-    tools:context=".pretty_login_activty">
+    tools:context=".PrettyLogin">
 
     <RelativeLayout
         android:layout_width="wrap_content"
