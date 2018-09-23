@@ -21,7 +21,7 @@ public class PrettyLogin extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_pretty_login_activty);
+        setContentView(R.layout.activity_prettylogin);
 
         relay1 = (RelativeLayout) findViewById(R.id.relay1);
 
