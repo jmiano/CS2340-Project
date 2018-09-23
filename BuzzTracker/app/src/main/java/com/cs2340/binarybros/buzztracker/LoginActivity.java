@@ -28,6 +28,7 @@ import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.content.Intent;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -59,8 +60,12 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     // UI references.
     private AutoCompleteTextView mEmailView;
     private EditText mPasswordView;
+    private Button mEmailSignInButton;
+    private TextView minfor;
+    //the textview to show the number of trial
     private View mProgressView;
     private View mLoginFormView;
+    private int trial = 4;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,6 +76,9 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         populateAutoComplete();
 
         mPasswordView = (EditText) findViewById(R.id.password);
+        mEmailSignInButton = (Button) findViewById(R.id.email_sign_in_button);
+        minfor = (TextView)findViewById(R.id.trialview);
+        minfor.setText("number of trial remaining: 4");
         mPasswordView.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView textView, int id, KeyEvent keyEvent) {
@@ -87,12 +95,28 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             @Override
             public void onClick(View view) {
                 attemptLogin();
+                checklogin(mEmailView.getText().toString(),mPasswordView.getText().toString());
             }
         });
 
         mLoginFormView = findViewById(R.id.login_form);
         mProgressView = findViewById(R.id.login_progress);
     }
+    private void checklogin(String username, String userpassword){
+        if (username.equals("smartguy")&& userpassword.equals("123456")){
+            Intent intent = new Intent(LoginActivity.this, LogOut.class);
+            startActivity(intent);
+        } else {
+            trial--;
+            minfor.setText("number of trial remaining:" + String.valueOf(trial));
+            if (trial == 0) {
+                mEmailSignInButton.setEnabled(false);
+
+            }
+        }
+
+    }
+
 
     private void populateAutoComplete() {
         if (!mayRequestContacts()) {
