@@ -15,6 +15,11 @@
         android:layout_marginTop="16dp"
         android:text="Register"
         app:layout_constraintEnd_toStartOf="@+id/loginButton"
+        android:background="@drawable/btn_bg"
+        android:fontFamily="sans-serif-medium"
+        app:layout_constraintEnd_toEndOf="@+id/welcomeText"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
         app:layout_constraintTop_toBottomOf="@+id/welcomeText" />
 
     <Button
@@ -23,7 +28,11 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text="Login"
+        android:background="@drawable/btn_bg"
+        android:fontFamily="sans-serif-medium"
         app:layout_constraintEnd_toEndOf="@+id/welcomeText"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
         app:layout_constraintTop_toBottomOf="@+id/welcomeText" />
 
     <TextView
@@ -34,9 +43,11 @@
         android:text="Welcome to BuzzTracker!"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
         android:textSize="86px"
+        android:fontFamily="sans-serif-medium"
         android:textStyle="bold"
         android:gravity="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        android:textColor="@color/white"
         app:layout_constraintTop_toTopOf="parent" />
 </android.support.constraint.ConstraintLayout>
