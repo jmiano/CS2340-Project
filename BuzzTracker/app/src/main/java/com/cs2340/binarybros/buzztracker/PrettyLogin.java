@@ -3,7 +3,6 @@ package com.cs2340.binarybros.buzztracker;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -15,9 +14,9 @@ import android.widget.TextView;
 public class PrettyLogin extends AppCompatActivity {
 
     RelativeLayout relay1;
-    private EditText userID;
-    private EditText password;
-    //private TextView loginInfor;
+    private EditText username=null;
+    private EditText password=null;
+    private TextView attempts;
 
 
     @Override
@@ -33,24 +32,23 @@ public class PrettyLogin extends AppCompatActivity {
             }
         });
 
-        userID = (EditText) findViewById(R.id.username_field);
-        password = (EditText) findViewById(R.id.password_field);
+        username = (EditText)findViewById(R.id.username_field);
+        password = (EditText)findViewById(R.id.password_field);
 
         Button loginBtn = (Button) findViewById(R.id.login_btn);
         loginBtn.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                checklogin (userID.getText().toString(),password.getText().toString());
+            public void onClick(View v) {
+                login(username.getText().toString(), password.getText().toString());
             }
         });
     }
 
-    private void checklogin(String userid, String password) {
-        if (userid.equals("smartguy")&& password.equals("123456") ){
-            Intent intent = new Intent(PrettyLogin.this, LogOut.class);
+    private void login(String userId, String password) {
+       if (userId.equals("smartguy")&& password.equals("123456") ){
+           startActivity(new Intent(PrettyLogin.this, LogOut.class));
         } else {
             AlertDialog.Builder dlgAlert  = new AlertDialog.Builder(this);
-
             dlgAlert.setMessage("Please input a valid Username and Password");
             dlgAlert.setTitle("Incorrect Username and/or Password");
             dlgAlert.setPositiveButton("OK", null);

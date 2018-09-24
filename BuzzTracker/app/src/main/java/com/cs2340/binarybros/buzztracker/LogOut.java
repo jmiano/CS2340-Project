@@ -17,7 +17,7 @@ public class LogOut extends AppCompatActivity {
         logoutBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(LogOut.this, PrettyLogin.class));
+                startActivity(new Intent(LogOut.this, WelcomeActivity.class));
             }
         });
 
