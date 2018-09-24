@@ -1,40 +1,66 @@
 package com.cs2340.binarybros.buzztracker;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 public class PrettyLogin extends AppCompatActivity {
 
     RelativeLayout relay1;
-    Handler handler = new Handler();
-    Runnable runnable = new Runnable() {
-        @Override
-        public void run() {
-            relay1.setVisibility(View.VISIBLE);
+    private EditText userID;
+    private EditText password;
+    //private TextView loginInfor;
 
-        }
-    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_prettylogin);
 
-        relay1 = (RelativeLayout) findViewById(R.id.relay1);
-
-        handler.postDelayed(runnable, 2000); //2000 is the timeout of the splash screen
-
-        Button cancelBtn = (Button) findViewById(R.id.cancelButton);
+        Button cancelBtn = (Button) findViewById(R.id.cancel_btn);
         cancelBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(PrettyLogin.this, WelcomeActivity.class));
             }
         });
+
+        userID = (EditText) findViewById(R.id.username_field);
+        password = (EditText) findViewById(R.id.password_field);
+
+        Button loginBtn = (Button) findViewById(R.id.login_btn);
+        loginBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                checklogin (userID.getText().toString(),password.getText().toString());
+            }
+        });
+    }
+
+    private void checklogin(String userid, String password) {
+        if (userid.equals("smartguy")&& password.equals("123456") ){
+            Intent intent = new Intent(PrettyLogin.this, LogOut.class);
+        } else {
+            AlertDialog.Builder dlgAlert  = new AlertDialog.Builder(this);
+
+            dlgAlert.setMessage("Please input a valid Username and Password");
+            dlgAlert.setTitle("Incorrect Username and/or Password");
+            dlgAlert.setPositiveButton("OK", null);
+            dlgAlert.setCancelable(true);
+            dlgAlert.create().show();
+
+            dlgAlert.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int which) {
+                    }
+            });
+        }
     }
 }
