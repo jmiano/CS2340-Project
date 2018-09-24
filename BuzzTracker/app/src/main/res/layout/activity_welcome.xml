@@ -20,6 +20,7 @@
         app:layout_constraintEnd_toEndOf="@+id/welcomeText"
         android:textAllCaps="false"
         android:textColor="@color/white"
+        android:textSize="15sp"
         app:layout_constraintTop_toBottomOf="@+id/welcomeText" />
 
     <Button
@@ -33,6 +34,8 @@
         app:layout_constraintEnd_toEndOf="@+id/welcomeText"
         android:textAllCaps="false"
         android:textColor="@color/white"
+        android:textSize="15sp"
+
         app:layout_constraintTop_toBottomOf="@+id/welcomeText" />
 
     <TextView
@@ -42,7 +45,7 @@
         android:layout_marginTop="44dp"
         android:text="Welcome to BuzzTracker!"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-        android:textSize="86px"
+        android:textSize="24sp"
         android:fontFamily="sans-serif-medium"
         android:textStyle="bold"
         android:gravity="center"
