@@ -39,7 +39,6 @@ public class PrettyLogin extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(PrettyLogin.this, WelcomeActivity.class));
-//                trial = 4;
             }
         });
         EditText userID = (EditText) findViewById(R.id.Username);
