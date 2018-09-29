@@ -26,4 +26,5 @@
     <string name="prompt_email">EMAIL</string>
     <string name="register_btn">Register</string>
     <string name="register_label">Registration</string>
+    <string name="account_type_label">Account Type</string>
 </resources>

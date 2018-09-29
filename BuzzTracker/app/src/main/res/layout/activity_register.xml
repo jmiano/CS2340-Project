@@ -34,6 +34,32 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="sans-serif-light"
+                        android:scrollbarSize="15sp"
+                        android:text="@string/account_type_label"
+                        android:textAllCaps="true"
+                        android:textColor="@color/white" />
+
+                    <Spinner
+                        android:id="@+id/account_spinner"
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="sans-serif-light"
+                        android:scrollbarSize="15sp"
+                        android:layout_marginLeft="130dp"
+                        android:textColor="@color/white" />
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
                     android:orientation="vertical">
 
                     <TextView
@@ -41,6 +67,7 @@
                         android:layout_height="wrap_content"
                         android:fontFamily="sans-serif-light"
                         android:scrollbarSize="15sp"
+                        android:layout_marginTop="20dp"
                         android:text="@string/name_label"
                         android:textAllCaps="true"
                         android:textColor="@color/white" />
@@ -147,13 +174,15 @@
                             android:id="@+id/month_spinner"
                             android:layout_width="100dp"
                             android:layout_height="wrap_content"
+                            android:layout_marginRight="30dp"
                             android:fontFamily="sans-serif-light"
                             android:scrollbarSize="15sp"
                             android:textColor="@color/white" />
 
                         <Spinner
                             android:id="@+id/day_spinner"
-                            android:layout_width="100dp"
+                            android:layout_width="80dp"
+                            android:layout_marginRight="30dp"
                             android:layout_height="wrap_content"
                             android:fontFamily="sans-serif-light"
                             android:scrollbarSize="15sp"

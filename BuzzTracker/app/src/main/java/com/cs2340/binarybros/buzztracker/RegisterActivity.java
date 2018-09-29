@@ -33,6 +33,7 @@ public class RegisterActivity extends AppCompatActivity {
     private Spinner monthSpinner;
     private Spinner daySpinner;
     private Spinner yearSpinner;
+    private Spinner accountTypeSpinner;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,6 +51,17 @@ public class RegisterActivity extends AppCompatActivity {
         monthSpinner = (Spinner) findViewById(R.id.month_spinner);
         daySpinner = (Spinner) findViewById(R.id.day_spinner);
         yearSpinner = (Spinner) findViewById(R.id.year_spinner);
+        accountTypeSpinner = (Spinner) findViewById(R.id.account_spinner);
+
+
+        /*
+          Set up the adapter to display the allowable account types
+         */
+        ArrayAdapter<String> accountTypeAdapter = new ArrayAdapter<>(this,android.R.layout.simple_spinner_item,
+                Arrays.asList("User", "Manager", "Location Employee", "Admin"));
+        accountTypeAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        accountTypeSpinner.setAdapter(accountTypeAdapter);
+
 
         /*
           Set up the adapter to display the allowable days
