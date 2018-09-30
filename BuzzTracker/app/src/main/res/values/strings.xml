@@ -2,6 +2,7 @@
     <string name="app_name">BuzzTracker</string>
 
     <!-- Strings related to login -->
+    <string name="prompt_email">Email</string>
     <string name="prompt_password">Password (optional)</string>
     <string name="action_sign_in">Sign in or register</string>
     <string name="action_sign_in_short">Sign in</string>
@@ -9,22 +10,8 @@
     <string name="error_invalid_password">This password is too short</string>
     <string name="error_incorrect_password">This password is incorrect</string>
     <string name="error_field_required">This field is required</string>
-    <string name="permission_rationale">"Contact permissions are needed for providing email
+    <string name="permission_rationale">"Contacts permissions are needed for providing email
         completions."
     </string>
-    <string name="loginbtn">Login</string>
-    <string name="username_label">USERNAME</string>
-    <string name="username_field" />
-    <string name="password_label">PASSWORD</string>
-    <string name="login_btn">Login</string>
-    <string name="cancel_btn">Cancel</string>
-
-    <!-- Strings related to registration -->
-    <string name="name_label">NAME</string>
-    <string name="address_label">ADDRESS</string>
-    <string name="dob_label">DATE OF BIRTH</string>
-    <string name="prompt_email">EMAIL</string>
-    <string name="register_btn">Register</string>
-    <string name="register_label">Registration</string>
-    <string name="account_type_label">Account Type</string>
+    <string name="number_of_incorrect_trial">number of incorrect trial:</string>
 </resources>

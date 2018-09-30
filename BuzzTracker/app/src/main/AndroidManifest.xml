@@ -25,7 +25,6 @@
         </activity>
         <activity android:name=".PrettyLogin" />
         <activity android:name=".LogOut" />
-        <activity android:name=".RegisterActivity"></activity>
     </application>
 
 </manifest>
