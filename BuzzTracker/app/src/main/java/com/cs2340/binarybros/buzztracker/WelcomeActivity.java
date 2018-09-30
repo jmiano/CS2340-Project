@@ -20,5 +20,13 @@ public class WelcomeActivity extends AppCompatActivity {
                 startActivity(new Intent(WelcomeActivity.this, PrettyLogin.class));
             }
         });
+
+        Button registerBtn = (Button) findViewById(R.id.registerButton);
+        registerBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(WelcomeActivity.this, RegisterActivity.class));
+            }
+        });
     }
 }
