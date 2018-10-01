@@ -17,10 +17,9 @@
         <ImageView
             android:id="@+id/imgView_dummy_logo"
             android:layout_width="80dp"
-            android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
+            android:layout_height="80dp"
             android:adjustViewBounds="true"
+            android:contentDescription="Logo of the app that we will replace"
             android:scaleType="fitCenter"
             android:src="@drawable/dummy_logo" />
 
@@ -28,8 +27,7 @@
             android:id="@+id/relay1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/imgView_dummy_logo"
-            android:visibility="gone">
+            android:layout_below="@+id/imgView_dummy_logo">
 
             <TextView
                 android:id="@+id/tv_login"
@@ -37,7 +35,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:fontFamily="sans-serif-medium"
-                android:text="Login"
+                android:text="@string/loginbtn"
                 android:textColor="@color/white"
                 android:textSize="30sp" />
 
@@ -55,24 +53,26 @@
                     android:orientation="vertical">
 
                     <TextView
-                        android:id="@+id/username"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="sans-serif-light"
                         android:scrollbarSize="15sp"
-                        android:text="Username"
+                        android:text="@string/username_label"
                         android:textAllCaps="true"
                         android:textColor="@color/white" />
 
                     <EditText
-                        android:id="@+id/Username"
+                        android:id="@+id/username_field"
                         android:layout_width="match_parent"
                         android:layout_height="40dp"
                         android:layout_marginTop="5dp"
                         android:background="@drawable/et_bg"
                         android:fontFamily="sans-serif-light"
+                        android:inputType="text"
                         android:paddingLeft="15dp"
                         android:paddingRight="15dp"
+                        android:singleLine="true"
+                        android:text="@string/username_field"
                         android:textColor="@color/white"
                         android:textSize="15sp" />
 
@@ -85,22 +85,22 @@
                     android:orientation="vertical">
 
                     <TextView
-                        android:id="@+id/password"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="sans-serif-light"
                         android:scrollbarSize="15sp"
-                        android:text="Password"
+                        android:text="@string/password_label"
                         android:textAllCaps="true"
                         android:textColor="@color/white" />
 
                     <EditText
-                        android:id="@+id/Password"
+                        android:id="@+id/password_field"
                         android:layout_width="match_parent"
                         android:layout_height="40dp"
                         android:layout_marginTop="5dp"
                         android:background="@drawable/et_bg"
                         android:fontFamily="sans-serif-light"
+                        android:inputType="textPassword"
                         android:paddingLeft="15dp"
                         android:paddingRight="15dp"
                         android:textColor="@color/white"
@@ -121,13 +121,13 @@
                 android:fontFamily="sans-serif-medium"
                 android:paddingLeft="70dp"
                 android:paddingRight="70dp"
-                android:text="Login"
+                android:text="@string/login_btn"
                 android:textAllCaps="false"
                 android:textColor="@color/white"
                 android:textSize="15sp" />
 
             <Button
-                android:id="@+id/cancelButton"
+                android:id="@+id/cancel_btn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/login_btn"
@@ -137,7 +137,7 @@
                 android:fontFamily="sans-serif-medium"
                 android:paddingLeft="70dp"
                 android:paddingRight="70dp"
-                android:text="Cancel"
+                android:text="@string/cancel_btn"
                 android:textAllCaps="false"
                 android:textColor="@color/white"
                 android:textSize="15sp" />
@@ -145,15 +145,5 @@
         </RelativeLayout>
 
     </RelativeLayout>
-
-    <TextView
-        android:id="@+id/logininfor"
-        android:layout_width="158dp"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginBottom="140dp"
-        android:layout_marginStart="131dp"
-        android:text="TextView" />
 
 </RelativeLayout>

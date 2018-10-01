@@ -24,7 +24,7 @@ public class PrettyLogin extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_prettylogin);
 
-        Button cancelBtn = (Button) findViewById(R.id.cancelButton);
+        Button cancelBtn = (Button) findViewById(R.id.cancel_btn);
         cancelBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
