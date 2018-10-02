@@ -11,12 +11,19 @@ import android.widget.EditText;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+
 public class PrettyLogin extends AppCompatActivity {
 
     RelativeLayout relay1;
     private EditText username=null;
     private EditText password=null;
     private TextView attempts;
+    private ArrayList<User> userList;
+    private ArrayList<Manager> managerList;
+    private ArrayList<Admin> adminList;
+    private ArrayList<LocationEmployee> locationEmployeeList;
 
 
     @Override
@@ -32,6 +39,14 @@ public class PrettyLogin extends AppCompatActivity {
             }
         });
 
+        // get lists of valid login credentials
+        Intent i = getIntent();
+        userList = (ArrayList<User>) i.getSerializableExtra("user");
+        managerList = (ArrayList<Manager>) i.getSerializableExtra("manager");
+        adminList = (ArrayList<Admin>) i.getSerializableExtra("admin");
+        locationEmployeeList = (ArrayList<LocationEmployee>) i.getSerializableExtra("locationemployee");
+
+
         username = (EditText)findViewById(R.id.username_field);
         password = (EditText)findViewById(R.id.password_field);
 
@@ -44,7 +59,21 @@ public class PrettyLogin extends AppCompatActivity {
         });
     }
 
+
+
     private void login(String userId, String password) {
+        boolean validLogin = false;
+        int i = 0;
+
+        while (validLogin == false) {
+
+
+
+        }
+
+
+
+
        if (userId.equals("smartguy")&& password.equals("123456") ){
            startActivity(new Intent(PrettyLogin.this, LogOut.class));
         } else {
@@ -62,3 +91,5 @@ public class PrettyLogin extends AppCompatActivity {
         }
     }
 }
+
+

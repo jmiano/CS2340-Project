@@ -24,7 +24,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".PrettyLogin" />
-        <activity android:name=".LogOut"></activity>
+        <activity android:name=".RegisterActivity" />
+        <activity android:name=".LogOut" />
     </application>
 
 </manifest>
