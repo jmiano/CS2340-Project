@@ -11,9 +11,9 @@ import android.widget.EditText;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.cs2340.binarybros.buzztracker.Models.Database;
 import com.cs2340.binarybros.buzztracker.Models.LocationEmployee;
 import com.cs2340.binarybros.buzztracker.Models.User;
-import com.cs2340.binarybros.buzztracker.R;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
@@ -40,11 +40,8 @@ public class PrettyLogin extends AppCompatActivity {
             }
         });
 
-        // get lists of valid login credentials
-        Intent i = getIntent();
-        loginList = (ArrayList<User>) i.getSerializableExtra("loginList");
 
-
+        loginList = Database.getInstance().getUserList(); // This gets our non-persistent list of registered users
         username = (EditText)findViewById(R.id.username_field);
         password = (EditText)findViewById(R.id.password_field);
 
@@ -62,7 +59,7 @@ public class PrettyLogin extends AppCompatActivity {
         boolean validLogin = false;
         int i = 0;
 
-        while (!validLogin && i <= loginList.size()) {
+        while (loginList != null && !validLogin && i < loginList.size()) {
             String passedInUserName = loginList.get(i).getUsername();
             String passedInPassword = loginList.get(i).getPassword();
 

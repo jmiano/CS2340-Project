@@ -6,8 +6,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-import com.cs2340.binarybros.buzztracker.R;
-
 public class LogOut extends AppCompatActivity {
 
     @Override

@@ -1,6 +1,9 @@
 package com.cs2340.binarybros.buzztracker.Controllers;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.provider.ContactsContract;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -20,10 +23,10 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.cs2340.binarybros.buzztracker.Models.Admin;
+import com.cs2340.binarybros.buzztracker.Models.Database;
 import com.cs2340.binarybros.buzztracker.Models.LocationEmployee;
 import com.cs2340.binarybros.buzztracker.Models.Manager;
 import com.cs2340.binarybros.buzztracker.Models.User;
-import com.cs2340.binarybros.buzztracker.R;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -39,7 +42,6 @@ public class RegisterActivity extends AppCompatActivity {
     private Spinner daySpinner;
     private Spinner yearSpinner;
     private Spinner accountTypeSpinner;
-    //The ArrayList where Login Information for each user is stored
     private ArrayList<User> loginList;
 
     @Override
@@ -59,6 +61,7 @@ public class RegisterActivity extends AppCompatActivity {
         daySpinner = (Spinner) findViewById(R.id.day_spinner);
         yearSpinner = (Spinner) findViewById(R.id.year_spinner);
         accountTypeSpinner = (Spinner) findViewById(R.id.account_spinner);
+        loginList = Database.getInstance().getUserList(); // Pulls the non-persistent ArrayList of registered users
 
 
         /*
@@ -120,30 +123,38 @@ public class RegisterActivity extends AppCompatActivity {
         registerBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                createobject();
-                Intent intent = new Intent(RegisterActivity.this, PrettyLogin.class);
-                //pass all intent to the PrettyLogin activity
-                intent.putExtra("loginList", loginList);
-                startActivity(intent);
+                if (createObject()) {
+                    Intent intent = new Intent(RegisterActivity.this, PrettyLogin.class);
+                    startActivity(intent);
+                }
             }
         });
     }
-    // this method is to create the corresponding user type and record data about each type
-    private void createobject() {
+
+    /**
+     * This method creates a user object and puts it into our local Database singleton
+     * The possible users are "Manager", "Location Employee", "Admin"
+     * @return whether or not the user was added to the ArrayList
+     */
+    private boolean createObject() {
+        boolean userCreated = false;
+
         String type = accountTypeSpinner.getSelectedItem().toString();
         String username = userNameField.getText().toString();
         String password = passwordField.getText().toString();
         String name = nameField.getText().toString();
         String email = emailField.getText().toString();
         if (type.equals("Manager")) {
-            loginList.add(new Manager(name, username, password, email,null, 0));
+            loginList.add(new Manager(name, username, password, email,"", 0));
+            userCreated = true;
         } else if (type.equals("Location Employee")) {
-            loginList.add(new LocationEmployee(name, username, password, email,null,0));
+            loginList.add(new LocationEmployee(name, username, password, email,"",0));
+            userCreated = true;
         } else if (type.equals("Admin")) {
-            loginList.add(new Admin(name, username, password, email, null, 0));
+            loginList.add(new Admin(name, username, password, email, "", 0));
+            userCreated = true;
         }
+        return userCreated;
     }
 }
 
-//if (type.equals("User")) {
-//        loginList.add(new User (name, username, password, email, null, 0));

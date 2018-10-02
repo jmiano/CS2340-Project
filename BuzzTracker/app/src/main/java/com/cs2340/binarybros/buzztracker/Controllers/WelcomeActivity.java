@@ -6,12 +6,14 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-import com.cs2340.binarybros.buzztracker.R;
+import com.cs2340.binarybros.buzztracker.Models.Database;
+
 
 public class WelcomeActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        Database.getInstance(); //This instantiates our non-persistent database
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_welcome);
 
