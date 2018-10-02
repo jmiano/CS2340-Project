@@ -1,4 +1,4 @@
-package com.cs2340.binarybros.buzztracker;
+package com.cs2340.binarybros.buzztracker.Controllers;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -19,6 +19,10 @@ import android.widget.SimpleAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import com.cs2340.binarybros.buzztracker.Models.Admin;
+import com.cs2340.binarybros.buzztracker.Models.LocationEmployee;
+import com.cs2340.binarybros.buzztracker.Models.Manager;
+import com.cs2340.binarybros.buzztracker.Models.User;
 import com.cs2340.binarybros.buzztracker.R;
 
 import java.util.ArrayList;
@@ -35,11 +39,9 @@ public class RegisterActivity extends AppCompatActivity {
     private Spinner daySpinner;
     private Spinner yearSpinner;
     private Spinner accountTypeSpinner;
-    //the 4 arraylist to store different type
-    private ArrayList<User> userlist;
-    private ArrayList<Manager> managerlist;
-    private ArrayList<Admin> adminlist;
-    private ArrayList<LocationEmployee> locationemployeelist;
+    //The ArrayList where Login Information for each user is stored
+    private ArrayList<User> loginList;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -63,7 +65,7 @@ public class RegisterActivity extends AppCompatActivity {
           Set up the adapter to display the allowable account types
          */
         ArrayAdapter<String> accountTypeAdapter = new ArrayAdapter<>(this,android.R.layout.simple_spinner_item,
-                Arrays.asList("User", "Manager", "Location Employee", "Admin"));
+                Arrays.asList("Manager", "Location Employee", "Admin"));
         accountTypeAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         accountTypeSpinner.setAdapter(accountTypeAdapter);
 
@@ -121,10 +123,7 @@ public class RegisterActivity extends AppCompatActivity {
                 createobject();
                 Intent intent = new Intent(RegisterActivity.this, PrettyLogin.class);
                 //pass all intent to the PrettyLogin activity
-                intent.putExtra("user", userlist);
-                intent.putExtra("manager", managerlist);
-                intent.putExtra("locationemployee", locationemployeelist);
-                intent.putExtra("admin", adminlist);
+                intent.putExtra("loginList", loginList);
                 startActivity(intent);
             }
         });
@@ -136,23 +135,15 @@ public class RegisterActivity extends AppCompatActivity {
         String password = passwordField.getText().toString();
         String name = nameField.getText().toString();
         String email = emailField.getText().toString();
-        if (type.equals("User")) {
-            User newuser = new User(name, username, password, email);
-            userlist.add(newuser);
-        } else if (type.equals("Manager")) {
-            //ID will be replaced next time
-            Manager newmanager = new Manager(name, username, password, email,0);
-            managerlist.add(newmanager);
+        if (type.equals("Manager")) {
+            loginList.add(new Manager(name, username, password, email,null, 0));
         } else if (type.equals("Location Employee")) {
-            //ID and storenumber will be replaced next time
-            LocationEmployee newlocationemployee =
-                    new LocationEmployee(name, username, password, email,0,0);
-            locationemployeelist.add(newlocationemployee);
+            loginList.add(new LocationEmployee(name, username, password, email,null,0));
         } else if (type.equals("Admin")) {
-            //employeeID will be replaced next time
-            Admin newadmin = new Admin(name, username, password, email,0);
-            adminlist.add(newadmin);
+            loginList.add(new Admin(name, username, password, email, null, 0));
         }
-
     }
 }
+
+//if (type.equals("User")) {
+//        loginList.add(new User (name, username, password, email, null, 0));

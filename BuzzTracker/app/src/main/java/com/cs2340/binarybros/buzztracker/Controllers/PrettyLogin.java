@@ -1,4 +1,4 @@
-package com.cs2340.binarybros.buzztracker;
+package com.cs2340.binarybros.buzztracker.Controllers;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -11,6 +11,10 @@ import android.widget.EditText;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.cs2340.binarybros.buzztracker.Models.LocationEmployee;
+import com.cs2340.binarybros.buzztracker.Models.User;
+import com.cs2340.binarybros.buzztracker.R;
+
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 
@@ -20,10 +24,7 @@ public class PrettyLogin extends AppCompatActivity {
     private EditText username=null;
     private EditText password=null;
     private TextView attempts;
-    private ArrayList<User> userList;
-    private ArrayList<Manager> managerList;
-    private ArrayList<Admin> adminList;
-    private ArrayList<LocationEmployee> locationEmployeeList;
+    private ArrayList<User> loginList;
 
 
     @Override
@@ -41,10 +42,7 @@ public class PrettyLogin extends AppCompatActivity {
 
         // get lists of valid login credentials
         Intent i = getIntent();
-        userList = (ArrayList<User>) i.getSerializableExtra("user");
-        managerList = (ArrayList<Manager>) i.getSerializableExtra("manager");
-        adminList = (ArrayList<Admin>) i.getSerializableExtra("admin");
-        locationEmployeeList = (ArrayList<LocationEmployee>) i.getSerializableExtra("locationemployee");
+        loginList = (ArrayList<User>) i.getSerializableExtra("loginList");
 
 
         username = (EditText)findViewById(R.id.username_field);
@@ -60,21 +58,21 @@ public class PrettyLogin extends AppCompatActivity {
     }
 
 
-
     private void login(String userId, String password) {
         boolean validLogin = false;
         int i = 0;
 
-        while (validLogin == false) {
+        while (!validLogin && i <= loginList.size()) {
+            String passedInUserName = loginList.get(i).getUsername();
+            String passedInPassword = loginList.get(i).getPassword();
 
-
-
+            if (userId.equals(passedInUserName) && password.equals(passedInPassword)) {
+                validLogin = true;
+            }
+            i++;
         }
 
-
-
-
-       if (userId.equals("smartguy")&& password.equals("123456") ){
+       if (validLogin){
            startActivity(new Intent(PrettyLogin.this, LogOut.class));
         } else {
             AlertDialog.Builder dlgAlert  = new AlertDialog.Builder(this);

@@ -1,10 +1,12 @@
-package com.cs2340.binarybros.buzztracker;
+package com.cs2340.binarybros.buzztracker.Controllers;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+
+import com.cs2340.binarybros.buzztracker.R;
 
 public class LogOut extends AppCompatActivity {
 
