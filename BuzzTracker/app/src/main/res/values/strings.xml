@@ -32,4 +32,5 @@
     <!-- Strings related to LocationManage -->
     <string name="edit_label">Edit</string>
     <string name="remove_label">Remove</string>
+    <string name="add_label">+</string>
 </resources>
