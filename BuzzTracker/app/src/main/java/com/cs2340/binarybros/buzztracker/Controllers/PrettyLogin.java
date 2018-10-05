@@ -50,6 +50,8 @@ public class PrettyLogin extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 login(username.getText().toString(), password.getText().toString());
+                // go to the locationmanage page
+                startActivity(new Intent(PrettyLogin.this, LocationManageActivity.class));
             }
         });
     }

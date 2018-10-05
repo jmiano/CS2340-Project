@@ -26,6 +26,9 @@
         <activity android:name=".PrettyLogin" />
         <activity android:name=".RegisterActivity" />
         <activity android:name=".LogOut" />
+        <activity
+            android:name=".LocationManageActivity"
+            android:label="@string/title_activity_location_manage"></activity>
     </application>
 
 </manifest>
