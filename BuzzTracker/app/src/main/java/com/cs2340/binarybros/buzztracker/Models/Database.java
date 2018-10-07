@@ -12,6 +12,9 @@ public class Database {
     //ArrayList that stores the user credential that are registered to login.
     private static ArrayList<User> userList;
 
+    //ArrayList that stores the locations that are entered
+    private static ArrayList<Location> locationList;
+
     /**
      * The constructor is private, because it I only want 1 instance of it
      */
@@ -37,7 +40,16 @@ public class Database {
         this.userList = userList;
     }
 
+    public static ArrayList<Location> getLocationList() {
+        return locationList;
+    }
+
+    public static void setLocationList(ArrayList<Location> locationList) {
+        Database.locationList = locationList;
+    }
+
     public static void initialize() {
         userList = new ArrayList<>(10);
+        locationList = new ArrayList<>(10);
     }
 }
