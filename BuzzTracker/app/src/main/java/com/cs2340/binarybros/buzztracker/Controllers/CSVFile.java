@@ -1,5 +1,7 @@
 package com.cs2340.binarybros.buzztracker.Controllers;
 
+import com.cs2340.binarybros.buzztracker.Models.Location;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -19,9 +21,15 @@ public class CSVFile {
         BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
         try {
             String csvLine;
+            reader.readLine();
             while ((csvLine = reader.readLine()) != null) {
                 String[] row = csvLine.split(",");
-                resultList.add(row);
+
+                resultList.add(new Location(
+                        row[0], row[1], row[2], row[3]
+                        , row[4], row[5], row[6], row[7]
+                        , row[8], row[9], row[10]
+                ));
             }
         }
         catch (IOException ex) {

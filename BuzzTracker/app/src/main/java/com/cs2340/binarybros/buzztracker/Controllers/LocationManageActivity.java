@@ -18,7 +18,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class LocationManageActivity extends AppCompatActivity {
-    private ArrayList<String> locationList;
+    private ArrayList<Location> locationList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,12 +32,15 @@ public class LocationManageActivity extends AppCompatActivity {
         getSupportFragmentManager().beginTransaction().add(R.id.container, locationFragment).commit();
 
         Button addBtn = (Button) findViewById(R.id.add_btn);
+
+        //MY NEXT TASK: make the Location toString and format the table output
         addBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 InputStream inputStream = getResources().openRawResource(R.raw.locationdata);
                 CSVFile csvFile = new CSVFile(inputStream);
-                locationList.addAll(csvFile.read());
+                ArrayList<Location> fileContents = (ArrayList) csvFile.read();
+                locationList.addAll(fileContents);
                 LocationFragment locationFragment = new LocationFragment();
                 getSupportFragmentManager().beginTransaction().add(R.id.container, locationFragment).commit();
             }

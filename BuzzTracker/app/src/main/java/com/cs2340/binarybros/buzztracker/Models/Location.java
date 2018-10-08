@@ -4,21 +4,21 @@ import java.io.Serializable;
 
 public class Location implements Serializable {
 
-    private int key;
+    private String key;
     private String name;
-    private double latitude;
-    private double longitude;
+    private String latitude;
+    private String longitude;
     private String streetAddress;
     private String city;
     private String state;
-    private int zip;
+    private String zip;
     private String type;
     private String phone;
     private String website;
 
 
-    public Location(int keyInput, String nameInput, double latitudeInput, double longitudeInput
-        , String streetAddressInput, String cityInput, String stateInput, int zipInput
+    public Location(String keyInput, String nameInput, String latitudeInput, String longitudeInput
+        , String streetAddressInput, String cityInput, String stateInput, String zipInput
         , String typeInput, String phoneInput, String websiteInput) {
         this.key = keyInput;
         this.name = nameInput;
@@ -33,11 +33,11 @@ public class Location implements Serializable {
         this.website = websiteInput;
     }
 
-    public int getKey() {
+    public String getKey() {
         return key;
     }
 
-    public void setKey(int key) {
+    public void setKey(String key) {
         this.key = key;
     }
 
@@ -49,19 +49,19 @@ public class Location implements Serializable {
         this.name = name;
     }
 
-    public double getLatitude() {
+    public String getLatitude() {
         return latitude;
     }
 
-    public void setLatitude(double latitude) {
+    public void setLatitude(String latitude) {
         this.latitude = latitude;
     }
 
-    public double getLongitude() {
+    public String getLongitude() {
         return longitude;
     }
 
-    public void setLongitude(double longitude) {
+    public void setLongitude(String longitude) {
         this.longitude = longitude;
     }
 
@@ -89,11 +89,11 @@ public class Location implements Serializable {
         this.state = state;
     }
 
-    public int getZip() {
+    public String getZip() {
         return zip;
     }
 
-    public void setZip(int zip) {
+    public void setZip(String zip) {
         this.zip = zip;
     }
 
@@ -119,6 +119,11 @@ public class Location implements Serializable {
 
     public void setWebsite(String website) {
         this.website = website;
+    }
+
+    @Override
+    public String toString() {
+        return name;
     }
 }
 

@@ -13,7 +13,7 @@ public class Database {
     private static ArrayList<User> userList;
 
     //ArrayList that stores the locations that are entered
-    private static ArrayList<String> locationList;
+    private static ArrayList<Location> locationList;
 
     /**
      * The constructor is private, because it I only want 1 instance of it
@@ -40,11 +40,11 @@ public class Database {
         this.userList = userList;
     }
 
-    public ArrayList<String> getLocationList() {
+    public ArrayList<Location> getLocationList() {
         return locationList;
     }
 
-    public void setLocationList(ArrayList<String> locationList) {
+    public void setLocationList(ArrayList<Location> locationList) {
         Database.locationList = locationList;
     }
 
