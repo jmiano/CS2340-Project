@@ -33,7 +33,7 @@ public class LocationManageActivity extends AppCompatActivity {
 
         Button addBtn = (Button) findViewById(R.id.add_btn);
 
-        //MY NEXT TASK: make the Location toString and format the table output
+
         addBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

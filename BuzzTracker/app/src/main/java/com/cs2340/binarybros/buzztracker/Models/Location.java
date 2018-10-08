@@ -1,6 +1,7 @@
 package com.cs2340.binarybros.buzztracker.Models;
 
 import java.io.Serializable;
+import java.util.Objects;
 
 public class Location implements Serializable {
 
@@ -124,6 +125,32 @@ public class Location implements Serializable {
     @Override
     public String toString() {
         return name;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Location)) return false;
+        Location location = (Location) o;
+        return Objects.equals(getKey(), location.getKey()) &&
+                Objects.equals(getName(), location.getName()) &&
+                Objects.equals(getLatitude(), location.getLatitude()) &&
+                Objects.equals(getLongitude(), location.getLongitude()) &&
+                Objects.equals(getStreetAddress(), location.getStreetAddress()) &&
+                Objects.equals(getCity(), location.getCity()) &&
+                Objects.equals(getState(), location.getState()) &&
+                Objects.equals(getZip(), location.getZip()) &&
+                Objects.equals(getType(), location.getType()) &&
+                Objects.equals(getPhone(), location.getPhone()) &&
+                Objects.equals(getWebsite(), location.getWebsite());
+    }
+
+    @Override
+    public int hashCode() {
+
+        return Objects.hash(getKey(), getName(), getLatitude(),
+                getLongitude(), getStreetAddress(), getCity(),
+                getState(), getZip(), getType(), getPhone(), getWebsite());
     }
 }
 

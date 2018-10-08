@@ -1,5 +1,6 @@
 package com.cs2340.binarybros.buzztracker.Controllers;
 
+import com.cs2340.binarybros.buzztracker.Models.Database;
 import com.cs2340.binarybros.buzztracker.Models.Location;
 
 import java.io.BufferedReader;
@@ -11,6 +12,7 @@ import java.util.List;
 
 public class CSVFile {
     InputStream inputStream;
+    private ArrayList<Location> locationList;
 
     public CSVFile(InputStream inputStream){
         this.inputStream = inputStream;
@@ -19,17 +21,25 @@ public class CSVFile {
     public List read(){
         List resultList = new ArrayList();
         BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
+        /* Grab the location list from facade to be populated */
+        this.locationList = Database.getInstance().getLocationList(); // Pulls the non-persistent ArrayList of locations
         try {
             String csvLine;
             reader.readLine();
             while ((csvLine = reader.readLine()) != null) {
                 String[] row = csvLine.split(",");
 
-                resultList.add(new Location(
+                //Prevents duplicates (adding the same file multiple times)
+                if (!locationList.contains(new Location(
                         row[0], row[1], row[2], row[3]
                         , row[4], row[5], row[6], row[7]
-                        , row[8], row[9], row[10]
-                ));
+                        , row[8], row[9], row[10]))) {
+                    resultList.add(new Location(
+                            row[0], row[1], row[2], row[3]
+                            , row[4], row[5], row[6], row[7]
+                            , row[8], row[9], row[10]
+                    ));
+                }
             }
         }
         catch (IOException ex) {
