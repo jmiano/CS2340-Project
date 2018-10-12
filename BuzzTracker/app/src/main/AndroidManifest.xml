@@ -28,7 +28,8 @@
         <activity android:name=".LogOut" />
         <activity
             android:name=".LocationManageActivity"
-            android:label="@string/title_activity_location_manage"></activity>
+            android:label="@string/title_activity_location_manage" />
+        <activity android:name=".EditLocation"></activity>
     </application>
 
 </manifest>
