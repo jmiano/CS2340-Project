@@ -48,7 +48,7 @@ public class LocationFragment extends Fragment {
 
             public void onItemClick (AdapterView<?> parent, View view,int position, long id){
                 location = (Location) parent.getAdapter().getItem(position);
-                Intent passDataIntent = new Intent(this, EditLocation.class);
+                Intent passDataIntent = new Intent(LocationFragment.this.getActivity(), EditLocation.class);
                 passDataIntent.putExtra("location", location);
                 startActivity(passDataIntent);
             }

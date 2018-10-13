@@ -2,6 +2,7 @@ package com.cs2340.binarybros.buzztracker.Models;
 
 import java.util.ArrayList;
 
+
 /**
  * This is a singleton class that acts like a local data base. This is not persistent, but it holds information
  * as long as the app is running
@@ -14,6 +15,7 @@ public class Database {
 
     //ArrayList that stores the locations that are entered
     private static ArrayList<Location> locationList;
+
 
     /**
      * The constructor is private, because it I only want 1 instance of it
@@ -51,5 +53,7 @@ public class Database {
     public static void initialize() {
         userList = new ArrayList<>(10);
         locationList = new ArrayList<>(10);
+
     }
+
 }

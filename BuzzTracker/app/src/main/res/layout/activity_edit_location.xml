@@ -28,7 +28,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:layout_weight="1"
-            android:fontFamily="sans-serif-medium"
+            android:fontFamily="sans-serif-light"
             android:text="Edit Location"
             android:textColor="@color/white"
             android:textSize="30sp" />
@@ -48,7 +48,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:fontFamily="@font/sans-serif-light"
                     android:text="TextView"
                     android:textColor="@color/white"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -79,7 +78,6 @@
                     android:id="@+id/location_type_label"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/sans-serif-light"
                     android:text="TextView"
                     android:textColor="@color/white"
                     tools:text="@string/location_type_label" />
@@ -103,7 +101,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20sp"
-                android:fontFamily="@font/sans-serif-light"
                 android:text="TextView"
                 android:textColor="@color/white"
                 tools:text="Street" />
@@ -131,7 +128,6 @@
                         android:id="@+id/location_city_label"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:fontFamily="@font/sans-serif-light"
                         android:text="City"
                         android:textColor="@color/white" />
 
@@ -154,7 +150,6 @@
                         android:id="@+id/location_state_label"
                         android:layout_width="104dp"
                         android:layout_height="wrap_content"
-                        android:fontFamily="@font/sans-serif-light"
                         android:text="State"
                         android:textColor="@color/white" />
 
@@ -174,7 +169,6 @@
                         android:id="@+id/location_zipcode_label"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:fontFamily="@font/sans-serif-light"
                         android:text="Zip Code"
                         android:textColor="@color/white" />
 
@@ -205,7 +199,6 @@
                     android:id="@+id/textView"
                     android:layout_width="141dp"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/sans-serif-light"
                     android:text="Latitude"
                     android:textColor="@color/white" />
 
@@ -228,7 +221,6 @@
                     android:id="@+id/textView2"
                     android:layout_width="159dp"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/sans-serif-light"
                     android:text="Longitude"
                     android:textColor="@color/white" />
 
