@@ -84,14 +84,11 @@
                     android:textColor="@color/white"
                     tools:text="@string/location_type_label" />
 
-                <EditText
-                    android:id="@+id/location_type_field"
-                    android:layout_width="wrap_content"
+                <Spinner
+                    android:id="@+id/location_type_spinner"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/et_bg"
-                    android:ems="10"
-                    android:inputType="textPersonName"
-                    android:singleLine="true" />
+                    android:background="@drawable/et_bg" />
             </LinearLayout>
 
         </LinearLayout>
