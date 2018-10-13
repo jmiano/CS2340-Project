@@ -27,4 +27,12 @@
     <string name="register_btn">Register</string>
     <string name="register_label">Registration</string>
     <string name="account_type_label">Account Type</string>
+    <string name="title_activity_location_manage">LocationManage</string>
+
+    <!-- Strings related to LocationManage -->
+    <string name="edit_label">Edit</string>
+    <string name="remove_label">Remove</string>
+    <string name="add_label">+</string>
+    <string name="location_name_label">Name</string>
+    <string name="location_type_label" >Type</string>
 </resources>
