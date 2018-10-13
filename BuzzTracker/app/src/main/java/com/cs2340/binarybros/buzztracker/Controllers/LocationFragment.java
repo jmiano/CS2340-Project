@@ -1,17 +1,20 @@
 package com.cs2340.binarybros.buzztracker.Controllers;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import com.cs2340.binarybros.buzztracker.Models.Database;
 import com.cs2340.binarybros.buzztracker.Models.Location;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 
@@ -20,6 +23,7 @@ import java.util.ArrayList;
  */
 public class LocationFragment extends Fragment {
     private ArrayList<Location> locationList;
+    private Location location;
 
 
     public LocationFragment() {
@@ -40,6 +44,16 @@ public class LocationFragment extends Fragment {
                 locationList
         );
         listview.setAdapter(listviewadapter);
+        listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+            public void onItemClick (AdapterView<?> parent, View view,int position, long id){
+                location = (Location) parent.getAdapter().getItem(position);
+                Intent passDataIntent = new Intent(this, EditLocation.class);
+                passDataIntent.putExtra("location", location);
+                startActivity(passDataIntent);
+            }
+        });
+
         // Inflate the layout for this fragment
         return view;
     }
