@@ -64,7 +64,7 @@ public class EditLocation extends AppCompatActivity {
         /**
          * Set up adapter to display the allowable types in spinner
          */
-        ArrayAdapter<String> typeAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item,
+        ArrayAdapter<String> typeAdapter = new ArrayAdapter<>(this, android.R.layout.spinner_item,
                 types);
         typeAdapter.setDropDownViewResource((android.R.layout.simple_spinner_dropdown_item));
         type.setAdapter(typeAdapter);
@@ -81,11 +81,13 @@ public class EditLocation extends AppCompatActivity {
         /**
          * Fill fields to location data
          */
-        for (int i = 0; i < stateList.length; i++) {
-            if (location.getState() == stateList[i]) {
-                state.setSelection(i);
-            }
-        }
+//        for (int i = 0; i < stateList.length; i++) {
+//            if (location.getState() == stateList[i]) {
+//                state.setSelection(i);
+//            }
+//        }
+
+        state.setSelection(2);
 
         for (int i = 0; i < types.length; i++) {
             if (location.getType() == types[i]) {
