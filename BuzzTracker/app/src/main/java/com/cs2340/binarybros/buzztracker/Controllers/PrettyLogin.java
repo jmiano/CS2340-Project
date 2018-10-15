@@ -50,8 +50,9 @@ public class PrettyLogin extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 login(username.getText().toString(), password.getText().toString());
-                // go to the locationmanage page
-                startActivity(new Intent(PrettyLogin.this, LocationManageActivity.class));
+
+                //The line below is a shortcut to not have to log-in every time
+                //startActivity(new Intent(PrettyLogin.this, LocationManageActivity.class));
             }
         });
     }
@@ -72,7 +73,7 @@ public class PrettyLogin extends AppCompatActivity {
         }
 
        if (validLogin){
-           startActivity(new Intent(PrettyLogin.this, LogOut.class));
+           startActivity(new Intent(PrettyLogin.this, LocationManageActivity.class));
         } else {
             AlertDialog.Builder dlgAlert  = new AlertDialog.Builder(this);
             dlgAlert.setMessage("Please input a valid Username and Password");

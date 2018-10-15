@@ -64,7 +64,7 @@ public class EditLocation extends AppCompatActivity {
         /**
          * Set up adapter to display the allowable types in spinner
          */
-        ArrayAdapter<String> typeAdapter = new ArrayAdapter<>(this, android.R.layout.spinner_item,
+        ArrayAdapter<String> typeAdapter = new ArrayAdapter<>(this, R.layout.spinner_item,
                 types);
         typeAdapter.setDropDownViewResource((android.R.layout.simple_spinner_dropdown_item));
         type.setAdapter(typeAdapter);
@@ -72,29 +72,36 @@ public class EditLocation extends AppCompatActivity {
         /**
          * Set up the adapter to display the allowable states
          */
-        ArrayAdapter<String> stateAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item,
+        ArrayAdapter<String> stateAdapter = new ArrayAdapter<>(this, R.layout.spinner_item,
                 stateList);
         stateAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         state.setAdapter(stateAdapter);
 
-
         /**
-         * Fill fields to location data
+         * Select state spinner location
          */
-//        for (int i = 0; i < stateList.length; i++) {
-//            if (location.getState() == stateList[i]) {
-//                state.setSelection(i);
-//            }
-//        }
-
-        state.setSelection(2);
-
-        for (int i = 0; i < types.length; i++) {
-            if (location.getType() == types[i]) {
-                type.setSelection(i);
+        int stateLocation = 0;
+        for (int i = 0; i < stateList.length; i++) {
+            if (location.getState().equals(stateList[i])) {
+                stateLocation = i;
             }
         }
+        state.setSelection(stateLocation);
 
+        /**
+         * Select type spinner location
+         */
+        int typeNumber = 0;
+        for (int i = 0; i < types.length; i++) {
+            if (location.getType().equals(types[i])) {
+                typeNumber = i;
+            }
+        }
+        type.setSelection(typeNumber);
+
+        /**
+         * fill the rest of the form information
+         */
         nameField.setText(location.getName(), TextView.BufferType.EDITABLE);
         streetAddress.setText(location.getStreetAddress(), TextView.BufferType.EDITABLE);
         city.setText(location.getCity(), TextView.BufferType.EDITABLE);

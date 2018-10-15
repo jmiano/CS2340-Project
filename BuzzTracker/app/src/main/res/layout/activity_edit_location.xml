@@ -48,8 +48,10 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:fontFamily="sans-serif-light"
                     android:text="Name"
                     android:textColor="@color/white"
+                    android:textSize="20sp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.122"
                     app:layout_constraintStart_toStartOf="parent"
@@ -62,20 +64,21 @@
                     android:layout_height="wrap_content"
                     android:background="@drawable/et_bg"
                     android:ems="10"
+                    android:fontFamily="sans-serif-light"
                     android:gravity="center"
                     android:inputType="text"
-                    android:paddingLeft="5dp"
-                    android:paddingRight="5dp"
+                    android:padding="5dp"
                     android:singleLine="true"
-                    android:textColor="@color/white" />
+                    android:textColor="@color/white"
+                    android:textSize="18sp" />
 
             </LinearLayout>
 
             <LinearLayout
-                android:layout_width="134dp"
+                android:layout_width="148dp"
                 android:layout_height="match_parent"
                 android:orientation="vertical"
-                android:paddingLeft="50sp"
+                android:paddingLeft="30sp"
                 tools:layout_editor_absoluteX="8dp"
                 tools:layout_editor_absoluteY="8dp">
 
@@ -83,14 +86,16 @@
                     android:id="@+id/location_type_label"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif-light"
                     android:text="Type"
                     android:textColor="@color/white"
+                    android:textSize="20sp"
                     tools:text="@string/location_type_label" />
 
                 <Spinner
                     android:id="@+id/location_type_spinner"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:background="@drawable/et_bg" />
             </LinearLayout>
 
@@ -107,7 +112,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20sp"
                 android:text="Street"
+                android:textSize="20dp"
                 android:textColor="@color/white"
+                android:fontFamily="sans-serif-light"
                 tools:text="Street" />
 
             <EditText
@@ -116,12 +123,13 @@
                 android:layout_height="wrap_content"
                 android:background="@drawable/et_bg"
                 android:ems="10"
+                android:fontFamily="sans-serif-light"
                 android:gravity="center"
                 android:inputType="textPostalAddress"
-                android:paddingLeft="5sp"
-                android:paddingRight="5sp"
+                android:padding="5dp"
                 android:singleLine="true"
-                android:textColor="@color/white" />
+                android:textColor="@color/white"
+                android:textSize="18sp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -129,7 +137,7 @@
                 android:orientation="horizontal">
 
                 <LinearLayout
-                    android:layout_width="147dp"
+                    android:layout_width="144dp"
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
 
@@ -137,21 +145,45 @@
                         android:id="@+id/location_city_label"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:fontFamily="sans-serif-light"
                         android:text="City"
-                        android:textColor="@color/white" />
+                        android:textColor="@color/white"
+                        android:textSize="20dp" />
 
                     <EditText
                         android:id="@+id/location_city_field"
-                        android:layout_width="99dp"
+                        android:layout_width="121dp"
                         android:layout_height="wrap_content"
                         android:background="@drawable/et_bg"
                         android:ems="10"
+                        android:fontFamily="sans-serif-light"
                         android:gravity="center"
                         android:inputType="textPersonName"
-                        android:paddingLeft="5sp"
-                        android:paddingRight="5sp"
+                        android:padding="5dp"
                         android:singleLine="true"
-                        android:textColor="@color/white" />
+                        android:textColor="@color/white"
+                        android:textSize="18sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="105dp"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/location_state_label"
+                        android:layout_width="104dp"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="sans-serif-light"
+                        android:text="State"
+                        android:textColor="@color/white"
+                        android:textSize="20dp" />
+
+                    <Spinner
+                        android:id="@+id/location_state_spinner"
+                        android:layout_width="57dp"
+                        android:layout_height="36dp"
+                        android:background="@drawable/et_bg" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -160,30 +192,13 @@
                     android:orientation="vertical">
 
                     <TextView
-                        android:id="@+id/location_state_label"
-                        android:layout_width="104dp"
-                        android:layout_height="wrap_content"
-                        android:text="State"
-                        android:textColor="@color/white" />
-
-                    <Spinner
-                        android:id="@+id/location_state_spinner"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:background="@drawable/et_bg" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical">
-
-                    <TextView
                         android:id="@+id/location_zipcode_label"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:fontFamily="sans-serif-light"
                         android:text="Zip Code"
-                        android:textColor="@color/white" />
+                        android:textColor="@color/white"
+                        android:textSize="20dp" />
 
                     <EditText
                         android:id="@+id/location_zipcode_field"
@@ -191,12 +206,13 @@
                         android:layout_height="wrap_content"
                         android:background="@drawable/et_bg"
                         android:ems="10"
+                        android:fontFamily="sans-serif-light"
                         android:gravity="center"
                         android:inputType="number"
-                        android:paddingLeft="5sp"
-                        android:paddingRight="5sp"
+                        android:padding="5dp"
                         android:singleLine="true"
-                        android:textColor="@color/white" />
+                        android:textColor="@color/white"
+                        android:textSize="18sp" />
 
                 </LinearLayout>
             </LinearLayout>
@@ -215,8 +231,10 @@
                 <TextView
                     android:id="@+id/textView"
                     android:layout_width="141dp"
+                    android:fontFamily="sans-serif-light"
                     android:layout_height="wrap_content"
                     android:text="Latitude"
+                    android:textSize="20dp"
                     android:textColor="@color/white" />
 
                 <EditText
@@ -225,12 +243,13 @@
                     android:layout_height="wrap_content"
                     android:background="@drawable/et_bg"
                     android:ems="10"
+                    android:fontFamily="sans-serif-light"
                     android:gravity="center"
                     android:inputType="numberDecimal"
-                    android:paddingLeft="5sp"
-                    android:paddingRight="5sp"
+                    android:padding="5dp"
                     android:singleLine="true"
-                    android:textColor="@color/white" />
+                    android:textColor="@color/white"
+                    android:textSize="18sp" />
             </LinearLayout>
 
             <LinearLayout
@@ -241,8 +260,10 @@
                 <TextView
                     android:id="@+id/textView2"
                     android:layout_width="159dp"
+                    android:fontFamily="sans-serif-light"
                     android:layout_height="wrap_content"
                     android:text="Longitude"
+                    android:textSize="20dp"
                     android:textColor="@color/white" />
 
                 <EditText
@@ -251,12 +272,13 @@
                     android:layout_height="wrap_content"
                     android:background="@drawable/et_bg"
                     android:ems="10"
+                    android:fontFamily="sans-serif-light"
                     android:gravity="center"
                     android:inputType="numberDecimal"
-                    android:paddingLeft="5sp"
-                    android:paddingRight="5sp"
+                    android:padding="5dp"
                     android:singleLine="true"
-                    android:textColor="@color/white" />
+                    android:textColor="@color/white"
+                    android:textSize="18sp" />
             </LinearLayout>
         </LinearLayout>
 
