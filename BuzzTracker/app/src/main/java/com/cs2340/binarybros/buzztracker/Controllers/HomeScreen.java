@@ -39,33 +39,28 @@ public class HomeScreen extends AppCompatActivity {
         setContentView(R.layout.activity_homescreen);
 
         Button addDonationBtn = (Button) findViewById(R.id.addDonation);
-        addDonationBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(HomeScreen.this, AddDonation.class);
-                startActivity(intent);
-                //back to home page
-            }
+        addDonationBtn.setOnClickListener((v) -> {
+            //startActivity(new Intent(HomeScreen.this));
         });
 
         Button viewInventoryBtn = (Button) findViewById(R.id.viewInentory);
-//        viewInventoryBtn.setOnClickListener((v) -> {
-//            startActivity(new Intent(HomeScreen.this, Inventory.class));
-//        });
+        viewInventoryBtn.setOnClickListener((v) -> {
+            //startActivity(new Intent(HomeScreen.this));
+        });
 
         Button viewReportsBtn = (Button) findViewById(R.id.viewReports);
-//        viewReportsBtn.setOnClickListener((v) -> {
-//            startActivity(new Intent(HomeScreen.this, ViewReports.class));
-//        });
+        viewReportsBtn.setOnClickListener((v) -> {
+            //startActivity(new Intent(HomeScreen.this));
+        });
 
         Button manageUsersBtn = (Button) findViewById(R.id.manageUsers);
-//        manageUsersBtn.setOnClickListener((v) -> {
-//            startActivity(new Intent(HomeScreen.this, ManageUsers.class));
-//        });
+        manageUsersBtn.setOnClickListener((v) -> {
+            //startActivity(new Intent(HomeScreen.this));
+        });
 
         Button manageLocationsBtn = (Button) findViewById(R.id.manageLocations);
-//        manageLocationsBtn.setOnClickListener((v) -> {
-//            startActivity(new Intent(HomeScreen.this, ManageLocations.class));
-//        });
+        manageLocationsBtn.setOnClickListener((v) -> {
+            //startActivity(new Intent(HomeScreen.this));
+        });
     }
 }
