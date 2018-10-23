@@ -34,5 +34,5 @@
     <string name="remove_label">Remove</string>
     <string name="add_label">+</string>
     <string name="location_name_label">Name</string>
-    <string name="location_type_label" >Type</string>
+    <string name="location_type_label">Type</string>
 </resources>
