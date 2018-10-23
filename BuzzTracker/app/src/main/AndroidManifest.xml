@@ -26,12 +26,11 @@
         <activity android:name=".PrettyLogin" />
         <activity android:name=".RegisterActivity" />
         <activity android:name=".LogOut" />
-        <activity android:name=".HomeScreen" />
         <activity
             android:name=".LocationManageActivity"
             android:label="@string/title_activity_location_manage" />
         <activity android:name=".EditLocation" />
-        <activity android:name=".AddDonation"></activity>
+        <activity android:name=".Inventory"></activity>
     </application>
 
 </manifest>

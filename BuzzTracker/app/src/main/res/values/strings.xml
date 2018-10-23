@@ -35,13 +35,4 @@
     <string name="add_label">+</string>
     <string name="location_name_label">Name</string>
     <string name="location_type_label">Type</string>
-    <string name="edit_location">Enter location</string>
-    <string name="button_submit">Submit</string>
-    <string name="label_add_donation">Add Donation</string>
-    <string name="button_add_picture">Attach Picture</string>
-    <string name="edit_short_description">Enter short description</string>
-    <string name="edit_long_description">Enter long description</string>
-    <string name="edit_value">Enter price</string>
-    <string name="edit_category">Enter category</string>
-    <string name="edit_timestamp">Enter timestamp</string>
 </resources>
