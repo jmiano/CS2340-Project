@@ -40,27 +40,27 @@ public class HomeScreen extends AppCompatActivity {
 
         Button addDonationBtn = (Button) findViewById(R.id.addDonation);
         addDonationBtn.setOnClickListener((v) -> {
-            startActivity(new Intent(HomeScreen.this, ));
+            //startActivity(new Intent(HomeScreen.this));
         });
 
         Button viewInventoryBtn = (Button) findViewById(R.id.viewInentory);
         viewInventoryBtn.setOnClickListener((v) -> {
-            startActivity(new Intent(HomeScreen.this));
+            //startActivity(new Intent(HomeScreen.this));
         });
 
         Button viewReportsBtn = (Button) findViewById(R.id.viewReports);
         viewReportsBtn.setOnClickListener((v) -> {
-            startActivity(new Intent(HomeScreen.this));
+            //startActivity(new Intent(HomeScreen.this));
         });
 
         Button manageUsersBtn = (Button) findViewById(R.id.manageUsers);
         manageUsersBtn.setOnClickListener((v) -> {
-            startActivity(new Intent(HomeScreen.this));
+            //startActivity(new Intent(HomeScreen.this));
         });
 
         Button manageLocationsBtn = (Button) findViewById(R.id.manageLocations);
         manageLocationsBtn.setOnClickListener((v) -> {
-            startActivity(new Intent(HomeScreen.this));
+            //startActivity(new Intent(HomeScreen.this));
         });
     }
 }
