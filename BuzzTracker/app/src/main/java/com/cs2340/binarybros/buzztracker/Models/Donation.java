@@ -13,6 +13,7 @@ public class Donation {
         this.timestamp = timestampInput;
         this.category = categoryInput;
         this.price = priceInput;
+        this.location = locationInput;
         this.shortdescription = shortdescriptionInput;
         this.longdescription = longdescriptionInput;
     }
