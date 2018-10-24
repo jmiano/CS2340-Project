@@ -16,6 +16,9 @@ public class Database {
     //ArrayList that stores the locations that are entered
     private static ArrayList<Location> locationList;
 
+    //ArrayList that stores the locations that are entered
+    private static ArrayList<Donation> donationList;
+
 
     /**
      * The constructor is private, because it I only want 1 instance of it
@@ -50,9 +53,12 @@ public class Database {
         Database.locationList = locationList;
     }
 
+    public ArrayList<Donation> getDonationList() { return donationList; }
+
     public static void initialize() {
         userList = new ArrayList<>(10);
         locationList = new ArrayList<>(10);
+        donationList = new ArrayList<>(10);
 
     }
 
