@@ -73,7 +73,7 @@ public class PrettyLogin extends AppCompatActivity {
         }
 
        if (validLogin){
-           startActivity(new Intent(PrettyLogin.this, HomeScreen.class));
+           startActivity(new Intent(PrettyLogin.this, Inventory.class));
         } else {
             AlertDialog.Builder dlgAlert  = new AlertDialog.Builder(this);
             dlgAlert.setMessage("Please input a valid Username and Password");
