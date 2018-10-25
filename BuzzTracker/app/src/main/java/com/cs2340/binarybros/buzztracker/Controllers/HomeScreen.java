@@ -39,28 +39,28 @@ public class HomeScreen extends AppCompatActivity {
         setContentView(R.layout.activity_homescreen);
 
         Button addDonationBtn = (Button) findViewById(R.id.addDonation);
-        addDonationBtn.setOnClickListener((v) -> {
-            startActivity(new Intent(HomeScreen.this, ));
-        });
+//        addDonationBtn.setOnClickListener((v) -> {
+//            startActivity(new Intent(HomeScreen.this, AddDonation.class));
+//        });
 
         Button viewInventoryBtn = (Button) findViewById(R.id.viewInentory);
-        viewInventoryBtn.setOnClickListener((v) -> {
-            startActivity(new Intent(HomeScreen.this));
-        });
+//        viewInventoryBtn.setOnClickListener((v) -> {
+//            startActivity(new Intent(HomeScreen.this, Inventory.class));
+//        });
 
         Button viewReportsBtn = (Button) findViewById(R.id.viewReports);
-        viewReportsBtn.setOnClickListener((v) -> {
-            startActivity(new Intent(HomeScreen.this));
-        });
+//        viewReportsBtn.setOnClickListener((v) -> {
+//            startActivity(new Intent(HomeScreen.this, ViewReports.class));
+//        });
 
         Button manageUsersBtn = (Button) findViewById(R.id.manageUsers);
-        manageUsersBtn.setOnClickListener((v) -> {
-            startActivity(new Intent(HomeScreen.this));
-        });
+//        manageUsersBtn.setOnClickListener((v) -> {
+//            startActivity(new Intent(HomeScreen.this, ManageUsers.class));
+//        });
 
         Button manageLocationsBtn = (Button) findViewById(R.id.manageLocations);
-        manageLocationsBtn.setOnClickListener((v) -> {
-            startActivity(new Intent(HomeScreen.this));
-        });
+//        manageLocationsBtn.setOnClickListener((v) -> {
+//            startActivity(new Intent(HomeScreen.this, ManageLocations.class));
+//        });
     }
 }
