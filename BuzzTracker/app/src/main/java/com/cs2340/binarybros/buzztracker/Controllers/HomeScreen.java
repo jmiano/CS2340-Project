@@ -39,9 +39,14 @@ public class HomeScreen extends AppCompatActivity {
         setContentView(R.layout.activity_homescreen);
 
         Button addDonationBtn = (Button) findViewById(R.id.addDonation);
-//        addDonationBtn.setOnClickListener((v) -> {
-//            startActivity(new Intent(HomeScreen.this, AddDonation.class));
-//        });
+        addDonationBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(HomeScreen.this, AddDonation.class);
+                startActivity(intent);
+                //back to home page
+            }
+        });
 
         Button viewInventoryBtn = (Button) findViewById(R.id.viewInentory);
 //        viewInventoryBtn.setOnClickListener((v) -> {
