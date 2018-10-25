@@ -66,7 +66,7 @@ public class InventoryListAdapter extends ArrayAdapter<Donation> {
         holder.title.setText(title);
         holder.category.setText(category);
         holder.location.setText(location);
-        holder.price.setText(price);
+        holder.price.setText("$" + price);
 
         return convertView;
     }
