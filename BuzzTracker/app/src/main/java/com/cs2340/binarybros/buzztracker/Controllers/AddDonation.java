@@ -40,8 +40,6 @@ public class AddDonation extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 createObject();
-                Intent intent = new Intent(AddDonation.this, HomeScreen.class);
-                startActivity(intent);
                 //back to home page
             }
         });
