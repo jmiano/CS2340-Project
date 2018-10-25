@@ -13,6 +13,7 @@ import com.cs2340.binarybros.buzztracker.Models.Donation;
 import java.util.ArrayList;
 
 public class AddDonation extends AppCompatActivity {
+    private EditText TitleField;
     private EditText TimestampField;
     private EditText LocationField;
     private EditText CategoryField;
@@ -28,6 +29,7 @@ public class AddDonation extends AppCompatActivity {
         /**
          * Grab the dialog widgets so we can get info for later
          */
+        TitleField = (EditText) findViewById(R.id.donation_title);
         TimestampField = (EditText) findViewById(R.id.timestamp);
         LocationField = (EditText) findViewById(R.id.location);
         CategoryField = (EditText) findViewById(R.id.category);
@@ -49,13 +51,14 @@ public class AddDonation extends AppCompatActivity {
      *
      */
     private void createObject() {
+        String title = TitleField.getText().toString();
         String timestamp = TimestampField.getText().toString();
-        String location = LongdescriptionField.getText().toString();
+        String location = LocationField.getText().toString();
         String category = CategoryField.getText().toString();
         String price = PriceField.getText().toString();
         String shortdescription = ShortdescriptionField.getText().toString();
         String longdescription = LongdescriptionField.getText().toString();
-        listdonation.add(new Donation(timestamp, location, category, price, shortdescription,
+        listdonation.add(new Donation(title, timestamp, location, category, price, shortdescription,
                 longdescription));
     }
 }
