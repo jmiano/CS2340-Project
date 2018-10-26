@@ -60,22 +60,6 @@ public class Inventory extends AppCompatActivity {
         clearFiltersBtn = (Button) findViewById(R.id.clearfiltersbtn);
         locationSpinner = (Spinner) findViewById(R.id.select_location_spinner);
 
-//        /**
-//         * Creating Objects for Testing
-//         */
-//        Donation bike = new Donation("white bicycle", "", "",
-//                "Kitchen", "", "", "");
-//        Donation pan = new Donation("red pan", "", "", "Kitchen", "",
-//                "", "");
-//        Donation peanut = new Donation("brown peanut", "", "",
-//                "Kitchen", "", "", "");
-//        Donation person = new Donation("Fan", "", "", "Other", "",
-//                "", "");
-//        Database.getInstance().getDonationList().add(bike);
-//        Database.getInstance().getDonationList().add(pan);
-//        Database.getInstance().getDonationList().add(peanut);
-//        Database.getInstance().getDonationList().add(person);
-//        //End creating objects
 
         /**
          * Setting up other variables
@@ -122,9 +106,7 @@ public class Inventory extends AppCompatActivity {
             }
         }
         locationSpinner.setSelection(locationNumber);
-
-
-
+        
 
         /**
          * Button action for choosing filtering categories
