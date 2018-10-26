@@ -252,6 +252,28 @@ public class Inventory extends AppCompatActivity {
             }
         });
 
+        /**
+         * Attempt at changing listview when a new location is selected
+         */
+        locationSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                finalDonationArrayList = filterDonationListByLocation(donationArrayList);
+
+                if (categoryFilterList != null && categoryFilterList.size() > 0) {
+                    finalDonationArrayList = filterDonationListByCategory(finalDonationArrayList, categoryFilterList);
+                }
+
+                InventoryListAdapter newInventoryAdapter = new InventoryListAdapter(Inventory.this, R.layout.inventory_list_adapterview, finalDonationArrayList);
+                inventoryListView.setAdapter(newInventoryAdapter);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
 
     }
 
