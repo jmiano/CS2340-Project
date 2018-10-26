@@ -106,7 +106,7 @@ public class Inventory extends AppCompatActivity {
             }
         }
         locationSpinner.setSelection(locationNumber);
-        
+
 
         /**
          * Button action for choosing filtering categories
