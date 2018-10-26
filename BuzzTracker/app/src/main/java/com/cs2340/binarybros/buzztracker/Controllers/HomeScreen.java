@@ -49,23 +49,35 @@ public class HomeScreen extends AppCompatActivity {
         });
 
         Button viewInventoryBtn = (Button) findViewById(R.id.viewInentory);
-//        viewInventoryBtn.setOnClickListener((v) -> {
-//            startActivity(new Intent(HomeScreen.this, Inventory.class));
+        viewInventoryBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(HomeScreen.this, Inventory.class));
+
+            }
+        });
+
+
+//        Button viewReportsBtn = (Button) findViewById(R.id.viewReports);
+//        viewReportsBtn.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                startActivity(new Intent(HomeScreen.this, ViewReports.class));
+//
+//            }
 //        });
 
-        Button viewReportsBtn = (Button) findViewById(R.id.viewReports);
-//        viewReportsBtn.setOnClickListener((v) -> {
-//            startActivity(new Intent(HomeScreen.this, ViewReports.class));
-//        });
-
-        Button manageUsersBtn = (Button) findViewById(R.id.manageUsers);
+//        Button manageUsersBtn = (Button) findViewById(R.id.manageUsers);
 //        manageUsersBtn.setOnClickListener((v) -> {
 //            startActivity(new Intent(HomeScreen.this, ManageUsers.class));
 //        });
 
         Button manageLocationsBtn = (Button) findViewById(R.id.manageLocations);
-//        manageLocationsBtn.setOnClickListener((v) -> {
-//            startActivity(new Intent(HomeScreen.this, ManageLocations.class));
-//        });
+        manageLocationsBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(HomeScreen.this, LocationManageActivity.class));
+            }
+        });
     }
 }

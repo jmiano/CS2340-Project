@@ -148,7 +148,7 @@ public class RegisterActivity extends AppCompatActivity {
             loginList.add(new Manager("Manager", name, username, password, email,"", 0));
             userCreated = true;
         } else if (type.equals("Location Employee")) {
-            loginList.add(new LocationEmployee("Location Employee", name, username, password, email,"PAVILION OF HOPE INC",0));
+            loginList.add(new LocationEmployee("Location Employee", name, username, password, email,"D&D CONVENIENCE STORE",0));
             userCreated = true;
         } else if (type.equals("Admin")) {
             loginList.add(new Admin("Admin", name, username, password, email, "", 0));
