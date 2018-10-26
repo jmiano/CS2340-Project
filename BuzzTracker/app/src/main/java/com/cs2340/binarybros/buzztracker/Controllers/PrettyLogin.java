@@ -72,7 +72,8 @@ public class PrettyLogin extends AppCompatActivity {
             i++;
         }
 
-       if (true){//this is automatically bypassing the login screen for testing purposes - should have "validLogin" in the expression
+       if (validLogin){//this is automatically bypassing the login screen for testing purposes - should have "validLogin" in the expression
+            Database.setCurrentUser(loginList.get(i));
            startActivity(new Intent(PrettyLogin.this, Inventory.class));
         } else {
             AlertDialog.Builder dlgAlert  = new AlertDialog.Builder(this);

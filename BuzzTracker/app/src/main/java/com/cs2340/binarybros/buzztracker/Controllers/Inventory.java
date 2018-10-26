@@ -9,18 +9,23 @@ import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.cs2340.binarybros.buzztracker.Models.Database;
 import com.cs2340.binarybros.buzztracker.Models.Donation;
+import com.cs2340.binarybros.buzztracker.Models.Location;
+import com.cs2340.binarybros.buzztracker.Models.User;
 
 import org.w3c.dom.Text;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class Inventory extends AppCompatActivity {
@@ -28,12 +33,15 @@ public class Inventory extends AppCompatActivity {
     ArrayList<Donation> donationArrayList;
     ArrayList<String> categoryFilterList;
     ArrayList<Donation> finalDonationArrayList;
-    private String currentLocation;
     private Donation donation;
     private int donationItemId;
     private Button categoryFilterBtn;
     private Button applyFilterBtn;
     private Button clearFiltersBtn;
+    private Spinner locationSpinner;
+    private ArrayList<Location> locationArrayList;
+    private String[] locationListTitles;
+    private User currentUser;
 
 
 
@@ -49,6 +57,7 @@ public class Inventory extends AppCompatActivity {
         categoryFilterBtn = (Button) findViewById(R.id.categoriesbtn);
         applyFilterBtn = (Button) findViewById(R.id.applyfilterbtn);
         clearFiltersBtn = (Button) findViewById(R.id.clearfiltersbtn);
+        locationSpinner = (Spinner) findViewById(R.id.select_location_spinner);
 
         /**
          * Creating Objects for Testing
@@ -67,7 +76,49 @@ public class Inventory extends AppCompatActivity {
         Database.getInstance().getDonationList().add(person);
         //End creating objects
 
+        /**
+         * Setting up other variables
+         */
         donationArrayList = Database.getInstance().getDonationList();
+        currentUser = Database.getInstance().getCurrentUser();
+        locationArrayList = Database.getInstance().getLocationList();
+
+        /**
+         * Set up Array with Location Titles
+         */
+        locationListTitles = new String[locationArrayList.size() + 1];
+        if (locationArrayList != null) {
+            int size = 0;
+            for (int i = 0; i < locationArrayList.size(); i++) {
+                locationListTitles[i] = locationArrayList.get(i).getName();
+                size++;
+            }
+            locationListTitles[size + 1] = "All Locations";
+        }
+
+
+        /**
+         * Set up ArrayAdapter for location Spinner
+         */
+        ArrayAdapter<String> locationAdapter = new ArrayAdapter<>(this, R.layout.spinner_item, locationListTitles);
+        locationAdapter.setDropDownViewResource((android.R.layout.simple_spinner_dropdown_item));
+        //If current User is a location employee, then don't allow them to change the Spinner
+        if (currentUser.getType().equals("Location Employee")) {
+            locationSpinner.setClickable(false);
+        }
+        locationSpinner.setAdapter(locationAdapter);
+
+        /**
+         * Set location spinner location
+         */
+        int locationNumber = 0;
+        for (int i = 0; i < locationListTitles.size(); i++) {
+            if (currentUser.getEmployeeLocation().equals(locationListTitles.get(i))) {
+                locationNumber = i;
+            }
+        }
+        locationSpinner.setSelection(locationNumber);
+
 
 
 
@@ -122,7 +173,7 @@ public class Inventory extends AppCompatActivity {
                             categoryFilterList.add("Other");
                         }
 
-                        finalDonationArrayList = filterDonationList(donationArrayList, categoryFilterList);
+                        //finalDonationArrayList = filterDonationListByCategory(donationArrayList, categoryFilterList);
 
                         dialog.dismiss();
                     }
@@ -141,16 +192,18 @@ public class Inventory extends AppCompatActivity {
          * Set the initial listview
          */
         final ListView inventoryListView = (ListView) findViewById(R.id.inventory_list);
-        final InventoryListAdapter inventoryAdapter = new InventoryListAdapter(this, R.layout.inventory_list_adapterview, donationArrayList);
+        finalDonationArrayList = filterDonationListByLocation(finalDonationArrayList);
+        final InventoryListAdapter inventoryAdapter = new InventoryListAdapter(this, R.layout.inventory_list_adapterview, finalDonationArrayList);
         inventoryListView.setAdapter(inventoryAdapter);
 
         /**
-         * Button action for the refreshing the listview
+         * Button action for applying filters the listview
          */
         applyFilterBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                finalDonationArrayList = filterDonationList(donationArrayList, categoryFilterList);
+                finalDonationArrayList = filterDonationListByCategory(donationArrayList, categoryFilterList);
+                finalDonationArrayList = filterDonationListByLocation(finalDonationArrayList);
                 InventoryListAdapter newInventoryAdapter = new InventoryListAdapter(Inventory.this, R.layout.inventory_list_adapterview, finalDonationArrayList);
                 inventoryListView.setAdapter(newInventoryAdapter);
             }
@@ -162,7 +215,8 @@ public class Inventory extends AppCompatActivity {
         clearFiltersBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                InventoryListAdapter newInventoryAdapter = new InventoryListAdapter(Inventory.this, R.layout.inventory_list_adapterview, donationArrayList);
+                finalDonationArrayList = filterDonationListByLocation(finalDonationArrayList);
+                InventoryListAdapter newInventoryAdapter = new InventoryListAdapter(Inventory.this, R.layout.inventory_list_adapterview, finalDonationArrayList);
                 inventoryListView.setAdapter(newInventoryAdapter);
             }
         });
@@ -200,12 +254,12 @@ public class Inventory extends AppCompatActivity {
     }
 
     /**
-     * This is a filtering method that filters by location & category
+     * This is a filtering method that filters by category
      * @param donationList blah
      * @param categoriesSelected blah
      * @return blah
      */
-    private ArrayList<Donation> filterDonationList(ArrayList<Donation> donationList, ArrayList<String> categoriesSelected) {
+    private ArrayList<Donation> filterDonationListByCategory(ArrayList<Donation> donationList, ArrayList<String> categoriesSelected) {
         if (categoriesSelected == null || categoriesSelected.size() == 0) {
             return donationList;
         } else {
@@ -218,6 +272,27 @@ public class Inventory extends AppCompatActivity {
             return returnDonationList;
         }
 
+    }
+
+    /**
+     * This is a filtering method that filters by location
+     * @param donationList blah
+     * @return blah
+     */
+    private ArrayList<Donation> filterDonationListByLocation(ArrayList<Donation> donationList) {
+        if (locationSpinner.getSelectedItem().toString() == "All Locations") {
+            return donationList;
+        } else if (donationList != null){
+            ArrayList<Donation> returnDonationList = new ArrayList();
+            for (Donation donation: donationList) {
+                if (locationSpinner.getSelectedItem().toString().equals(donation.getLocation())) {
+                    returnDonationList.add(donation);
+                }
+            }
+            return returnDonationList;
+        } else {
+            return donationList;
+        }
     }
 
 }
