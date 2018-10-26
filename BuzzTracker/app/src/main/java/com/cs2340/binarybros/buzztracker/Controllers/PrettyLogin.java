@@ -73,8 +73,8 @@ public class PrettyLogin extends AppCompatActivity {
         }
 
        if (validLogin){//this is automatically bypassing the login screen for testing purposes - should have "validLogin" in the expression
-            Database.setCurrentUser(loginList.get(i));
-           startActivity(new Intent(PrettyLogin.this, Inventory.class));
+            Database.setCurrentUser(loginList.get(i - 1));
+           startActivity(new Intent(PrettyLogin.this, HomeScreen.class));
         } else {
             AlertDialog.Builder dlgAlert  = new AlertDialog.Builder(this);
             dlgAlert.setMessage("Please input a valid Username and Password");

@@ -27,6 +27,7 @@ import org.w3c.dom.Text;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class Inventory extends AppCompatActivity {
 
@@ -59,22 +60,22 @@ public class Inventory extends AppCompatActivity {
         clearFiltersBtn = (Button) findViewById(R.id.clearfiltersbtn);
         locationSpinner = (Spinner) findViewById(R.id.select_location_spinner);
 
-        /**
-         * Creating Objects for Testing
-         */
-        Donation bike = new Donation("white bicycle", "", "",
-                "Kitchen", "", "", "");
-        Donation pan = new Donation("red pan", "", "", "Kitchen", "",
-                "", "");
-        Donation peanut = new Donation("brown peanut", "", "",
-                "Kitchen", "", "", "");
-        Donation person = new Donation("Fan", "", "", "Other", "",
-                "", "");
-        Database.getInstance().getDonationList().add(bike);
-        Database.getInstance().getDonationList().add(pan);
-        Database.getInstance().getDonationList().add(peanut);
-        Database.getInstance().getDonationList().add(person);
-        //End creating objects
+//        /**
+//         * Creating Objects for Testing
+//         */
+//        Donation bike = new Donation("white bicycle", "", "",
+//                "Kitchen", "", "", "");
+//        Donation pan = new Donation("red pan", "", "", "Kitchen", "",
+//                "", "");
+//        Donation peanut = new Donation("brown peanut", "", "",
+//                "Kitchen", "", "", "");
+//        Donation person = new Donation("Fan", "", "", "Other", "",
+//                "", "");
+//        Database.getInstance().getDonationList().add(bike);
+//        Database.getInstance().getDonationList().add(pan);
+//        Database.getInstance().getDonationList().add(peanut);
+//        Database.getInstance().getDonationList().add(person);
+//        //End creating objects
 
         /**
          * Setting up other variables
@@ -86,14 +87,17 @@ public class Inventory extends AppCompatActivity {
         /**
          * Set up Array with Location Titles
          */
-        locationListTitles = new String[locationArrayList.size() + 1];
         if (locationArrayList != null) {
+            locationListTitles = new String[locationArrayList.size() + 1];
             int size = 0;
             for (int i = 0; i < locationArrayList.size(); i++) {
                 locationListTitles[i] = locationArrayList.get(i).getName();
                 size++;
             }
-            locationListTitles[size + 1] = "All Locations";
+            locationListTitles[size] = "ALL LOCATIONS";
+        } else {
+            locationListTitles = new String[10];
+            locationListTitles[0] = "ALL LOCATIONS";
         }
 
 
@@ -104,16 +108,16 @@ public class Inventory extends AppCompatActivity {
         locationAdapter.setDropDownViewResource((android.R.layout.simple_spinner_dropdown_item));
         //If current User is a location employee, then don't allow them to change the Spinner
         if (currentUser.getType().equals("Location Employee")) {
-            locationSpinner.setClickable(false);
+            locationSpinner.setEnabled(false);
         }
         locationSpinner.setAdapter(locationAdapter);
 
         /**
-         * Set location spinner location
+         * Set location spinner default
          */
         int locationNumber = 0;
-        for (int i = 0; i < locationListTitles.size(); i++) {
-            if (currentUser.getEmployeeLocation().equals(locationListTitles.get(i))) {
+        for (int i = 0; i < locationListTitles.length; i++) {
+            if (currentUser.getEmployeeLocation().equals(locationListTitles[i])) {
                 locationNumber = i;
             }
         }
@@ -147,7 +151,7 @@ public class Inventory extends AppCompatActivity {
                 filterBtn.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        categoryFilterList = new ArrayList<String>();
+                        categoryFilterList = new ArrayList<>();
 
                         if (categoryClothing.isChecked()) {
                             categoryFilterList.add("Clothing");
@@ -173,8 +177,6 @@ public class Inventory extends AppCompatActivity {
                             categoryFilterList.add("Other");
                         }
 
-                        //finalDonationArrayList = filterDonationListByCategory(donationArrayList, categoryFilterList);
-
                         dialog.dismiss();
                     }
                 });
@@ -192,7 +194,7 @@ public class Inventory extends AppCompatActivity {
          * Set the initial listview
          */
         final ListView inventoryListView = (ListView) findViewById(R.id.inventory_list);
-        finalDonationArrayList = filterDonationListByLocation(finalDonationArrayList);
+        finalDonationArrayList = filterDonationListByLocation(donationArrayList);
         final InventoryListAdapter inventoryAdapter = new InventoryListAdapter(this, R.layout.inventory_list_adapterview, finalDonationArrayList);
         inventoryListView.setAdapter(inventoryAdapter);
 
@@ -215,7 +217,8 @@ public class Inventory extends AppCompatActivity {
         clearFiltersBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                finalDonationArrayList = filterDonationListByLocation(finalDonationArrayList);
+                categoryFilterList = new ArrayList<>();
+                finalDonationArrayList = filterDonationListByLocation(donationArrayList);
                 InventoryListAdapter newInventoryAdapter = new InventoryListAdapter(Inventory.this, R.layout.inventory_list_adapterview, finalDonationArrayList);
                 inventoryListView.setAdapter(newInventoryAdapter);
             }
@@ -230,7 +233,6 @@ public class Inventory extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 donation = (Donation) parent.getAdapter().getItem(position);
                 donationItemId = donation.getId();
-//                Toast.makeText(Inventory.this, "" + donationItemId, Toast.LENGTH_SHORT).show();
                 Intent passDataIntent = new Intent(Inventory.this, AddDonation.class);
                 passDataIntent.putExtra("donationItemId", donationItemId);
                 passDataIntent.putExtra("editing", true);
@@ -260,9 +262,9 @@ public class Inventory extends AppCompatActivity {
      * @return blah
      */
     private ArrayList<Donation> filterDonationListByCategory(ArrayList<Donation> donationList, ArrayList<String> categoriesSelected) {
-        if (categoriesSelected == null || categoriesSelected.size() == 0) {
+        if (categoriesSelected == null || categoriesSelected.size() <= 0) {
             return donationList;
-        } else {
+        } else if (donationList != null) {
             ArrayList<Donation> returnDonationList = new ArrayList<>();
             for (Donation donation: donationList) {
                 if (categoriesSelected.contains(donation.getCategory())) {
@@ -270,6 +272,8 @@ public class Inventory extends AppCompatActivity {
                 }
             }
             return returnDonationList;
+        } else {
+            return donationList;
         }
 
     }
@@ -280,14 +284,15 @@ public class Inventory extends AppCompatActivity {
      * @return blah
      */
     private ArrayList<Donation> filterDonationListByLocation(ArrayList<Donation> donationList) {
-        if (locationSpinner.getSelectedItem().toString() == "All Locations") {
+        if (locationSpinner.getSelectedItem().toString().equals("ALL LOCATIONS")) {
             return donationList;
-        } else if (donationList != null){
-            ArrayList<Donation> returnDonationList = new ArrayList();
+        } else if (donationList != null && locationSpinner.getSelectedItem() != null && donationList.size() > 0){
+            ArrayList<Donation> returnDonationList = new ArrayList<>();
             for (Donation donation: donationList) {
                 if (locationSpinner.getSelectedItem().toString().equals(donation.getLocation())) {
                     returnDonationList.add(donation);
                 }
+
             }
             return returnDonationList;
         } else {
