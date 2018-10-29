@@ -18,11 +18,11 @@ BuzzTracker is an Android donation tracking application catered to non-profit or
 
 ## Team
 
-* [**Joe Miano**] - (https://github.com/jmiano)
-* [**Fidel Flores Caceres**] - (https://github.com/fefcaceres)
-* [**Danny Taylor**] - (https://github.com/dannyht)
-* [**Walker Smith**] - (https://github.com/walkersmith2021)
-* [**Zheheng Fan **] - (https://github.com/zfan71)
+* [**Joe Miano**](https://github.com/jmiano)
+* [**Fidel Flores Caceres**](https://github.com/fefcaceres)
+* [**Danny Taylor**](https://github.com/dannyht)
+* [**Walker Smith**](https://github.com/walkersmith2021)
+* [**Zheheng Fan **](https://github.com/zfan71)
 
 ## Built With
 
