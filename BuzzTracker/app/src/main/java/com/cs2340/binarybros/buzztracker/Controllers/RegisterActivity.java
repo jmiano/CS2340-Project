@@ -27,11 +27,16 @@ import com.cs2340.binarybros.buzztracker.Models.Database;
 import com.cs2340.binarybros.buzztracker.Models.LocationEmployee;
 import com.cs2340.binarybros.buzztracker.Models.Manager;
 import com.cs2340.binarybros.buzztracker.Models.User;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 
 public class RegisterActivity extends AppCompatActivity {
+
+    //Firebase button
+    private Button mFirebaseBtn;
 
     private EditText nameField;
     private EditText emailField;
@@ -43,6 +48,7 @@ public class RegisterActivity extends AppCompatActivity {
     private Spinner yearSpinner;
     private Spinner accountTypeSpinner;
     private ArrayList<User> loginList;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,6 +68,7 @@ public class RegisterActivity extends AppCompatActivity {
         yearSpinner = (Spinner) findViewById(R.id.year_spinner);
         accountTypeSpinner = (Spinner) findViewById(R.id.account_spinner);
         loginList = Database.getInstance().getUserList(); // Pulls the non-persistent ArrayList of registered users
+
 
 
         /*
@@ -129,6 +136,8 @@ public class RegisterActivity extends AppCompatActivity {
                 }
             }
         });
+
+
     }
 
     /**
