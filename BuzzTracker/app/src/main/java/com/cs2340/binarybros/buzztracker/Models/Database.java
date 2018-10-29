@@ -16,6 +16,13 @@ public class Database {
     //ArrayList that stores the locations that are entered
     private static ArrayList<Location> locationList;
 
+    //ArrayList that stores the locations that are entered
+    private static ArrayList<Donation> donationList;
+
+    //String indicating the current users' type
+    private static User currentUser;
+
+
 
     /**
      * The constructor is private, because it I only want 1 instance of it
@@ -50,9 +57,20 @@ public class Database {
         Database.locationList = locationList;
     }
 
+    public static User getCurrentUser() {
+        return currentUser;
+    }
+
+    public static void setCurrentUser(User currentUser) {
+        Database.currentUser = currentUser;
+    }
+
+    public ArrayList<Donation> getDonationList() { return donationList; }
+
     public static void initialize() {
         userList = new ArrayList<>(10);
         locationList = new ArrayList<>(10);
+        donationList = new ArrayList<>(10);
 
     }
 

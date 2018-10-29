@@ -145,13 +145,13 @@ public class RegisterActivity extends AppCompatActivity {
         String name = nameField.getText().toString();
         String email = emailField.getText().toString();
         if (type.equals("Manager")) {
-            loginList.add(new Manager(name, username, password, email,"", 0));
+            loginList.add(new Manager("Manager", name, username, password, email,"", 0));
             userCreated = true;
         } else if (type.equals("Location Employee")) {
-            loginList.add(new LocationEmployee(name, username, password, email,"",0));
+            loginList.add(new LocationEmployee("Location Employee", name, username, password, email,"D&D CONVENIENCE STORE",0));
             userCreated = true;
         } else if (type.equals("Admin")) {
-            loginList.add(new Admin(name, username, password, email, "", 0));
+            loginList.add(new Admin("Admin", name, username, password, email, "", 0));
             userCreated = true;
         }
         return userCreated;

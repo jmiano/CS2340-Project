@@ -6,7 +6,7 @@
     android:background="@drawable/grad_bg">
 
     <RelativeLayout
-        android:id="@+id/Add Donation"
+        android:id="@+id/AddDonation"
         android:layout_width="344dp"
         android:layout_height="match_parent"
         android:layout_alignParentTop="true"
