@@ -22,7 +22,6 @@ public class InventoryListAdapter extends ArrayAdapter<Donation> implements Filt
     private Context listContext;
     int mResource;
 
-    private DonationFilter donationFilter;
     private ArrayList<Donation> donations;
 
 
@@ -40,18 +39,6 @@ public class InventoryListAdapter extends ArrayAdapter<Donation> implements Filt
         this.listContext = listContext;
         mResource = resource;
         donations = objects;
-    }
-
-    @Override
-    public Filter getFilter() {
-        if (donationFilter == null) {
-            donationFilter = new DonationFilter();
-        }
-        return donationFilter;
-    }
-    @Override
-    public Donation getItem(int i) {
-        return donations.get(i);
     }
 
     @NonNull
@@ -90,42 +77,5 @@ public class InventoryListAdapter extends ArrayAdapter<Donation> implements Filt
         holder.price.setText("$" + price);
 
         return convertView;
-    }
-
-
-    private class DonationFilter extends Filter {
-
-        @Override
-        protected FilterResults performFiltering(CharSequence charSequence) {
-            FilterResults results = new FilterResults();
-            ArrayList<Donation> allDonations = donations;
-            if(charSequence == null || charSequence.length() == 0) {
-                results.values = allDonations;
-                results.count = allDonations.size();
-            } else {
-                ArrayList<Donation> filteredDonations = new ArrayList<>();
-                for(Donation d: allDonations) {
-                    if (d.getTitle().contains(charSequence)){
-                        filteredDonations.add(d);
-                    }
-                }
-                results.values = filteredDonations;
-                results.count = filteredDonations.size();
-            }
-
-            results.count;
-            results.values.toString();
-            return results;
-        }
-
-        @Override
-        protected void publishResults(CharSequence charSequence, FilterResults results) {
-            if (results.count == 0) {
-                notifyDataSetInvalidated();
-            } else {
-                donations = (ArrayList<Donation>) results.values;
-                notifyDataSetChanged();
-            }
-        }
     }
 }

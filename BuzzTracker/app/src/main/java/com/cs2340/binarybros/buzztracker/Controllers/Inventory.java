@@ -186,29 +186,7 @@ public class Inventory extends AppCompatActivity {
         finalDonationArrayList = filterDonationListByLocation(donationArrayList);
         inventoryAdapter = new InventoryListAdapter(this, R.layout.inventory_list_adapterview, finalDonationArrayList);
         inventoryListView.setAdapter(inventoryAdapter);
-
-        /**
-         * Search Filter Code
-         */
-        searchFilter.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                (Inventory.this).inventoryAdapter.getFilter().filter(s);
-                inventoryAdapter.notifyDataSetChanged();
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-
-            }
-        });
-
-
+        
 
         /**
          * Button action for applying filters the listview
@@ -218,6 +196,7 @@ public class Inventory extends AppCompatActivity {
             public void onClick(View v) {
                 finalDonationArrayList = filterDonationListByCategory(donationArrayList, categoryFilterList);
                 finalDonationArrayList = filterDonationListByLocation(finalDonationArrayList);
+                finalDonationArrayList = filterDonationListBySearch(finalDonationArrayList);
                 inventoryAdapter = new InventoryListAdapter(Inventory.this, R.layout.inventory_list_adapterview, finalDonationArrayList);
                 inventoryListView.setAdapter(inventoryAdapter);
             }
@@ -332,6 +311,21 @@ public class Inventory extends AppCompatActivity {
         } else {
             return donationList;
         }
+    }
+
+    /**
+     * This is a filtering method that filters by search
+     * @param donationList list to be filtered
+     * @return filtered donation list
+     */
+    private ArrayList<Donation> filterDonationListBySearch(ArrayList<Donation> donationList) {
+        String filterText = searchFilter.getText().toString();
+        for (int i = 0; i < donationList.size(); i++) {
+            if (!(donationList.get(i).getTitle().toUpperCase().contains(filterText.toUpperCase()))) {
+                donationList.remove(i);
+            }
+        }
+        return donationList;
     }
 
 }
