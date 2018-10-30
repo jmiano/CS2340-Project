@@ -113,8 +113,8 @@ public class InventoryListAdapter extends ArrayAdapter<Donation> implements Filt
                 results.count = filteredDonations.size();
             }
 
-            Log.d(results.count);
-            Log.d(results.values.toString());
+            results.count;
+            results.values.toString();
             return results;
         }
 
