@@ -2,21 +2,29 @@ package com.cs2340.binarybros.buzztracker.Controllers;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.cs2340.binarybros.buzztracker.Models.Donation;
 
 import java.util.ArrayList;
+import java.util.List;
 
 
-public class InventoryListAdapter extends ArrayAdapter<Donation> {
+public class InventoryListAdapter extends ArrayAdapter<Donation> implements Filterable {
     private Context listContext;
     int mResource;
+
+    private DonationFilter donationFilter;
+    private ArrayList<Donation> donations;
+
 
     static class ViewHolder {
         TextView title;
@@ -31,6 +39,19 @@ public class InventoryListAdapter extends ArrayAdapter<Donation> {
         super(listContext, resource, objects);
         this.listContext = listContext;
         mResource = resource;
+        donations = objects;
+    }
+
+    @Override
+    public Filter getFilter() {
+        if (donationFilter == null) {
+            donationFilter = new DonationFilter();
+        }
+        return donationFilter;
+    }
+    @Override
+    public Donation getItem(int i) {
+        return donations.get(i);
     }
 
     @NonNull
@@ -69,5 +90,42 @@ public class InventoryListAdapter extends ArrayAdapter<Donation> {
         holder.price.setText("$" + price);
 
         return convertView;
+    }
+
+
+    private class DonationFilter extends Filter {
+
+        @Override
+        protected FilterResults performFiltering(CharSequence charSequence) {
+            FilterResults results = new FilterResults();
+            ArrayList<Donation> allDonations = donations;
+            if(charSequence == null || charSequence.length() == 0) {
+                results.values = allDonations;
+                results.count = allDonations.size();
+            } else {
+                ArrayList<Donation> filteredDonations = new ArrayList<>();
+                for(Donation d: allDonations) {
+                    if (d.getTitle().contains(charSequence)){
+                        filteredDonations.add(d);
+                    }
+                }
+                results.values = filteredDonations;
+                results.count = filteredDonations.size();
+            }
+
+            Log.d(results.count);
+            Log.d(results.values.toString());
+            return results;
+        }
+
+        @Override
+        protected void publishResults(CharSequence charSequence, FilterResults results) {
+            if (results.count == 0) {
+                notifyDataSetInvalidated();
+            } else {
+                donations = (ArrayList<Donation>) results.values;
+                notifyDataSetChanged();
+            }
+        }
     }
 }

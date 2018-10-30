@@ -6,6 +6,8 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.AdapterView;
@@ -40,9 +42,12 @@ public class Inventory extends AppCompatActivity {
     private Button applyFilterBtn;
     private Button clearFiltersBtn;
     private Spinner locationSpinner;
+    private EditText searchFilter;
     private ArrayList<Location> locationArrayList;
     private String[] locationListTitles;
     private User currentUser;
+    private InventoryListAdapter inventoryAdapter;
+    private ListView inventoryListView;
 
 
 
@@ -59,6 +64,7 @@ public class Inventory extends AppCompatActivity {
         applyFilterBtn = (Button) findViewById(R.id.applyfilterbtn);
         clearFiltersBtn = (Button) findViewById(R.id.clearfiltersbtn);
         locationSpinner = (Spinner) findViewById(R.id.select_location_spinner);
+        searchFilter = (EditText) findViewById(R.id.searchFilter);
 
 
         /**
@@ -175,10 +181,34 @@ public class Inventory extends AppCompatActivity {
         /**
          * Set the initial listview
          */
-        final ListView inventoryListView = (ListView) findViewById(R.id.inventory_list);
+        inventoryListView = (ListView) findViewById(R.id.inventory_list);
+        inventoryListView.setTextFilterEnabled(true);
         finalDonationArrayList = filterDonationListByLocation(donationArrayList);
-        final InventoryListAdapter inventoryAdapter = new InventoryListAdapter(this, R.layout.inventory_list_adapterview, finalDonationArrayList);
+        inventoryAdapter = new InventoryListAdapter(this, R.layout.inventory_list_adapterview, finalDonationArrayList);
         inventoryListView.setAdapter(inventoryAdapter);
+
+        /**
+         * Search Filter Code
+         */
+        searchFilter.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                (Inventory.this).inventoryAdapter.getFilter().filter(s);
+                inventoryAdapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
+
+
 
         /**
          * Button action for applying filters the listview
@@ -188,8 +218,8 @@ public class Inventory extends AppCompatActivity {
             public void onClick(View v) {
                 finalDonationArrayList = filterDonationListByCategory(donationArrayList, categoryFilterList);
                 finalDonationArrayList = filterDonationListByLocation(finalDonationArrayList);
-                InventoryListAdapter newInventoryAdapter = new InventoryListAdapter(Inventory.this, R.layout.inventory_list_adapterview, finalDonationArrayList);
-                inventoryListView.setAdapter(newInventoryAdapter);
+                inventoryAdapter = new InventoryListAdapter(Inventory.this, R.layout.inventory_list_adapterview, finalDonationArrayList);
+                inventoryListView.setAdapter(inventoryAdapter);
             }
         });
 
@@ -201,8 +231,8 @@ public class Inventory extends AppCompatActivity {
             public void onClick(View v) {
                 categoryFilterList = new ArrayList<>();
                 finalDonationArrayList = filterDonationListByLocation(donationArrayList);
-                InventoryListAdapter newInventoryAdapter = new InventoryListAdapter(Inventory.this, R.layout.inventory_list_adapterview, finalDonationArrayList);
-                inventoryListView.setAdapter(newInventoryAdapter);
+                inventoryAdapter = new InventoryListAdapter(Inventory.this, R.layout.inventory_list_adapterview, finalDonationArrayList);
+                inventoryListView.setAdapter(inventoryAdapter);
             }
         });
 
