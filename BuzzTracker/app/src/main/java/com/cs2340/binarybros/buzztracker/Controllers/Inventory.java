@@ -182,11 +182,10 @@ public class Inventory extends AppCompatActivity {
          * Set the initial listview
          */
         inventoryListView = (ListView) findViewById(R.id.inventory_list);
-        inventoryListView.setTextFilterEnabled(true);
         finalDonationArrayList = filterDonationListByLocation(donationArrayList);
         inventoryAdapter = new InventoryListAdapter(this, R.layout.inventory_list_adapterview, finalDonationArrayList);
         inventoryListView.setAdapter(inventoryAdapter);
-        
+
 
         /**
          * Button action for applying filters the listview
@@ -199,6 +198,9 @@ public class Inventory extends AppCompatActivity {
                 finalDonationArrayList = filterDonationListBySearch(finalDonationArrayList);
                 inventoryAdapter = new InventoryListAdapter(Inventory.this, R.layout.inventory_list_adapterview, finalDonationArrayList);
                 inventoryListView.setAdapter(inventoryAdapter);
+                if (finalDonationArrayList.isEmpty()) {
+                    Toast.makeText(Inventory.this, "No donations to display. Please clear filters and try again.", Toast.LENGTH_LONG).show();
+                }
             }
         });
 
@@ -210,6 +212,7 @@ public class Inventory extends AppCompatActivity {
             public void onClick(View v) {
                 categoryFilterList = new ArrayList<>();
                 finalDonationArrayList = filterDonationListByLocation(donationArrayList);
+                searchFilter.setText("");
                 inventoryAdapter = new InventoryListAdapter(Inventory.this, R.layout.inventory_list_adapterview, finalDonationArrayList);
                 inventoryListView.setAdapter(inventoryAdapter);
             }
@@ -238,8 +241,17 @@ public class Inventory extends AppCompatActivity {
         addDonationBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+//                These are used to troubleshooting
+//                donationArrayList.add(new Donation("red bicycle", "today", "AFD Station 4", "Household", "5.00", "short", "long"));
+//                donationArrayList.add(new Donation("white bicycle", "today", "AFD Station 4", "Household", "5.00", "short", "long"));
+//                donationArrayList.add(new Donation("blue bicycle", "today", "AFD Station 4", "Kitchen", "5.00", "short", "long"));
+//                donationArrayList.add(new Donation("yellow bicycle", "today", "AFD Station 4", "Kitchen", "5.00", "short", "long"));
+//                donationArrayList.add(new Donation("orange bicycle", "today", "AFD Station 4", "Hat", "5.00", "short", "long"));
+
                 Intent goToAddDonationActivity = new Intent(Inventory.this, AddDonation.class);
                 startActivity(goToAddDonationActivity);
+
             }
         });
 
@@ -264,8 +276,6 @@ public class Inventory extends AppCompatActivity {
 
             }
         });
-
-
     }
 
     /**
@@ -320,12 +330,17 @@ public class Inventory extends AppCompatActivity {
      */
     private ArrayList<Donation> filterDonationListBySearch(ArrayList<Donation> donationList) {
         String filterText = searchFilter.getText().toString();
-        for (int i = 0; i < donationList.size(); i++) {
-            if (!(donationList.get(i).getTitle().toUpperCase().contains(filterText.toUpperCase()))) {
-                donationList.remove(i);
+        if (filterText.isEmpty()) {
+            return donationList;
+        } else {
+            ArrayList<Donation> returnDonationList = new ArrayList<>();
+            for (int i = 0; i < donationList.size(); i++) {
+                if ((donationList.get(i).getTitle().toUpperCase().contains(filterText.toUpperCase()))) {
+                    returnDonationList.add(donationList.get(i));
+                }
             }
+            return returnDonationList;
         }
-        return donationList;
-    }
 
+    }
 }
