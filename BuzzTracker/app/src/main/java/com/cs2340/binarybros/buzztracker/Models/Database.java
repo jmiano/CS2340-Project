@@ -1,5 +1,19 @@
 package com.cs2340.binarybros.buzztracker.Models;
 
+import android.content.Context;
+import android.util.Log;
+
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutput;
+import java.io.ObjectOutputStream;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 
 
@@ -8,26 +22,29 @@ import java.util.ArrayList;
  * as long as the app is running
  */
 public class Database {
+    //Filename for writing and reading data
+    public final static String DEFAULT_BINARY_FILE_NAME = "data.bin";
+
     private static Database INSTANCE = null;
 
     //ArrayList that stores the user credential that are registered to login.
-    private static ArrayList<User> userList;
+    private ArrayList<User> userList;
 
     //ArrayList that stores the locations that are entered
-    private static ArrayList<Location> locationList;
+    private ArrayList<Location> locationList;
 
     //ArrayList that stores the locations that are entered
-    private static ArrayList<Donation> donationList;
+    private ArrayList<Donation> donationList;
 
     //String indicating the current users' type
     private static User currentUser;
 
 
-
     /**
      * The constructor is private, because it I only want 1 instance of it
      */
-    private Database() {}
+    private Database() {
+    }
 
     /**
      * This method returns the only instance of Database
@@ -36,7 +53,6 @@ public class Database {
     public static Database getInstance() {
         if (INSTANCE == null) {
             INSTANCE = new Database();
-            initialize();
         }
         return(INSTANCE);
     }
@@ -54,24 +70,80 @@ public class Database {
     }
 
     public void setLocationList(ArrayList<Location> locationList) {
-        Database.locationList = locationList;
+        this.locationList = locationList;
     }
 
-    public static User getCurrentUser() {
+    public User getCurrentUser() {
         return currentUser;
     }
 
-    public static void setCurrentUser(User currentUser) {
+    public void setCurrentUser(User currentUser) {
         Database.currentUser = currentUser;
     }
 
     public ArrayList<Donation> getDonationList() { return donationList; }
 
-    public static void initialize() {
+    public  void initialize() {
         userList = new ArrayList<>(10);
         locationList = new ArrayList<>(10);
         donationList = new ArrayList<>(10);
 
     }
+
+    public boolean loadBinary(File file) {
+        boolean success = true;
+        try {
+            /*
+              To read, we must use the ObjectInputStream since we want to read our model in with
+              a single read.
+             */
+            ObjectInputStream in = new ObjectInputStream(new FileInputStream(file));
+            // assuming we saved our top level object, we read it back in with one line of code.
+            userList = (ArrayList<User>) in.readObject();
+            locationList = (ArrayList<Location>) in.readObject();
+            donationList = (ArrayList<Donation>) in.readObject();
+            in.close();
+        } catch (IOException e) {
+            Log.e("Database", "Error reading an entry from binary file",e);
+            success = false;
+        } catch (ClassNotFoundException e) {
+            Log.e("Database", "Error casting a class from the binary file",e);
+            success = false;
+        }
+
+        return success;
+    }
+
+    public boolean saveBinary(File file) {
+        boolean success = true;
+        try {
+            /*
+               For binary, we use Serialization, so everything we write has to implement
+               the Serializable interface.  Fortunately all the collection classes and APi classes
+               that we might use are already Serializable.  You just have to make sure your
+               classes implement Serializable.
+
+               We have to use an ObjectOutputStream to write objects.
+
+               One thing to be careful of:  You cannot serialize static data.
+             */
+
+
+            ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(file));
+            // We basically can save our entire data model with one write, since this will follow
+            // all the links and pointers to save everything.  Just save the top level object.
+            out.writeObject(userList);
+            out.writeObject(locationList);
+            out.writeObject(donationList);
+            out.close();
+
+        } catch (IOException e) {
+            Log.e("Database", "Error writing an entry from binary file",e);
+            success = false;
+        }
+        return success;
+    }
+
+
 
 }

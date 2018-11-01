@@ -28,6 +28,7 @@ import com.cs2340.binarybros.buzztracker.Models.LocationEmployee;
 import com.cs2340.binarybros.buzztracker.Models.Manager;
 import com.cs2340.binarybros.buzztracker.Models.User;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -77,6 +78,17 @@ public class HomeScreen extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(HomeScreen.this, LocationManageActivity.class));
+            }
+        });
+
+        Button saveAllDataBtn = (Button) findViewById(R.id.saveDataBtn);
+        saveAllDataBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                File file = new File(HomeScreen.this.getFilesDir(), Database.DEFAULT_BINARY_FILE_NAME);
+                Database.getInstance().saveBinary(file);
+                Log.d("HomeScreen", "File has been created");
+
             }
         });
     }

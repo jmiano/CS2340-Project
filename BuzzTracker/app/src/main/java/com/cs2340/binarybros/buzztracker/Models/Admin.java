@@ -1,7 +1,9 @@
 package com.cs2340.binarybros.buzztracker.Models;
 
 
-public class Admin extends User {
+import java.io.Serializable;
+
+public class Admin extends User implements Serializable {
 
     public Admin(String type, String nameInput, String usernameInput, String passwordInput, String emailInput,
                  String employeeLocation, int employeeID) {
