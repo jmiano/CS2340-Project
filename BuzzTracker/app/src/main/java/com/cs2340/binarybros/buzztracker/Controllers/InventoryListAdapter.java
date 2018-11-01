@@ -2,21 +2,28 @@ package com.cs2340.binarybros.buzztracker.Controllers;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.cs2340.binarybros.buzztracker.Models.Donation;
 
 import java.util.ArrayList;
+import java.util.List;
 
 
-public class InventoryListAdapter extends ArrayAdapter<Donation> {
+public class InventoryListAdapter extends ArrayAdapter<Donation> implements Filterable {
     private Context listContext;
     int mResource;
+
+    private ArrayList<Donation> donations;
+
 
     static class ViewHolder {
         TextView title;
@@ -31,6 +38,7 @@ public class InventoryListAdapter extends ArrayAdapter<Donation> {
         super(listContext, resource, objects);
         this.listContext = listContext;
         mResource = resource;
+        donations = objects;
     }
 
     @NonNull
