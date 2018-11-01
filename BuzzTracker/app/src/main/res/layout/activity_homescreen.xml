@@ -11,8 +11,8 @@
         android:layout_height="match_parent"
         android:layout_alignParentTop="true"
         android:layout_marginLeft="40dp"
-        android:layout_marginTop="0dp"
-        android:layout_marginRight="40dp">
+        android:layout_marginRight="40dp"
+        android:layout_marginTop="0dp">
 
 
         <TextView
@@ -72,6 +72,14 @@
             android:layout_centerHorizontal="true"
             android:layout_marginBottom="52dp"
             android:text="Manage Locations" />
+
+        <Button
+            android:id="@+id/saveDataBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true"
+            android:text="Save Data" />
 
     </RelativeLayout>
 </RelativeLayout>
