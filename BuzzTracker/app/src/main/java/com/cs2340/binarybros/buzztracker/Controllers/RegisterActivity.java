@@ -27,8 +27,6 @@ import com.cs2340.binarybros.buzztracker.Models.Database;
 import com.cs2340.binarybros.buzztracker.Models.LocationEmployee;
 import com.cs2340.binarybros.buzztracker.Models.Manager;
 import com.cs2340.binarybros.buzztracker.Models.User;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
 import java.util.Arrays;

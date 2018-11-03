@@ -44,4 +44,6 @@
     <string name="edit_value">Enter price</string>
     <string name="edit_category">Enter category</string>
     <string name="edit_timestamp">Enter timestamp</string>
+    <string name="title_activity_google_maps">Map</string>
+    <string name="title_activity_google_maps2">Map</string>
 </resources>
