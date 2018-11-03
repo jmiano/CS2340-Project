@@ -49,7 +49,7 @@ public class HomeScreen extends AppCompatActivity {
             }
         });
 
-        Button viewInventoryBtn = (Button) findViewById(R.id.viewInentory);
+        Button viewInventoryBtn = (Button) findViewById(R.id.viewInventory);
         viewInventoryBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
