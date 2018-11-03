@@ -7,79 +7,126 @@
 
     <RelativeLayout
         android:id="@+id/AddDonation"
-        android:layout_width="344dp"
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_marginLeft="40dp"
-        android:layout_marginRight="40dp"
-        android:layout_marginTop="0dp">
+        android:layout_marginRight="40dp">
 
 
         <TextView
             android:id="@+id/textView3"
             android:layout_width="match_parent"
-            android:layout_height="82dp"
+            android:layout_height="60dp"
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
             android:layout_marginStart="0dp"
-            android:layout_marginTop="26dp"
+            android:layout_marginTop="10dp"
+            android:fontFamily="sans-serif-medium"
             android:gravity="center"
             android:text="What would you like to do?"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
             android:textColor="@color/colorAccent"
-            android:textSize="30sp" />
+            android:textSize="24sp"
+            android:textStyle="bold" />
 
-        <Button
-            android:id="@+id/addDonation"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:id="@+id/linlay1"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="125dp"
-            android:text="Add Donation" />
+            android:layout_below="@+id/textView3"
+            android:layout_marginTop="0dp"
+            android:orientation="vertical">
 
-        <Button
-            android:id="@+id/viewInentory"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="210dp"
-            android:text="View Inventory" />
+            <Button
+                android:id="@+id/addDonation"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/btn_bg"
+                android:fontFamily="sans-serif-medium"
+                android:text="Add Donation"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:textSize="15sp" />
 
-        <Button
-            android:id="@+id/viewReports"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true"
-            android:layout_marginBottom="229dp"
-            android:text="View Reports" />
+            <Button
+                android:id="@+id/viewInventory"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/btn_bg"
+                android:fontFamily="sans-serif-medium"
+                android:text="View Inventory"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:textSize="15sp" />
 
-        <Button
-            android:id="@+id/manageUsers"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true"
-            android:layout_marginBottom="141dp"
-            android:text="Manage Users" />
+            <Button
+                android:id="@+id/viewMap"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/btn_bg"
+                android:fontFamily="sans-serif-medium"
+                android:text="View Map"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:textSize="15sp" />
 
-        <Button
-            android:id="@+id/manageLocations"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true"
-            android:layout_marginBottom="52dp"
-            android:text="Manage Locations" />
+            <Button
+                android:id="@+id/viewReports"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
 
-        <Button
-            android:id="@+id/saveDataBtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentEnd="true"
-            android:text="Save Data" />
+                android:layout_marginTop="20dp"
+                android:background="@drawable/btn_bg"
+                android:fontFamily="sans-serif-medium"
+                android:text="View Reports"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:textSize="15sp" />
 
+            <Button
+                android:id="@+id/manageUsers"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:layout_marginTop="20dp"
+                android:background="@drawable/btn_bg"
+                android:fontFamily="sans-serif-medium"
+                android:text="Manage Users"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:textSize="15sp" />
+
+            <Button
+                android:id="@+id/manageLocations"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:layout_marginTop="20dp"
+                android:background="@drawable/btn_bg"
+                android:fontFamily="sans-serif-medium"
+                android:text="Manage Locations"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:textSize="15sp" />
+
+            <Button
+                android:id="@+id/saveDataBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:layout_marginTop="20dp"
+                android:background="@drawable/btn_bg"
+                android:fontFamily="sans-serif-medium"
+                android:text="Save Data"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:textSize="15sp" />
+
+        </LinearLayout>
     </RelativeLayout>
 </RelativeLayout>
