@@ -1,6 +1,6 @@
 # BuzzTracker
 
-BuzzTracker is an Android donation tracking application catered to non-profit organizations for better for efficient tracking of incoming and outgoing goods.
+BuzzTracker is an Android donation tracking application catered to non-profit organizations for efficient tracking of incoming and outgoing goods.
 
 ## Milestones
 
@@ -28,4 +28,3 @@ BuzzTracker is an Android donation tracking application catered to non-profit or
 
 * [Android Studio](https://developer.android.com/studio/)
 * [IntelliJ IDEA](https://www.jetbrains.com/idea/)
-* [Firebase](https://firebase.google.com/)
