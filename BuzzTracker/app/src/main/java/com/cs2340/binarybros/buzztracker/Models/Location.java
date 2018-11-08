@@ -1,6 +1,11 @@
 package com.cs2340.binarybros.buzztracker.Models;
 
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
+
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Objects;
 
 public class Location implements Serializable {
@@ -120,6 +125,28 @@ public class Location implements Serializable {
 
     public void setWebsite(String website) {
         this.website = website;
+    }
+
+    public static LatLng mapLocation(Location loc, GoogleMap mMap) {
+
+        if (loc == null) {
+            throw new NullPointerException("Cannot plot null location");
+        }
+
+        if (mMap == null) {
+            throw new NullPointerException("Map create error, map is null");
+        }
+
+        LatLng latLng = new LatLng(Double.parseDouble(loc.getLatitude())
+                , Double.parseDouble(loc.getLongitude())); //data is strings so convert to double
+
+        String title = String.format("%s", loc.getName()); //format marker title
+        String otherInfo = String.format("%s, Phone: %s",
+                loc.getStreetAddress(), loc.getPhone());
+        mMap.addMarker(new MarkerOptions().position(latLng)
+                .title(title).snippet(otherInfo)); //add marker to map
+
+        return latLng;
     }
 
     @Override

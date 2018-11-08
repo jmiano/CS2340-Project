@@ -3,6 +3,7 @@ package com.cs2340.binarybros.buzztracker.Controllers;
 import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v4.app.Fragment;
 import android.view.View;
@@ -31,7 +32,7 @@ public class LocationManageActivity extends AppCompatActivity {
         LocationFragment locationFragment = new LocationFragment();
         getSupportFragmentManager().beginTransaction().add(R.id.container, locationFragment).commit();
 
-        Button addBtn = (Button) findViewById(R.id.add_btn);
+        FloatingActionButton addBtn = (FloatingActionButton) findViewById(R.id.add_btn);
 
 
         addBtn.setOnClickListener(new View.OnClickListener() {
