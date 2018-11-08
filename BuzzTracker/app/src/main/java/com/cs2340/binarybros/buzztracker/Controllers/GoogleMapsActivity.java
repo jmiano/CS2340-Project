@@ -3,6 +3,7 @@ package com.cs2340.binarybros.buzztracker.Controllers;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.cs2340.binarybros.buzztracker.Models.Database;
 import com.cs2340.binarybros.buzztracker.Models.Location;
@@ -46,13 +47,22 @@ public class GoogleMapsActivity extends FragmentActivity implements OnMapReadyCa
         mMap = googleMap;
 
         LatLng latLng; //declares arbitrary latLng for looping
-        latLng = Location.mapLocation(locList.get(0), mMap); //map first location
+        try {
+            latLng = Location.mapLocation(locList.get(0), mMap); //map first location
 
-        for (int i = 1; i < locList.size(); i++) { //map subsequent locations
-            latLng = Location.mapLocation(locList.get(i), mMap);
-        }
-
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng)); //moves camera to last added loc
+            for (int i = 1; i < locList.size(); i++) { //map subsequent locations
+                latLng = Location.mapLocation(locList.get(i), mMap);
+            }
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 9.0f)); //moves camera to last added loc
         Log.d("MAPS CHECK", "map should be visible and created");
+        } catch (NullPointerException e) {
+            Toast.makeText(GoogleMapsActivity.this,
+                    "No locations to display, please load locations",
+                    Toast.LENGTH_LONG).show();
+        } catch (Exception e) {
+            Toast.makeText(GoogleMapsActivity.this,
+                    "Unknown error, please reload locations and/or reload app",
+                    Toast.LENGTH_LONG).show();
+        }
     }
 }
