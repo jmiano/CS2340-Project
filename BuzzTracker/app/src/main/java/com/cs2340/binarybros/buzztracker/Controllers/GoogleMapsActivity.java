@@ -4,12 +4,16 @@ import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 import android.util.Log;
 
+import com.cs2340.binarybros.buzztracker.Models.Database;
+import com.cs2340.binarybros.buzztracker.Models.Location;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
+
+import java.util.ArrayList;
 
 public class GoogleMapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
@@ -37,12 +41,18 @@ public class GoogleMapsActivity extends FragmentActivity implements OnMapReadyCa
      */
     @Override
     public void onMapReady(GoogleMap googleMap) {
+        //get location data
+        ArrayList<Location> locList = Database.getInstance().getLocationList();
         mMap = googleMap;
 
-        // Add a marker in Sydney and move the camera
-        LatLng sydney = new LatLng(-34, 151);
-        mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
+        LatLng latLng; //declares arbitrary latLng for looping
+        latLng = Location.mapLocation(locList.get(0), mMap); //map first location
+
+        for (int i = 1; i < locList.size(); i++) { //map subsequent locations
+            latLng = Location.mapLocation(locList.get(i), mMap);
+        }
+
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng)); //moves camera to last added loc
         Log.d("MAPS CHECK", "map should be visible and created");
     }
 }
