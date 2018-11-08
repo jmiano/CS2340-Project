@@ -112,7 +112,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20sp"
                 android:text="Street"
-                android:textSize="20dp"
+                android:textSize="20sp"
                 android:textColor="@color/white"
                 android:fontFamily="sans-serif-light"
                 tools:text="Street" />
@@ -148,7 +148,7 @@
                         android:fontFamily="sans-serif-light"
                         android:text="City"
                         android:textColor="@color/white"
-                        android:textSize="20dp" />
+                        android:textSize="20sp" />
 
                     <EditText
                         android:id="@+id/location_city_field"
@@ -177,7 +177,7 @@
                         android:fontFamily="sans-serif-light"
                         android:text="State"
                         android:textColor="@color/white"
-                        android:textSize="20dp" />
+                        android:textSize="20sp" />
 
                     <Spinner
                         android:id="@+id/location_state_spinner"
@@ -198,7 +198,7 @@
                         android:fontFamily="sans-serif-light"
                         android:text="Zip Code"
                         android:textColor="@color/white"
-                        android:textSize="20dp" />
+                        android:textSize="20sp" />
 
                     <EditText
                         android:id="@+id/location_zipcode_field"
@@ -234,7 +234,7 @@
                     android:fontFamily="sans-serif-light"
                     android:layout_height="wrap_content"
                     android:text="Latitude"
-                    android:textSize="20dp"
+                    android:textSize="20sp"
                     android:textColor="@color/white" />
 
                 <EditText
@@ -263,7 +263,7 @@
                     android:fontFamily="sans-serif-light"
                     android:layout_height="wrap_content"
                     android:text="Longitude"
-                    android:textSize="20dp"
+                    android:textSize="20sp"
                     android:textColor="@color/white" />
 
                 <EditText

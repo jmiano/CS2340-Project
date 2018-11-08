@@ -12,6 +12,7 @@ import com.cs2340.binarybros.buzztracker.Models.Database;
 import com.cs2340.binarybros.buzztracker.Models.Donation;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class AddDonation extends AppCompatActivity {
     private EditText TitleField;
@@ -21,7 +22,7 @@ public class AddDonation extends AppCompatActivity {
     private EditText PriceField;
     private EditText ShortdescriptionField;
     private EditText LongdescriptionField;
-    private ArrayList<Donation> donationList;
+    private List<Donation> donationList;
 
     private Donation donation;
     private int donationItemId;
@@ -128,7 +129,7 @@ public class AddDonation extends AppCompatActivity {
      * @param donationItemId unique id of the Donation we want to find.
      * @return Correct reference to donation object
      */
-    private Donation getDonationObjectFromId(ArrayList<Donation> donationList, int donationItemId) {
+    private Donation getDonationObjectFromId(List<Donation> donationList, int donationItemId) {
         boolean found = false;
         int count = 0;
         Donation returnDonation = null;

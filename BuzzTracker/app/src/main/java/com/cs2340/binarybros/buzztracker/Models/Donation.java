@@ -3,6 +3,7 @@ package com.cs2340.binarybros.buzztracker.Models;
 import java.io.Serializable;
 import java.util.Random;
 
+@SuppressWarnings("MagicNumber")
 public class Donation implements Serializable {
     private String title;
     private String timestamp;

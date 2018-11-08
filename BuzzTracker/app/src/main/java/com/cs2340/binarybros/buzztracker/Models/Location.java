@@ -156,8 +156,12 @@ public class Location implements Serializable {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof Location)) return false;
+        if (this == o) {
+            return true;
+        }
+        if (!(o instanceof Location)) {
+            return false;
+        }
         Location location = (Location) o;
         return Objects.equals(getKey(), location.getKey()) &&
                 Objects.equals(getName(), location.getName()) &&

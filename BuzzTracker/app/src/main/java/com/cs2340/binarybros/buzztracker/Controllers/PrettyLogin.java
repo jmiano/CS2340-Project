@@ -17,6 +17,7 @@ import com.cs2340.binarybros.buzztracker.Models.User;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.List;
 
 public class PrettyLogin extends AppCompatActivity {
 
@@ -24,7 +25,7 @@ public class PrettyLogin extends AppCompatActivity {
     private EditText username=null;
     private EditText password=null;
     private TextView attempts;
-    private ArrayList<User> loginList;
+    private List<User> loginList;
 
 
     @Override

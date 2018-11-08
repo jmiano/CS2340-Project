@@ -10,6 +10,7 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -30,11 +31,12 @@ import org.w3c.dom.Text;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 public class Inventory extends AppCompatActivity {
 
     ArrayList<Donation> donationArrayList;
-    ArrayList<String> categoryFilterList;
+    List<String> categoryFilterList;
     ArrayList<Donation> finalDonationArrayList;
     private Donation donation;
     private int donationItemId;
@@ -43,7 +45,7 @@ public class Inventory extends AppCompatActivity {
     private Button clearFiltersBtn;
     private Spinner locationSpinner;
     private EditText searchFilter;
-    private ArrayList<Location> locationArrayList;
+    private List<Location> locationArrayList;
     private String[] locationListTitles;
     private User currentUser;
     private InventoryListAdapter inventoryAdapter;
@@ -121,7 +123,7 @@ public class Inventory extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 AlertDialog.Builder mBuilder = new AlertDialog.Builder(Inventory.this);
-                View mView = getLayoutInflater().inflate(R.layout.categoy_filter_dialog_layout, null);
+                View mView = getLayoutInflater().inflate( R.layout.categoy_filter_dialog_layout, null);
 
                 final CheckBox categoryClothing = (CheckBox) mView.findViewById(R.id.category_filter_checkbox_clothing);
                 final CheckBox categoryHat = (CheckBox) mView.findViewById(R.id.category_filter_checkbox_hat);
@@ -284,7 +286,7 @@ public class Inventory extends AppCompatActivity {
      * @param categoriesSelected blah
      * @return blah
      */
-    private ArrayList<Donation> filterDonationListByCategory(ArrayList<Donation> donationList, ArrayList<String> categoriesSelected) {
+    private ArrayList<Donation> filterDonationListByCategory(ArrayList<Donation> donationList, List<String> categoriesSelected) {
         if (categoriesSelected == null || categoriesSelected.size() <= 0) {
             return donationList;
         } else if (donationList != null) {

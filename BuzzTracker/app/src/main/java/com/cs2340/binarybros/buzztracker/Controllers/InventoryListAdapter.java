@@ -19,10 +19,10 @@ import java.util.List;
 
 
 public class InventoryListAdapter extends ArrayAdapter<Donation> implements Filterable {
-    private Context listContext;
+    private final Context listContext;
     int mResource;
 
-    private ArrayList<Donation> donations;
+    private final List<Donation> donations;
 
 
     static class ViewHolder {
@@ -34,7 +34,7 @@ public class InventoryListAdapter extends ArrayAdapter<Donation> implements Filt
 
     }
 
-    public InventoryListAdapter(Context listContext, int resource, ArrayList<Donation> objects) {
+    public InventoryListAdapter(Context listContext, int resource, List<Donation> objects) {
         super(listContext, resource, objects);
         this.listContext = listContext;
         mResource = resource;
@@ -44,6 +44,7 @@ public class InventoryListAdapter extends ArrayAdapter<Donation> implements Filt
     @NonNull
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
+        View convertView1 = convertView;
         String title = getItem(position).getTitle();
         String category = getItem(position).getCategory();
         String location = getItem(position).getLocation();
@@ -55,20 +56,20 @@ public class InventoryListAdapter extends ArrayAdapter<Donation> implements Filt
 
         ViewHolder holder;
 
-        if(convertView == null) {
+        if(convertView1 == null) {
             LayoutInflater inflater = LayoutInflater.from(listContext);
-            convertView = inflater.inflate(mResource, parent, false);
+            convertView1 = inflater.inflate(mResource, parent, false);
 
             holder = new ViewHolder();
             // holder.icon = (ImageView) convertView.findViewById(R.id.listitem_image);
-            holder.title = (TextView) convertView.findViewById(R.id.donation_title);
-            holder.category = (TextView) convertView.findViewById(R.id.category_label);
-            holder.location = (TextView) convertView.findViewById(R.id.location_label);
-            holder.price = (TextView) convertView.findViewById(R.id.price_label);
+            holder.title = (TextView) convertView1.findViewById(R.id.donation_title);
+            holder.category = (TextView) convertView1.findViewById(R.id.category_label);
+            holder.location = (TextView) convertView1.findViewById(R.id.location_label);
+            holder.price = (TextView) convertView1.findViewById(R.id.price_label);
 
-            convertView.setTag(holder);
+            convertView1.setTag(holder);
         } else {
-            holder = (ViewHolder) convertView.getTag();
+            holder = (ViewHolder) convertView1.getTag();
         }
 
         holder.title.setText(title);
@@ -76,6 +77,6 @@ public class InventoryListAdapter extends ArrayAdapter<Donation> implements Filt
         holder.location.setText(location);
         holder.price.setText("$" + price);
 
-        return convertView;
+        return convertView1;
     }
 }
