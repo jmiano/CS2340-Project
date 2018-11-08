@@ -128,7 +128,7 @@ public class Location implements Serializable {
     }
 
     public static LatLng mapLocation(Location loc, GoogleMap mMap) {
-        ArrayList<Location> locList = Database.getInstance().getLocationList();
+
         LatLng latLng = new LatLng(Double.parseDouble(loc.getLatitude())
                 , Double.parseDouble(loc.getLongitude())); //data is strings so convert to double
 
