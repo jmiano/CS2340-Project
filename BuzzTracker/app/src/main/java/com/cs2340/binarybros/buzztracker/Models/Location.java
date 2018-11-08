@@ -141,12 +141,10 @@ public class Location implements Serializable {
                 , Double.parseDouble(loc.getLongitude())); //data is strings so convert to double
 
         String title = String.format("%s", loc.getName()); //format marker title
-        String phone = String.format("%s", loc.getPhone()); //format phone
-        String address = String.format("%s", loc.getStreetAddress()); //format address
-        String cityStateZip = String.format("%s, Phone: %s",
+        String otherInfo = String.format("%s, Phone: %s",
                 loc.getStreetAddress(), loc.getPhone());
         mMap.addMarker(new MarkerOptions().position(latLng)
-                .title(title).snippet(cityStateZip)); //add marker to map
+                .title(title).snippet(otherInfo)); //add marker to map
 
         return latLng;
     }
