@@ -57,8 +57,8 @@ public class Inventory extends AppCompatActivity {
         setContentView(R.layout.activity_inventory);
 
 
-        /**
-         * Declaring UI Elements
+        /*
+          Declaring UI Elements
          */
         categoryFilterBtn = (Button) findViewById(R.id.categoriesbtn);
         applyFilterBtn = (Button) findViewById(R.id.applyfilterbtn);
@@ -67,15 +67,15 @@ public class Inventory extends AppCompatActivity {
         searchFilter = (EditText) findViewById(R.id.searchFilter);
 
 
-        /**
-         * Setting up other variables
+        /*
+          Setting up other variables
          */
         donationArrayList = Database.getInstance().getDonationList();
         currentUser = Database.getInstance().getCurrentUser();
         locationArrayList = Database.getInstance().getLocationList();
 
-        /**
-         * Set up Array with Location Titles
+        /*
+          Set up Array with Location Titles
          */
         if (locationArrayList != null) {
             locationListTitles = new String[locationArrayList.size() + 1];
@@ -91,8 +91,8 @@ public class Inventory extends AppCompatActivity {
         }
 
 
-        /**
-         * Set up ArrayAdapter for location Spinner
+        /*
+          Set up ArrayAdapter for location Spinner
          */
         ArrayAdapter<String> locationAdapter = new ArrayAdapter<>(this, R.layout.spinner_item, locationListTitles);
         locationAdapter.setDropDownViewResource((android.R.layout.simple_spinner_dropdown_item));
@@ -102,8 +102,8 @@ public class Inventory extends AppCompatActivity {
         }
         locationSpinner.setAdapter(locationAdapter);
 
-        /**
-         * Set location spinner default
+        /*
+          Set location spinner default
          */
         int locationNumber = 0;
         for (int i = 0; i < locationListTitles.length; i++) {
@@ -114,14 +114,14 @@ public class Inventory extends AppCompatActivity {
         locationSpinner.setSelection(locationNumber);
 
 
-        /**
-         * Button action for choosing filtering categories
+        /*
+          Button action for choosing filtering categories
          */
         categoryFilterBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 AlertDialog.Builder mBuilder = new AlertDialog.Builder(Inventory.this);
-                View mView = getLayoutInflater().inflate(R.layout.categoy_filter_diaglog_layout, null);
+                View mView = getLayoutInflater().inflate(R.layout.categoy_filter_dialog_layout, null);
 
                 final CheckBox categoryClothing = (CheckBox) mView.findViewById(R.id.category_filter_checkbox_clothing);
                 final CheckBox categoryHat = (CheckBox) mView.findViewById(R.id.category_filter_checkbox_hat);
@@ -178,8 +178,8 @@ public class Inventory extends AppCompatActivity {
 
             }});
 
-        /**
-         * Set the initial listview
+        /*
+          Set the initial listview
          */
         inventoryListView = (ListView) findViewById(R.id.inventory_list);
         finalDonationArrayList = filterDonationListByLocation(donationArrayList);
@@ -187,8 +187,8 @@ public class Inventory extends AppCompatActivity {
         inventoryListView.setAdapter(inventoryAdapter);
 
 
-        /**
-         * Button action for applying filters the listview
+        /*
+          Button action for applying filters the listview
          */
         applyFilterBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -204,8 +204,8 @@ public class Inventory extends AppCompatActivity {
             }
         });
 
-        /**
-         * Button action for clearing all filters
+        /*
+          Button action for clearing all filters
          */
         clearFiltersBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -219,8 +219,8 @@ public class Inventory extends AppCompatActivity {
         });
 
 
-        /**
-         * Button action for tapping on an item in the inventory list
+        /*
+          Button action for tapping on an item in the inventory list
          */
         inventoryListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -234,8 +234,8 @@ public class Inventory extends AppCompatActivity {
             }
         });
 
-        /**
-         * Button action for the floating button. Adding a Donation.
+        /*
+          Button action for the floating button. Adding a Donation.
          */
         FloatingActionButton addDonationBtn = (FloatingActionButton) findViewById(R.id.add_donation_button);
         addDonationBtn.setOnClickListener(new View.OnClickListener() {
@@ -255,8 +255,8 @@ public class Inventory extends AppCompatActivity {
             }
         });
 
-        /**
-         * Attempt at changing listview when a new location is selected
+        /*
+          Attempt at changing listview when a new location is selected
          */
         locationSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override

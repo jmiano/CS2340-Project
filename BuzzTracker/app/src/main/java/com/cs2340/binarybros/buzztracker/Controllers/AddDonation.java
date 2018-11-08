@@ -31,8 +31,8 @@ public class AddDonation extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_donation);
-        /**
-         * Grab the dialog widgets so we can get info for later
+        /*
+          Grab the dialog widgets so we can get info for later
          */
         TitleField = (EditText) findViewById(R.id.donation_title);
         TimestampField = (EditText) findViewById(R.id.timestamp);
@@ -42,8 +42,8 @@ public class AddDonation extends AppCompatActivity {
         ShortdescriptionField = (EditText) findViewById(R.id.shortDescription);
         LongdescriptionField = (EditText) findViewById(R.id.longDescription);
 
-        /**
-         * Get other data
+        /*
+          Get other data
          */
         donationList = Database.getInstance().getDonationList();
 
@@ -60,8 +60,8 @@ public class AddDonation extends AppCompatActivity {
 
 
 
-        /**
-         * If we are editing a donation, then fill the fields with the passed in donation object
+        /*
+          If we are editing a donation, then fill the fields with the passed in donation object
          */
         if (editing) {
             TitleField.setText(donation.getTitle(), TextView.BufferType.EDITABLE);
@@ -73,8 +73,8 @@ public class AddDonation extends AppCompatActivity {
             LongdescriptionField.setText(donation.getLongdescription(), TextView.BufferType.EDITABLE);
         }
 
-        /**
-         * Set submit button action. It's action will depend on whether or not we are editing
+        /*
+          Set submit button action. It's action will depend on whether or not we are editing
          */
         Button submitBtn = (Button) findViewById(R.id.submit);
         submitBtn.setOnClickListener(new View.OnClickListener() {

@@ -53,8 +53,8 @@ public class RegisterActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
-        /**
-         * Grab the dialog widgets so we can get info for later
+        /*
+          Grab the dialog widgets so we can get info for later
          */
         nameField = (EditText) findViewById(R.id.name_field);
         emailField = (EditText) findViewById(R.id.email_field);

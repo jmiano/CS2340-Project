@@ -61,24 +61,24 @@ public class EditLocation extends AppCompatActivity {
         latitude = (EditText) findViewById(R.id.location_latitude_field);
         longitude = (EditText) findViewById(R.id.location_longitude_field);
 
-        /**
-         * Set up adapter to display the allowable types in spinner
+        /*
+          Set up adapter to display the allowable types in spinner
          */
         ArrayAdapter<String> typeAdapter = new ArrayAdapter<>(this, R.layout.spinner_item,
                 types);
         typeAdapter.setDropDownViewResource((android.R.layout.simple_spinner_dropdown_item));
         type.setAdapter(typeAdapter);
 
-        /**
-         * Set up the adapter to display the allowable states
+        /*
+          Set up the adapter to display the allowable states
          */
         ArrayAdapter<String> stateAdapter = new ArrayAdapter<>(this, R.layout.spinner_item,
                 stateList);
         stateAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         state.setAdapter(stateAdapter);
 
-        /**
-         * Select state spinner location
+        /*
+          Select state spinner location
          */
         int stateLocation = 0;
         for (int i = 0; i < stateList.length; i++) {
@@ -88,8 +88,8 @@ public class EditLocation extends AppCompatActivity {
         }
         state.setSelection(stateLocation);
 
-        /**
-         * Select type spinner location
+        /*
+          Select type spinner location
          */
         int typeNumber = 0;
         for (int i = 0; i < types.length; i++) {
@@ -99,8 +99,8 @@ public class EditLocation extends AppCompatActivity {
         }
         type.setSelection(typeNumber);
 
-        /**
-         * fill the rest of the form information
+        /*
+          fill the rest of the form information
          */
         nameField.setText(location.getName(), TextView.BufferType.EDITABLE);
         streetAddress.setText(location.getStreetAddress(), TextView.BufferType.EDITABLE);
