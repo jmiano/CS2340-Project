@@ -15,17 +15,18 @@ import java.io.ObjectOutput;
 import java.io.ObjectOutputStream;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.List;
 
 
 /**
  * This is a singleton class that acts like a local data base. This is not persistent, but it holds information
  * as long as the app is running
  */
-public class Database {
+public final class Database {
     //Filename for writing and reading data
-    public final static String DEFAULT_BINARY_FILE_NAME = "data.bin";
+    public static final String DEFAULT_BINARY_FILE_NAME = "data.bin";
 
-    private static Database INSTANCE = null;
+    private static Database INSTANCE;
 
     //ArrayList that stores the user credential that are registered to login.
     private ArrayList<User> userList;
@@ -57,7 +58,7 @@ public class Database {
         return(INSTANCE);
     }
 
-    public ArrayList<User> getUserList() {
+    public List<User> getUserList() {
         return userList;
     }
 
@@ -77,7 +78,7 @@ public class Database {
         return currentUser;
     }
 
-    public void setCurrentUser(User currentUser) {
+    public static void setCurrentUser(User currentUser) {
         Database.currentUser = currentUser;
     }
 

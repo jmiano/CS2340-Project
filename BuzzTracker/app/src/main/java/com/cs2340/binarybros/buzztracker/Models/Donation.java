@@ -3,6 +3,7 @@ package com.cs2340.binarybros.buzztracker.Models;
 import java.io.Serializable;
 import java.util.Random;
 
+@SuppressWarnings("MagicNumber")
 public class Donation implements Serializable {
     private String title;
     private String timestamp;
@@ -22,7 +23,6 @@ public class Donation implements Serializable {
         this.location = locationInput;
         this.shortdescription = shortdescriptionInput;
         this.longdescription = longdescriptionInput;
-        this.id = createID(10);
     }
 
     //This constructor is to only be used for the custom InventoryListViewAdapter
@@ -99,13 +99,4 @@ public class Donation implements Serializable {
         this.id = id;
     }
 
-    /**
-     * This is a method that will create a unique integer id for a given object
-     * @param id starting value
-     * @return final unique id
-     */
-    private int createID(int id) {
-        Random rand = new Random();
-        return rand.nextInt(1000000000) + 1;
-    }
 }

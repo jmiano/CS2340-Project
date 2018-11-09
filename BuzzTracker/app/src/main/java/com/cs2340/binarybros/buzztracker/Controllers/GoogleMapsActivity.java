@@ -15,7 +15,10 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
 
+@SuppressWarnings("MagicNumber")
 public class GoogleMapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap;
@@ -27,7 +30,7 @@ public class GoogleMapsActivity extends FragmentActivity implements OnMapReadyCa
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
-        mapFragment.getMapAsync(this);
+        Objects.requireNonNull(mapFragment).getMapAsync(this);
     }
 
 
@@ -43,7 +46,7 @@ public class GoogleMapsActivity extends FragmentActivity implements OnMapReadyCa
     @Override
     public void onMapReady(GoogleMap googleMap) {
         //get location data
-        ArrayList<Location> locList = Database.getInstance().getLocationList();
+        List<Location> locList = Database.getInstance().getLocationList();
         mMap = googleMap;
 
         LatLng latLng; //declares arbitrary latLng for looping

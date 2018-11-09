@@ -30,7 +30,9 @@ import com.cs2340.binarybros.buzztracker.Models.User;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
+@SuppressWarnings({"ALL", "MagicNumber"})
 public class RegisterActivity extends AppCompatActivity {
 
     //Firebase button
@@ -45,7 +47,7 @@ public class RegisterActivity extends AppCompatActivity {
     private Spinner daySpinner;
     private Spinner yearSpinner;
     private Spinner accountTypeSpinner;
-    private ArrayList<User> loginList;
+    private List<User> loginList;
 
 
     @Override
@@ -53,8 +55,8 @@ public class RegisterActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
-        /**
-         * Grab the dialog widgets so we can get info for later
+        /*
+          Grab the dialog widgets so we can get info for later
          */
         nameField = (EditText) findViewById(R.id.name_field);
         emailField = (EditText) findViewById(R.id.email_field);

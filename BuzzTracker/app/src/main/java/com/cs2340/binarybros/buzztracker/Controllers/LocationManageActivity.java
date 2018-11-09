@@ -16,10 +16,11 @@ import com.cs2340.binarybros.buzztracker.Models.Location;
 
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 public class LocationManageActivity extends AppCompatActivity {
-    private ArrayList<Location> locationList;
+    private List<Location> locationList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,7 +33,7 @@ public class LocationManageActivity extends AppCompatActivity {
         LocationFragment locationFragment = new LocationFragment();
         getSupportFragmentManager().beginTransaction().add(R.id.container, locationFragment).commit();
 
-        FloatingActionButton addBtn = (FloatingActionButton) findViewById(R.id.add_btn);
+        FloatingActionButton addBtn = findViewById(R.id.add_btn);
 
 
         addBtn.setOnClickListener(new View.OnClickListener() {
@@ -40,7 +41,7 @@ public class LocationManageActivity extends AppCompatActivity {
             public void onClick(View v) {
                 InputStream inputStream = getResources().openRawResource(R.raw.locationdata);
                 CSVFile csvFile = new CSVFile(inputStream);
-                ArrayList<Location> fileContents = (ArrayList) csvFile.read();
+                Collection<Location> fileContents = (ArrayList) csvFile.read();
                 locationList.addAll(fileContents);
                 LocationFragment locationFragment = new LocationFragment();
                 getSupportFragmentManager().beginTransaction().add(R.id.container, locationFragment).commit();
