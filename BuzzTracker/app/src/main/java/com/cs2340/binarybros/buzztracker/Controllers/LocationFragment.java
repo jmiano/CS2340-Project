@@ -40,14 +40,14 @@ public class LocationFragment extends Fragment {
         // Pulls the non-persistent ArrayList of locations
         this.locationList = Database.getInstance().getLocationList();
         // these three are only for test
-        ListView listview = view.findViewById(R.id.locationmenu);
-        ArrayAdapter<Location> listviewadapter = new ArrayAdapter<>(
+        ListView listView = view.findViewById(R.id.locationmenu);
+        ArrayAdapter<Location> listViewAdapter = new ArrayAdapter<>(
                 Objects.requireNonNull(getActivity()),
                 android.R.layout.simple_list_item_1,
                 locationList
         );
-        listview.setAdapter(listviewadapter);
-        listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        listView.setAdapter(listViewAdapter);
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
             @Override
             public void onItemClick (AdapterView<?> parent, View view, int position, long id){

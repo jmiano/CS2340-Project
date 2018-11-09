@@ -189,7 +189,7 @@ public class Inventory extends AppCompatActivity {
             }});
 
         /*
-          Set the initial listview
+          Set the initial listView
          */
         inventoryListView = findViewById(R.id.inventory_list);
         finalDonationArrayList = filterDonationListByLocation(donationArrayList);
@@ -199,7 +199,7 @@ public class Inventory extends AppCompatActivity {
 
 
         /*
-          Button action for applying filters the listview
+          Button action for applying filters the listView
          */
         applyFilterBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -284,7 +284,7 @@ public class Inventory extends AppCompatActivity {
         });
 
         /*
-          Attempt at changing listview when a new location is selected
+          Attempt at changing listView when a new location is selected
          */
         locationSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
