@@ -37,7 +37,8 @@ public class LocationFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_location, container, false);
-        this.locationList = Database.getInstance().getLocationList(); // Pulls the non-persistent ArrayList of locations
+        // Pulls the non-persistent ArrayList of locations
+        this.locationList = Database.getInstance().getLocationList();
         // these three are only for test
         ListView listview = view.findViewById(R.id.locationmenu);
         ArrayAdapter<Location> listviewadapter = new ArrayAdapter<>(
@@ -51,7 +52,8 @@ public class LocationFragment extends Fragment {
             @Override
             public void onItemClick (AdapterView<?> parent, View view, int position, long id){
                 location = (Location) parent.getAdapter().getItem(position);
-                Intent passDataIntent = new Intent(LocationFragment.this.getActivity(), EditLocation.class);
+                Intent passDataIntent = new Intent(LocationFragment.this.getActivity(),
+                        EditLocation.class);
                 passDataIntent.putExtra("location", location);
                 startActivity(passDataIntent);
             }

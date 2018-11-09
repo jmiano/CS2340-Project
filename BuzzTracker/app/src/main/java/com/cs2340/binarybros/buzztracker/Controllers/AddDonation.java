@@ -70,8 +70,10 @@ public class AddDonation extends AppCompatActivity {
             LocationField.setText(donation.getLocation(), TextView.BufferType.EDITABLE);
             CategoryField.setText(donation.getCategory(), TextView.BufferType.EDITABLE);
             PriceField.setText(donation.getPrice(), TextView.BufferType.EDITABLE);
-            ShortdescriptionField.setText(donation.getShortdescription(), TextView.BufferType.EDITABLE);
-            LongdescriptionField.setText(donation.getLongdescription(), TextView.BufferType.EDITABLE);
+            ShortdescriptionField.setText(donation.getShortdescription(),
+                    TextView.BufferType.EDITABLE);
+            LongdescriptionField.setText(donation.getLongdescription(),
+                    TextView.BufferType.EDITABLE);
         }
 
         /*
