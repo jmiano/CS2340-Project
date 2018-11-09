@@ -26,7 +26,7 @@ public final class Database {
     //Filename for writing and reading data
     public static final String DEFAULT_BINARY_FILE_NAME = "data.bin";
 
-    private static Database INSTANCE = null;
+    private static Database INSTANCE;
 
     //ArrayList that stores the user credential that are registered to login.
     private ArrayList<User> userList;
@@ -78,7 +78,7 @@ public final class Database {
         return currentUser;
     }
 
-    public void setCurrentUser(User currentUser) {
+    public static void setCurrentUser(User currentUser) {
         Database.currentUser = currentUser;
     }
 

@@ -52,14 +52,14 @@ public class EditLocation extends AppCompatActivity {
 
         location = (Location) getIntent().getSerializableExtra("location");
 
-        nameField = (EditText) findViewById(R.id.location_name_field);
-        type = (Spinner) findViewById(R.id.location_type_spinner);
-        streetAddress = (EditText) findViewById(R.id.location_street_field);
-        city = (EditText) findViewById(R.id.location_city_field);
-        state = (Spinner) findViewById(R.id.location_state_spinner);
-        zipCode = (EditText) findViewById(R.id.location_zipcode_field);
-        latitude = (EditText) findViewById(R.id.location_latitude_field);
-        longitude = (EditText) findViewById(R.id.location_longitude_field);
+        nameField = findViewById(R.id.location_name_field);
+        type = findViewById(R.id.location_type_spinner);
+        streetAddress = findViewById(R.id.location_street_field);
+        city = findViewById(R.id.location_city_field);
+        state = findViewById(R.id.location_state_spinner);
+        zipCode = findViewById(R.id.location_zipcode_field);
+        latitude = findViewById(R.id.location_latitude_field);
+        longitude = findViewById(R.id.location_longitude_field);
 
         /*
           Set up adapter to display the allowable types in spinner

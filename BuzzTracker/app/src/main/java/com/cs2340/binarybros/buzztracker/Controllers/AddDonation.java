@@ -26,7 +26,7 @@ public class AddDonation extends AppCompatActivity {
 
     private Donation donation;
     private int donationItemId;
-    private boolean editing = false;
+    private boolean editing;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,13 +35,13 @@ public class AddDonation extends AppCompatActivity {
         /*
           Grab the dialog widgets so we can get info for later
          */
-        TitleField = (EditText) findViewById(R.id.donation_title);
-        TimestampField = (EditText) findViewById(R.id.timestamp);
-        LocationField = (EditText) findViewById(R.id.location);
-        CategoryField = (EditText) findViewById(R.id.category);
-        PriceField = (EditText) findViewById(R.id.price);
-        ShortdescriptionField = (EditText) findViewById(R.id.shortDescription);
-        LongdescriptionField = (EditText) findViewById(R.id.longDescription);
+        TitleField = findViewById(R.id.donation_title);
+        TimestampField = findViewById(R.id.timestamp);
+        LocationField = findViewById(R.id.location);
+        CategoryField = findViewById(R.id.category);
+        PriceField = findViewById(R.id.price);
+        ShortdescriptionField = findViewById(R.id.shortDescription);
+        LongdescriptionField = findViewById(R.id.longDescription);
 
         /*
           Get other data
@@ -77,7 +77,7 @@ public class AddDonation extends AppCompatActivity {
         /*
           Set submit button action. It's action will depend on whether or not we are editing
          */
-        Button submitBtn = (Button) findViewById(R.id.submit);
+        Button submitBtn = findViewById(R.id.submit);
         submitBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -134,7 +134,7 @@ public class AddDonation extends AppCompatActivity {
         int count = 0;
         Donation returnDonation = null;
 
-        while (!found && count < donationList.size()) {
+        while (!found && (count < donationList.size())) {
             if (donationList.get(count).getId() == donationItemId) {
                 found = true;
                 returnDonation = donationList.get(count);

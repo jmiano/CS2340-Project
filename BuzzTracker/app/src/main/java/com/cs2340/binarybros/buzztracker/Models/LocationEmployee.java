@@ -1,9 +1,8 @@
 package com.cs2340.binarybros.buzztracker.Models;
 
 
-import java.io.Serializable;
 
-public class LocationEmployee extends User implements Serializable {
+public class LocationEmployee extends User {
 
     public LocationEmployee(String type, String nameInput, String usernameInput, String passwordInput,
                             String emailInput, String employeeLocation, int employeeID) {

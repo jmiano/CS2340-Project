@@ -33,7 +33,7 @@ public class LocationManageActivity extends AppCompatActivity {
         LocationFragment locationFragment = new LocationFragment();
         getSupportFragmentManager().beginTransaction().add(R.id.container, locationFragment).commit();
 
-        FloatingActionButton addBtn = (FloatingActionButton) findViewById(R.id.add_btn);
+        FloatingActionButton addBtn = findViewById(R.id.add_btn);
 
 
         addBtn.setOnClickListener(new View.OnClickListener() {

@@ -62,11 +62,11 @@ public class Inventory extends AppCompatActivity {
         /*
           Declaring UI Elements
          */
-        categoryFilterBtn = (Button) findViewById(R.id.categoriesbtn);
-        applyFilterBtn = (Button) findViewById(R.id.applyfilterbtn);
-        clearFiltersBtn = (Button) findViewById(R.id.clearfiltersbtn);
-        locationSpinner = (Spinner) findViewById(R.id.select_location_spinner);
-        searchFilter = (EditText) findViewById(R.id.searchFilter);
+        categoryFilterBtn = findViewById(R.id.categoriesbtn);
+        applyFilterBtn = findViewById(R.id.applyfilterbtn);
+        clearFiltersBtn = findViewById(R.id.clearfiltersbtn);
+        locationSpinner = findViewById(R.id.select_location_spinner);
+        searchFilter = findViewById(R.id.searchFilter);
 
 
         /*
@@ -99,7 +99,7 @@ public class Inventory extends AppCompatActivity {
         ArrayAdapter<String> locationAdapter = new ArrayAdapter<>(this, R.layout.spinner_item, locationListTitles);
         locationAdapter.setDropDownViewResource((android.R.layout.simple_spinner_dropdown_item));
         //If current User is a location employee, then don't allow them to change the Spinner
-        if (currentUser.getType().equals("Location Employee")) {
+        if ("Location Employee".equals(currentUser.getType())) {
             locationSpinner.setEnabled(false);
         }
         locationSpinner.setAdapter(locationAdapter);
@@ -123,16 +123,16 @@ public class Inventory extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 AlertDialog.Builder mBuilder = new AlertDialog.Builder(Inventory.this);
-                View mView = getLayoutInflater().inflate( R.layout.categoy_filter_dialog_layout, null);
+                View mView = getLayoutInflater().inflate(R.layout.categoy_filter_dialog_layout, null);
 
-                final CheckBox categoryClothing = (CheckBox) mView.findViewById(R.id.category_filter_checkbox_clothing);
-                final CheckBox categoryHat = (CheckBox) mView.findViewById(R.id.category_filter_checkbox_hat);
-                final CheckBox categoryKitchen = (CheckBox) mView.findViewById(R.id.category_filter_checkbox_kitchen);
-                final CheckBox categoryElectronics = (CheckBox) mView.findViewById(R.id.category_filter_checkbox_electronics);
-                final CheckBox categoryHousehold = (CheckBox) mView.findViewById(R.id.category_filter_checkbox_household);
-                final CheckBox categoryOther = (CheckBox) mView.findViewById(R.id.category_filter_checkbox_other);
-                Button filterBtn = (Button) mView.findViewById(R.id.category_filter_acceptBtn);
-                Button dismissBtn = (Button) mView.findViewById(R.id.category_filter_cancelBtn);
+                final CheckBox categoryClothing = mView.findViewById(R.id.category_filter_checkbox_clothing);
+                final CheckBox categoryHat = mView.findViewById(R.id.category_filter_checkbox_hat);
+                final CheckBox categoryKitchen = mView.findViewById(R.id.category_filter_checkbox_kitchen);
+                final CheckBox categoryElectronics = mView.findViewById(R.id.category_filter_checkbox_electronics);
+                final CheckBox categoryHousehold = mView.findViewById(R.id.category_filter_checkbox_household);
+                final CheckBox categoryOther = mView.findViewById(R.id.category_filter_checkbox_other);
+                Button filterBtn = mView.findViewById(R.id.category_filter_acceptBtn);
+                Button dismissBtn = mView.findViewById(R.id.category_filter_cancelBtn);
 
                 mBuilder.setView(mView);
                 final AlertDialog dialog = mBuilder.create();
@@ -183,7 +183,7 @@ public class Inventory extends AppCompatActivity {
         /*
           Set the initial listview
          */
-        inventoryListView = (ListView) findViewById(R.id.inventory_list);
+        inventoryListView = findViewById(R.id.inventory_list);
         finalDonationArrayList = filterDonationListByLocation(donationArrayList);
         inventoryAdapter = new InventoryListAdapter(this, R.layout.inventory_list_adapterview, finalDonationArrayList);
         inventoryListView.setAdapter(inventoryAdapter);
@@ -239,7 +239,7 @@ public class Inventory extends AppCompatActivity {
         /*
           Button action for the floating button. Adding a Donation.
          */
-        FloatingActionButton addDonationBtn = (FloatingActionButton) findViewById(R.id.add_donation_button);
+        FloatingActionButton addDonationBtn = findViewById(R.id.add_donation_button);
         addDonationBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -265,7 +265,7 @@ public class Inventory extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 finalDonationArrayList = filterDonationListByLocation(donationArrayList);
 
-                if (categoryFilterList != null && categoryFilterList.size() > 0) {
+                if ((categoryFilterList != null) && !categoryFilterList.isEmpty()) {
                     finalDonationArrayList = filterDonationListByCategory(finalDonationArrayList, categoryFilterList);
                 }
 
@@ -287,7 +287,7 @@ public class Inventory extends AppCompatActivity {
      * @return blah
      */
     private ArrayList<Donation> filterDonationListByCategory(ArrayList<Donation> donationList, List<String> categoriesSelected) {
-        if (categoriesSelected == null || categoriesSelected.size() <= 0) {
+        if ((categoriesSelected == null) || (categoriesSelected.size() <= 0)) {
             return donationList;
         } else if (donationList != null) {
             ArrayList<Donation> returnDonationList = new ArrayList<>();
@@ -298,7 +298,7 @@ public class Inventory extends AppCompatActivity {
             }
             return returnDonationList;
         } else {
-            return donationList;
+            return null;
         }
 
     }
@@ -309,9 +309,9 @@ public class Inventory extends AppCompatActivity {
      * @return blah
      */
     private ArrayList<Donation> filterDonationListByLocation(ArrayList<Donation> donationList) {
-        if (locationSpinner.getSelectedItem().toString().equals("ALL LOCATIONS")) {
+        if ("ALL LOCATIONS".equals(locationSpinner.getSelectedItem().toString())) {
             return donationList;
-        } else if (donationList != null && locationSpinner.getSelectedItem() != null && donationList.size() > 0){
+        } else if ((donationList != null) && (locationSpinner.getSelectedItem() != null) && !donationList.isEmpty()){
             ArrayList<Donation> returnDonationList = new ArrayList<>();
             for (Donation donation: donationList) {
                 if (locationSpinner.getSelectedItem().toString().equals(donation.getLocation())) {

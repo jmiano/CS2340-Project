@@ -39,7 +39,7 @@ public class HomeScreen extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_homescreen);
 
-        Button addDonationBtn = (Button) findViewById(R.id.addDonation);
+        Button addDonationBtn = findViewById(R.id.addDonation);
         addDonationBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -49,7 +49,7 @@ public class HomeScreen extends AppCompatActivity {
             }
         });
 
-        Button viewInventoryBtn = (Button) findViewById(R.id.viewInventory);
+        Button viewInventoryBtn = findViewById(R.id.viewInventory);
         viewInventoryBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -58,7 +58,7 @@ public class HomeScreen extends AppCompatActivity {
             }
         });
 
-        Button viewMapBtn = (Button) findViewById(R.id.viewMap);
+        Button viewMapBtn = findViewById(R.id.viewMap);
         viewMapBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -82,7 +82,7 @@ public class HomeScreen extends AppCompatActivity {
 //            startActivity(new Intent(HomeScreen.this, ManageUsers.class));
 //        });
 
-        Button manageLocationsBtn = (Button) findViewById(R.id.manageLocations);
+        Button manageLocationsBtn = findViewById(R.id.manageLocations);
         manageLocationsBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -90,7 +90,7 @@ public class HomeScreen extends AppCompatActivity {
             }
         });
 
-        Button saveAllDataBtn = (Button) findViewById(R.id.saveDataBtn);
+        Button saveAllDataBtn = findViewById(R.id.saveDataBtn);
         saveAllDataBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

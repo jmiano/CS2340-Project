@@ -13,7 +13,7 @@ public class LogOut extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_log_out);
 
-        Button logoutBtn = (Button) findViewById(R.id.logout_btn);
+        Button logoutBtn = findViewById(R.id.logout_btn);
         logoutBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
