@@ -11,14 +11,13 @@ import android.widget.TextView;
 
 import com.cs2340.binarybros.buzztracker.Models.Donation;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 
 public class InventoryListAdapter extends ArrayAdapter<Donation> {
     private final Context listContext;
-    int mResource;
+    private final int mResource;
 
     private final List<Donation> donations;
 
@@ -59,7 +58,7 @@ public class InventoryListAdapter extends ArrayAdapter<Donation> {
             convertView1 = inflater.inflate(mResource, parent, false);
 
             holder = new ViewHolder();
-            // holder.icon = (ImageView) convertView.findViewById(R.id.listitem_image);
+            // holder.icon = (ImageView) convertView.findViewById(R.id.listItem_image);
             holder.title = convertView1.findViewById(R.id.donation_title);
             holder.category = convertView1.findViewById(R.id.category_label);
             holder.location = convertView1.findViewById(R.id.location_label);

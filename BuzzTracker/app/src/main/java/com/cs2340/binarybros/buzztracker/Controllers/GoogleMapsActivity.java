@@ -12,9 +12,7 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.MarkerOptions;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -56,7 +54,8 @@ public class GoogleMapsActivity extends FragmentActivity implements OnMapReadyCa
             for (int i = 1; i < locList.size(); i++) { //map subsequent locations
                 latLng = Location.mapLocation(locList.get(i), mMap);
             }
-        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 9.0f)); //moves camera to last added loc
+        //moves camera to last added loc
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 9.0f));
         Log.d("MAPS CHECK", "map should be visible and created");
         } catch (NullPointerException e) {
             Toast.makeText(GoogleMapsActivity.this,

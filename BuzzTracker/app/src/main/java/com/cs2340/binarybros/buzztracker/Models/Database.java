@@ -1,26 +1,20 @@
 package com.cs2340.binarybros.buzztracker.Models;
 
-import android.content.Context;
 import android.util.Log;
 
-import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
-import java.io.FileReader;
 import java.io.IOException;
 import java.io.ObjectInputStream;
-import java.io.ObjectOutput;
 import java.io.ObjectOutputStream;
-import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 
 
 /**
- * This is a singleton class that acts like a local data base. This is not persistent, but it holds information
- * as long as the app is running
+ * This is a singleton class that acts like a local data base. This is not persistent,
+ * but it holds information as long as the app is running
  */
 public final class Database {
     //Filename for writing and reading data
@@ -52,8 +46,10 @@ public final class Database {
      * @return Our local Database
      */
     public static Database getInstance() {
-        if (INSTANCE == null) {
-            INSTANCE = new Database();
+        synchronized(Database.class) {
+            if (INSTANCE == null) {
+                INSTANCE = new Database();
+            }
         }
         return(INSTANCE);
     }
@@ -143,6 +139,18 @@ public final class Database {
             success = false;
         }
         return success;
+    }
+    /*
+     * This method checks how many user do we have
+     */
+    public int countUser() {
+        int numofuser = 0;
+        for (User data: userList) {
+            if (data!= null) {
+                numofuser++;
+            }
+        }
+        return numofuser;
     }
 
 

@@ -1,15 +1,10 @@
 package com.cs2340.binarybros.buzztracker.Controllers;
 
-import android.app.FragmentTransaction;
-import android.content.Intent;
+
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v4.app.Fragment;
 import android.view.View;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.ListView;
 
 import com.cs2340.binarybros.buzztracker.Models.Database;
 import com.cs2340.binarybros.buzztracker.Models.Location;
@@ -28,10 +23,12 @@ public class LocationManageActivity extends AppCompatActivity {
         setContentView(R.layout.activity_location_manage);
 
         /* Grab the location list from facade to be populated */
-        this.locationList = Database.getInstance().getLocationList(); // Pulls the non-persistent ArrayList of locations
+        // Pulls the non-persistent ArrayList of locations
+        this.locationList = Database.getInstance().getLocationList();
 
         LocationFragment locationFragment = new LocationFragment();
-        getSupportFragmentManager().beginTransaction().add(R.id.container, locationFragment).commit();
+        getSupportFragmentManager().beginTransaction().add(R.id.container,
+                locationFragment).commit();
 
         FloatingActionButton addBtn = findViewById(R.id.add_btn);
 
@@ -44,7 +41,8 @@ public class LocationManageActivity extends AppCompatActivity {
                 Collection<Location> fileContents = (ArrayList) csvFile.read();
                 locationList.addAll(fileContents);
                 LocationFragment locationFragment = new LocationFragment();
-                getSupportFragmentManager().beginTransaction().add(R.id.container, locationFragment).commit();
+                getSupportFragmentManager().beginTransaction().add(R.id.container,
+                        locationFragment).commit();
             }
         });
 

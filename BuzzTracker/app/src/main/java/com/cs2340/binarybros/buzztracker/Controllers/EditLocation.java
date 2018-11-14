@@ -7,20 +7,15 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 
-import com.cs2340.binarybros.buzztracker.Models.Database;
 import com.cs2340.binarybros.buzztracker.Models.Location;
 
-import java.lang.reflect.Array;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
 
 
 public class EditLocation extends AppCompatActivity {
     private final String[] stateList = {"AK","AL","AR","AZ","CA","CO","CT","DC","DE","FL",
-            "GA","GU","HI","IA","ID", "IL","IN","KS","KY","LA","MA","MD","ME","MH","MI","MN","MO","MS",
-            "MT","NC","ND","NE","NH","NJ","NM","NV","NY", "OH","OK","OR","PA","PR","PW","RI","SC","SD",
-            "TN","TX","UT","VA","VI","VT","WA","WI","WV","WY"};
+            "GA","GU","HI","IA","ID", "IL","IN","KS","KY","LA","MA","MD","ME","MH","MI","MN","MO",
+            "MS", "MT","NC","ND","NE","NH","NJ","NM","NV","NY", "OH","OK","OR","PA","PR","PW","RI",
+            "SC","SD", "TN","TX","UT","VA","VI","VT","WA","WI","WV","WY"};
     private final String[] types = {"Drop Off", "Store", "Warehouse"};
 
     /**

@@ -1,6 +1,8 @@
 package com.cs2340.binarybros.buzztracker.Models;
 
 import java.io.Serializable;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class User implements Serializable {
 
@@ -12,9 +14,12 @@ public class User implements Serializable {
     private String employeeLocation;
     private int employeeID;
 
+    // instance data for Daniel's JUnit Method
+    private boolean hasValidEmail;
 
-    public User(String type, String nameInput, String usernameInput, String passwordInput, String emailInput,
-                String employeeLocation, int employeeID) {
+
+    public User(String type, String nameInput, String usernameInput, String passwordInput,
+                String emailInput, String employeeLocation, int employeeID) {
         this.type = type;
         this.name = nameInput;
         this.username = usernameInput;
@@ -22,6 +27,7 @@ public class User implements Serializable {
         this.email = emailInput;
         this.employeeLocation = employeeLocation;
         this.employeeID = employeeID;
+        this.hasValidEmail = emailIsValid(email);
     }
 
     public String getType() {
@@ -66,7 +72,8 @@ public class User implements Serializable {
 
     public String getEmployeeLocation() { return this.employeeLocation;}
 
-    public void setEmployeeLocation(String employeeLocation) { this.employeeLocation = employeeLocation;}
+    public void setEmployeeLocation(String employeeLocation) {
+        this.employeeLocation = employeeLocation; }
 
     public int getEmployeeNumber() {
         return employeeID;
@@ -74,6 +81,27 @@ public class User implements Serializable {
 
     public void setEmployeeNumber(int employeeNumber) {
         this.employeeID = employeeNumber;
+    }
+
+    public boolean isHasValidEmail() {
+        return hasValidEmail;
+    }
+
+    /*
+     * This method checks to see if the email passed in is of a valid format
+     */
+    public boolean emailIsValid(String email)
+    {
+        Pattern pattern = Pattern.compile("^[_A-Za-z0-9-]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$");
+        Matcher matcher = pattern.matcher(email);
+
+        if (email.isEmpty()) {
+            return false;
+        } else if (!matcher.matches()) {
+            return false;
+        } else {
+            return true;
+        }
     }
 
 
