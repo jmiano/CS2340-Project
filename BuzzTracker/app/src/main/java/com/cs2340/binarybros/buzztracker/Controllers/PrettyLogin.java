@@ -38,8 +38,8 @@ public class PrettyLogin extends AppCompatActivity {
             }
         });
 
-
-        loginList = Database.getInstance().getUserList(); // This gets our non-persistent list of registered users
+        // This gets our non-persistent list of registered users
+        loginList = Database.getInstance().getUserList();
         username = findViewById(R.id.username_field);
         password = findViewById(R.id.password_field);
 
@@ -69,8 +69,9 @@ public class PrettyLogin extends AppCompatActivity {
             }
             i++;
         }
-
-       if (validLogin){//this is automatically bypassing the login screen for testing purposes - should have "validLogin" in the expression
+        //this is automatically bypassing the login screen for testing purposes
+        // should have "validLogin" in the expression
+       if (validLogin){
             Database.getInstance().setCurrentUser(loginList.get(i - 1));
            startActivity(new Intent(PrettyLogin.this, HomeScreen.class));
         } else {

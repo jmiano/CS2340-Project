@@ -23,10 +23,12 @@ public class LocationManageActivity extends AppCompatActivity {
         setContentView(R.layout.activity_location_manage);
 
         /* Grab the location list from facade to be populated */
-        this.locationList = Database.getInstance().getLocationList(); // Pulls the non-persistent ArrayList of locations
+        // Pulls the non-persistent ArrayList of locations
+        this.locationList = Database.getInstance().getLocationList();
 
         LocationFragment locationFragment = new LocationFragment();
-        getSupportFragmentManager().beginTransaction().add(R.id.container, locationFragment).commit();
+        getSupportFragmentManager().beginTransaction().add(R.id.container,
+                locationFragment).commit();
 
         FloatingActionButton addBtn = findViewById(R.id.add_btn);
 
@@ -39,7 +41,8 @@ public class LocationManageActivity extends AppCompatActivity {
                 Collection<Location> fileContents = (ArrayList) csvFile.read();
                 locationList.addAll(fileContents);
                 LocationFragment locationFragment = new LocationFragment();
-                getSupportFragmentManager().beginTransaction().add(R.id.container, locationFragment).commit();
+                getSupportFragmentManager().beginTransaction().add(R.id.container,
+                        locationFragment).commit();
             }
         });
 

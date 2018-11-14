@@ -13,8 +13,8 @@ import java.util.List;
 
 
 /**
- * This is a singleton class that acts like a local data base. This is not persistent, but it holds information
- * as long as the app is running
+ * This is a singleton class that acts like a local data base. This is not persistent,
+ * but it holds information as long as the app is running
  */
 public final class Database {
     //Filename for writing and reading data
@@ -139,6 +139,18 @@ public final class Database {
             success = false;
         }
         return success;
+    }
+    /*
+     * This method checks how many user do we have
+     */
+    public int countUser() {
+        int numofuser = 0;
+        for (User data: userList) {
+            if (data!= null) {
+                numofuser++;
+            }
+        }
+        return numofuser;
     }
 
 

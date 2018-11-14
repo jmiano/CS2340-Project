@@ -73,7 +73,8 @@ public class HomeScreen extends AppCompatActivity {
         saveAllDataBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                File file = new File(HomeScreen.this.getFilesDir(), Database.DEFAULT_BINARY_FILE_NAME);
+                File file = new File(HomeScreen.this.getFilesDir(),
+                        Database.DEFAULT_BINARY_FILE_NAME);
                 Database.getInstance().saveBinary(file);
                 Log.d("HomeScreen", "File has been created");
 
