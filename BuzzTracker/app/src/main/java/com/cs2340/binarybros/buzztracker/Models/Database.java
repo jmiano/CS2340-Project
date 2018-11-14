@@ -19,8 +19,8 @@ import java.util.List;
 
 
 /**
- * This is a singleton class that acts like a local data base. This is not persistent, but it holds information
- * as long as the app is running
+ * This is a singleton class that acts like a local data base. This is not persistent,
+ * but it holds information as long as the app is running
  */
 public final class Database {
     //Filename for writing and reading data

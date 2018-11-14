@@ -11,7 +11,6 @@ import android.widget.TextView;
 import com.cs2340.binarybros.buzztracker.Models.Database;
 import com.cs2340.binarybros.buzztracker.Models.Donation;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class AddDonation extends AppCompatActivity {
@@ -20,8 +19,8 @@ public class AddDonation extends AppCompatActivity {
     private EditText LocationField;
     private EditText CategoryField;
     private EditText PriceField;
-    private EditText ShortdescriptionField;
-    private EditText LongdescriptionField;
+    private EditText ShortDescriptionField;
+    private EditText LongDescriptionField;
     private List<Donation> donationList;
 
     private Donation donation;
@@ -40,8 +39,8 @@ public class AddDonation extends AppCompatActivity {
         LocationField = findViewById(R.id.location);
         CategoryField = findViewById(R.id.category);
         PriceField = findViewById(R.id.price);
-        ShortdescriptionField = findViewById(R.id.shortDescription);
-        LongdescriptionField = findViewById(R.id.longDescription);
+        ShortDescriptionField = findViewById(R.id.shortDescription);
+        LongDescriptionField = findViewById(R.id.longDescription);
 
         /*
           Get other data
@@ -70,8 +69,10 @@ public class AddDonation extends AppCompatActivity {
             LocationField.setText(donation.getLocation(), TextView.BufferType.EDITABLE);
             CategoryField.setText(donation.getCategory(), TextView.BufferType.EDITABLE);
             PriceField.setText(donation.getPrice(), TextView.BufferType.EDITABLE);
-            ShortdescriptionField.setText(donation.getShortdescription(), TextView.BufferType.EDITABLE);
-            LongdescriptionField.setText(donation.getLongdescription(), TextView.BufferType.EDITABLE);
+            ShortDescriptionField.setText(donation.getShortDescription(),
+                    TextView.BufferType.EDITABLE);
+            LongDescriptionField.setText(donation.getLongDescription(),
+                    TextView.BufferType.EDITABLE);
         }
 
         /*
@@ -103,10 +104,10 @@ public class AddDonation extends AppCompatActivity {
         String location = LocationField.getText().toString();
         String category = CategoryField.getText().toString();
         String price = PriceField.getText().toString();
-        String shortdescription = ShortdescriptionField.getText().toString();
-        String longdescription = LongdescriptionField.getText().toString();
-        donationList.add(new Donation(title, timestamp, location, category, price, shortdescription,
-                longdescription));
+        String shortDescription = ShortDescriptionField.getText().toString();
+        String longDescription = LongDescriptionField.getText().toString();
+        donationList.add(new Donation(title, timestamp, location, category, price, shortDescription,
+                longDescription));
     }
 
     /**
@@ -119,8 +120,8 @@ public class AddDonation extends AppCompatActivity {
         donation.setLocation(LocationField.getText().toString());
         donation.setCategory(CategoryField.getText().toString());
         donation.setPrice(PriceField.getText().toString());
-        donation.setShortdescription(ShortdescriptionField.getText().toString());
-        donation.setLongdescription(LongdescriptionField.getText().toString());
+        donation.setShortDescription(ShortDescriptionField.getText().toString());
+        donation.setLongDescription(LongDescriptionField.getText().toString());
     }
 
     /**

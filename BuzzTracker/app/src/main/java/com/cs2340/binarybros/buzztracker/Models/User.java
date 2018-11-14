@@ -13,8 +13,8 @@ public class User implements Serializable {
     private int employeeID;
 
 
-    public User(String type, String nameInput, String usernameInput, String passwordInput, String emailInput,
-                String employeeLocation, int employeeID) {
+    public User(String type, String nameInput, String usernameInput, String passwordInput,
+                String emailInput, String employeeLocation, int employeeID) {
         this.type = type;
         this.name = nameInput;
         this.username = usernameInput;
@@ -66,7 +66,8 @@ public class User implements Serializable {
 
     public String getEmployeeLocation() { return this.employeeLocation;}
 
-    public void setEmployeeLocation(String employeeLocation) { this.employeeLocation = employeeLocation;}
+    public void setEmployeeLocation(String employeeLocation) {
+        this.employeeLocation = employeeLocation; }
 
     public int getEmployeeNumber() {
         return employeeID;

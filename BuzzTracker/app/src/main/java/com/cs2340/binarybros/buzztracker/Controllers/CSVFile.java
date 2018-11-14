@@ -22,7 +22,8 @@ public class CSVFile {
         List resultList = new ArrayList();
         BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
         /* Grab the location list from facade to be populated */
-        this.locationList = Database.getInstance().getLocationList(); // Pulls the non-persistent ArrayList of locations
+        // Pulls the non-persistent ArrayList of locations
+        this.locationList = Database.getInstance().getLocationList();
         try {
             String csvLine;
             reader.readLine();
