@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CSVFile {
-    InputStream inputStream;
+    private final InputStream inputStream;
     private List<Location> locationList;
 
     public CSVFile(InputStream inputStream){
@@ -19,7 +19,7 @@ public class CSVFile {
     }
 
     public List read(){
-        List resultList = new ArrayList();
+        List<Location> resultList = new ArrayList<>();
         BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
         /* Grab the location list from facade to be populated */
         this.locationList = Database.getInstance().getLocationList(); // Pulls the non-persistent ArrayList of locations

@@ -1,19 +1,13 @@
 package com.cs2340.binarybros.buzztracker.Models;
 
-import android.content.Context;
 import android.util.Log;
 
-import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
-import java.io.FileReader;
 import java.io.IOException;
 import java.io.ObjectInputStream;
-import java.io.ObjectOutput;
 import java.io.ObjectOutputStream;
-import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -52,8 +46,10 @@ public final class Database {
      * @return Our local Database
      */
     public static Database getInstance() {
-        if (INSTANCE == null) {
-            INSTANCE = new Database();
+        synchronized(Database.class) {
+            if (INSTANCE == null) {
+                INSTANCE = new Database();
+            }
         }
         return(INSTANCE);
     }

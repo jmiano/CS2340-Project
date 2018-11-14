@@ -12,11 +12,8 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.cs2340.binarybros.buzztracker.Models.Database;
-import com.cs2340.binarybros.buzztracker.Models.LocationEmployee;
 import com.cs2340.binarybros.buzztracker.Models.User;
 
-import java.lang.reflect.Array;
-import java.util.ArrayList;
 import java.util.List;
 
 public class PrettyLogin extends AppCompatActivity {

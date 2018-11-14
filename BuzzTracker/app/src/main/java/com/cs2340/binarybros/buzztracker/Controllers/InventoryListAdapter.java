@@ -11,14 +11,13 @@ import android.widget.TextView;
 
 import com.cs2340.binarybros.buzztracker.Models.Donation;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 
 public class InventoryListAdapter extends ArrayAdapter<Donation> {
     private final Context listContext;
-    int mResource;
+    private final int mResource;
 
     private final List<Donation> donations;
 

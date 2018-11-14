@@ -15,7 +15,6 @@ import android.widget.ListView;
 import com.cs2340.binarybros.buzztracker.Models.Database;
 import com.cs2340.binarybros.buzztracker.Models.Location;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Objects;
 
