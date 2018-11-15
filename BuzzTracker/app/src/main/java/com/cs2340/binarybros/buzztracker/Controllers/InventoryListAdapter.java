@@ -15,11 +15,9 @@ import java.util.List;
 import java.util.Objects;
 
 
-public class InventoryListAdapter extends ArrayAdapter<Donation> {
+class InventoryListAdapter extends ArrayAdapter<Donation> {
     private final Context listContext;
     private final int mResource;
-
-    private final List<Donation> donations;
 
 
     static class ViewHolder {
@@ -35,7 +33,6 @@ public class InventoryListAdapter extends ArrayAdapter<Donation> {
         super(listContext, resource, objects);
         this.listContext = listContext;
         mResource = resource;
-        donations = objects;
     }
 
     @NonNull

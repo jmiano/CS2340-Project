@@ -10,7 +10,7 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CSVFile {
+class CSVFile {
     private final InputStream inputStream;
     private List<Location> locationList;
 
@@ -46,13 +46,11 @@ public class CSVFile {
         catch (IOException ex) {
             throw new RuntimeException("Error in reading CSV file: "+ex);
         }
-        finally {
-            try {
-                inputStream.close();
-            }
-            catch (IOException e) {
-                throw new RuntimeException("Error while closing input stream: "+e);
-            }
+        try {
+            inputStream.close();
+        }
+        catch (IOException e) {
+            throw new RuntimeException("Error while closing input stream: "+e);
         }
         return resultList;
     }

@@ -16,7 +16,7 @@ import com.google.android.gms.maps.model.LatLng;
 import java.util.List;
 import java.util.Objects;
 
-@SuppressWarnings("MagicNumber")
+
 public class GoogleMapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap;
@@ -57,10 +57,6 @@ public class GoogleMapsActivity extends FragmentActivity implements OnMapReadyCa
         //moves camera to last added loc
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 9.0f));
         Log.d("MAPS CHECK", "map should be visible and created");
-        } catch (NullPointerException e) {
-            Toast.makeText(GoogleMapsActivity.this,
-                    "No locations to display, please load locations",
-                    Toast.LENGTH_LONG).show();
         } catch (Exception e) {
             Toast.makeText(GoogleMapsActivity.this,
                     "Unknown error, please reload locations and/or reload app",

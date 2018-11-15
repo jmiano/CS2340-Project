@@ -18,10 +18,8 @@ import java.util.List;
 
 public class PrettyLogin extends AppCompatActivity {
 
-    RelativeLayout relay1;
     private EditText username;
     private EditText password;
-    private TextView attempts;
     private List<User> loginList;
 
 

@@ -26,12 +26,6 @@ public class LocationFragment extends Fragment {
     private ArrayList<Location> locationList;
     private Location location;
 
-
-    public LocationFragment() {
-        // Required empty public constructor
-    }
-
-
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {

@@ -35,11 +35,6 @@ public class EditLocation extends AppCompatActivity {
      */
     private Location location;
 
-    /**
-     * flag for whether this is a new location or if we are editing a location
-     */
-    private boolean editing;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

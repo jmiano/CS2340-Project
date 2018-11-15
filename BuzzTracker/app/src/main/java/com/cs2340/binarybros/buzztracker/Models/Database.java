@@ -58,16 +58,16 @@ public final class Database {
         return userList;
     }
 
-    public void setUserList(ArrayList<User> userList) {
-        this.userList = userList;
+    public void setUserList(ArrayList<User> thisList) {
+        this.userList = thisList;
     }
 
     public ArrayList<Location> getLocationList() {
         return locationList;
     }
 
-    public void setLocationList(ArrayList<Location> locationList) {
-        this.locationList = locationList;
+    public void setLocationList(ArrayList<Location> thisList) {
+        this.locationList = thisList;
     }
 
     public User getCurrentUser() {
@@ -144,13 +144,13 @@ public final class Database {
      * This method checks how many user do we have
      */
     public int countUser() {
-        int numofuser = 0;
+        int numUser = 0;
         for (User data: userList) {
             if (data!= null) {
-                numofuser++;
+                numUser++;
             }
         }
-        return numofuser;
+        return numUser;
     }
 
 
