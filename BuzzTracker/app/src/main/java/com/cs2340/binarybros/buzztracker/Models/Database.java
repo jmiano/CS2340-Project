@@ -141,12 +141,12 @@ public final class Database {
         return success;
     }
     /*
-     * This method checks how many user do we have
+     * This method checks how many valid user do we have
      */
     public int countUser() {
         int numofuser = 0;
         for (User data: userList) {
-            if (data!= null) {
+            if (data.getUsername()!= null) {
                 numofuser++;
             }
         }
