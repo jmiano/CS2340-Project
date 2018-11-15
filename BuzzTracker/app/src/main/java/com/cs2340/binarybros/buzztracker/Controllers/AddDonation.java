@@ -11,6 +11,7 @@ import android.widget.TextView;
 import com.cs2340.binarybros.buzztracker.Models.Database;
 import com.cs2340.binarybros.buzztracker.Models.Donation;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class AddDonation extends AppCompatActivity {
@@ -21,7 +22,7 @@ public class AddDonation extends AppCompatActivity {
     private EditText PriceField;
     private EditText ShortDescriptionField;
     private EditText LongDescriptionField;
-    private List<Donation> donationList;
+    private ArrayList<Donation> donationList;
 
     private Donation donation;
     private int donationItemId;

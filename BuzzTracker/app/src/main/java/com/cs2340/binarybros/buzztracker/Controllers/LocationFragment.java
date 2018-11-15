@@ -10,12 +10,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.ListAdapter;
 import android.widget.ListView;
 
 import com.cs2340.binarybros.buzztracker.Models.Database;
 import com.cs2340.binarybros.buzztracker.Models.Location;
 
-import java.util.List;
+import java.util.ArrayList;
 import java.util.Objects;
 
 
@@ -23,7 +24,7 @@ import java.util.Objects;
  * A simple {@link Fragment} subclass.
  */
 public class LocationFragment extends Fragment {
-    private List<Location> locationList;
+    private ArrayList<Location> locationList;
     private Location location;
 
     @Override
@@ -34,7 +35,7 @@ public class LocationFragment extends Fragment {
         this.locationList = Database.getInstance().getLocationList();
         // these three are only for test
         ListView listView = view.findViewById(R.id.locationmenu);
-        ArrayAdapter<Location> listViewAdapter = new ArrayAdapter<>(
+        ListAdapter listViewAdapter = new ArrayAdapter<>(
                 Objects.requireNonNull(getActivity()),
                 android.R.layout.simple_list_item_1,
                 locationList

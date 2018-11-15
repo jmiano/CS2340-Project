@@ -12,10 +12,9 @@ import com.cs2340.binarybros.buzztracker.Models.Location;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.List;
 
 public class LocationManageActivity extends AppCompatActivity {
-    private List<Location> locationList;
+    private ArrayList<Location> locationList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

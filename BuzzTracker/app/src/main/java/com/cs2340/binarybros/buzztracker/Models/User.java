@@ -13,6 +13,9 @@ public class User implements Serializable {
     private String email;
     private String employeeLocation;
     private int employeeID;
+    private static final int MIN_PASSWORD_LENGTH = 8;
+    private static final int MAX_PASSWORD_LENGTH = 8;
+
 
 
 
@@ -100,11 +103,11 @@ public class User implements Serializable {
 
 
     public boolean passwordIsValid() {
-        int min = 8;
-        int max = 16;
+        int min = MIN_PASSWORD_LENGTH;
+        int max = MAX_PASSWORD_LENGTH;
         int pwdL = password.length();
 
-        if (pwdL >= min && pwdL <= max) {
+        if ((pwdL >= min) && (pwdL <= max)) {
             return true;
         }
         return false;

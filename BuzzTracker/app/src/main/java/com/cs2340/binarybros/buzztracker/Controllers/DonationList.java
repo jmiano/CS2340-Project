@@ -7,14 +7,16 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
-import java.util.List;
+
+import java.util.ArrayList;
+
 import com.cs2340.binarybros.buzztracker.Models.Donation;
 
 class DonationList extends ArrayAdapter {
     private Activity context;
-    private List<Donation> donationList;
+    private ArrayList<Donation> donationList;
 
-    public DonationList(Activity context, List<Donation> thisList) {
+    public DonationList(Activity context, ArrayList<Donation> thisList) {
         super(context, R.layout.inventory_list_adapterview, thisList);
         this.context = context;
         this.donationList = thisList;

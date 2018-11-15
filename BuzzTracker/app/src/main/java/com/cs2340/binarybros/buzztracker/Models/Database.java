@@ -7,9 +7,9 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
+import java.io.ObjectOutput;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
-import java.util.List;
 
 
 /**
@@ -23,13 +23,13 @@ public final class Database {
     private static Database INSTANCE;
 
     //ArrayList that stores the user credential that are registered to login.
-    private List<User> userList;
+    private ArrayList<User> userList;
 
     //ArrayList that stores the locations that are entered
-    private List<Location> locationList;
+    private ArrayList<Location> locationList;
 
     //ArrayList that stores the locations that are entered
-    private List<Donation> donationList;
+    private ArrayList<Donation> donationList;
 
     //String indicating the current users' type
     private static User currentUser;
@@ -54,7 +54,7 @@ public final class Database {
         return(INSTANCE);
     }
 
-    public List<User> getUserList() {
+    public ArrayList<User> getUserList() {
         return userList;
     }
 
@@ -62,7 +62,7 @@ public final class Database {
         this.userList = thisList;
     }
 
-    public List<Location> getLocationList() {
+    public ArrayList<Location> getLocationList() {
         return locationList;
     }
 
@@ -78,7 +78,7 @@ public final class Database {
         Database.currentUser = currentUser;
     }
 
-    public List<Donation> getDonationList() { return donationList; }
+    public ArrayList<Donation> getDonationList() { return donationList; }
 
     public  void initialize() {
         userList = new ArrayList<>(10);
@@ -126,7 +126,7 @@ public final class Database {
              */
 
 
-            ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(file));
+            ObjectOutput out = new ObjectOutputStream(new FileOutputStream(file));
             // We basically can save our entire data model with one write, since this will follow
             // all the links and pointers to save everything.  Just save the top level object.
             out.writeObject(userList);

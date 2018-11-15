@@ -191,15 +191,15 @@ public class Location implements Serializable {
         if (location == null) {
             return false;
         }
-        if (location.getLatitude() == null || location.getLongitude() == null) {
+        if ((location.getLatitude() == null) || (location.getLongitude() == null)) {
             return false;
         }
         try {
             double latitude = Double.parseDouble(location.getLatitude());
             double longitude = Double.parseDouble(location.getLongitude());
-            if (latitude < 0 || latitude > 90) {
+            if ((latitude < 0) || (latitude > 90)) {
                 return false;
-            } else if (longitude < -180 || longitude > 180) {
+            } else if ((longitude < -180) || (longitude > 180)) {
                 return false;
             } else {
                 return true;

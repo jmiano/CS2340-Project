@@ -12,13 +12,13 @@ import android.widget.EditText;
 import com.cs2340.binarybros.buzztracker.Models.Database;
 import com.cs2340.binarybros.buzztracker.Models.User;
 
-import java.util.List;
+import java.util.ArrayList;
 
 public class PrettyLogin extends AppCompatActivity {
 
     private EditText username;
     private EditText password;
-    private List<User> loginList;
+    private ArrayList<User> loginList;
 
 
     @Override

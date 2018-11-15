@@ -11,6 +11,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.Toast;
@@ -22,13 +23,14 @@ import com.cs2340.binarybros.buzztracker.Models.User;
 
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 public class Inventory extends AppCompatActivity {
 
-    private List<Donation> donationArrayList;
-    private List<String> categoryFilterList;
-    private List<Donation> finalDonationArrayList;
+    private ArrayList<Donation> donationArrayList;
+    private ArrayList<String> categoryFilterList;
+    private ArrayList<Donation> finalDonationArrayList;
     private Donation donation;
     private int donationItemId;
     private Button categoryFilterBtn;
@@ -36,7 +38,7 @@ public class Inventory extends AppCompatActivity {
     private Button clearFiltersBtn;
     private Spinner locationSpinner;
     private EditText searchFilter;
-    private List<Location> locationArrayList;
+    private ArrayList<Location> locationArrayList;
     private String[] locationListTitles;
     private User currentUser;
     private InventoryListAdapter inventoryAdapter;
@@ -287,7 +289,7 @@ public class Inventory extends AppCompatActivity {
                             categoryFilterList);
                 }
 
-                InventoryListAdapter newInventoryAdapter = new InventoryListAdapter(
+                ListAdapter newInventoryAdapter = new InventoryListAdapter(
                         Inventory.this, R.layout.inventory_list_adapterview,
                         finalDonationArrayList);
                 inventoryListView.setAdapter(newInventoryAdapter);
@@ -306,12 +308,12 @@ public class Inventory extends AppCompatActivity {
      * @param categoriesSelected blah
      * @return blah
      */
-    private List<Donation> filterDonationListByCategory(List<Donation> donationList,
-                                                             List<String> categoriesSelected) {
+    private ArrayList<Donation> filterDonationListByCategory(ArrayList<Donation> donationList,
+                                                             Collection<String> categoriesSelected) {
         if ((categoriesSelected == null) || (categoriesSelected.size() <= 0)) {
             return donationList;
         } else if (donationList != null) {
-            List<Donation> returnDonationList = new ArrayList<>();
+            ArrayList<Donation> returnDonationList = new ArrayList<>();
             for (Donation donation: donationList) {
                 if (categoriesSelected.contains(donation.getCategory())) {
                     returnDonationList.add(donation);
@@ -329,7 +331,7 @@ public class Inventory extends AppCompatActivity {
      * @param donationList blah
      * @return blah
      */
-    private List<Donation> filterDonationListByLocation(List<Donation> donationList) {
+    private ArrayList<Donation> filterDonationListByLocation(ArrayList<Donation> donationList) {
         if ("ALL LOCATIONS".equals(locationSpinner.getSelectedItem().toString())) {
             return donationList;
         } else if ((donationList != null) && (locationSpinner.getSelectedItem() != null) &&
@@ -352,7 +354,7 @@ public class Inventory extends AppCompatActivity {
      * @param donationList list to be filtered
      * @return filtered donation list
      */
-    private List<Donation> filterDonationListBySearch(List<Donation> donationList) {
+    private ArrayList<Donation> filterDonationListBySearch(ArrayList<Donation> donationList) {
         String filterText = searchFilter.getText().toString();
         if (filterText.isEmpty()) {
             return donationList;

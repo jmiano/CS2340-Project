@@ -12,7 +12,7 @@ import java.util.List;
 
 class CSVFile {
     private final InputStream inputStream;
-    private List<Location> locationList;
+    private ArrayList<Location> locationList;
 
     public CSVFile(InputStream inputStream){
         this.inputStream = inputStream;

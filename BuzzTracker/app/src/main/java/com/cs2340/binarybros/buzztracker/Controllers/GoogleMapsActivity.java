@@ -13,7 +13,7 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 
-import java.util.List;
+import java.util.ArrayList;
 import java.util.Objects;
 
 
@@ -44,7 +44,7 @@ public class GoogleMapsActivity extends FragmentActivity implements OnMapReadyCa
     @Override
     public void onMapReady(GoogleMap googleMap) {
         //get location data
-        List<Location> locList = Database.getInstance().getLocationList();
+        ArrayList<Location> locList = Database.getInstance().getLocationList();
         mMap = googleMap;
 
         LatLng latLng; //declares arbitrary latLng for looping
@@ -55,6 +55,7 @@ public class GoogleMapsActivity extends FragmentActivity implements OnMapReadyCa
                 latLng = Location.mapLocation(locList.get(i), mMap);
             }
         //moves camera to last added loc
+            //9.0f is not a magic number, it's just the correct zoom for our markers
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 9.0f));
         Log.d("MAPS CHECK", "map should be visible and created");
         } catch (Exception e) {
