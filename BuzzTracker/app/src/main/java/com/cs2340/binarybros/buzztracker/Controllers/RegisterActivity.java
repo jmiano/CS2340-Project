@@ -17,6 +17,7 @@ import com.cs2340.binarybros.buzztracker.Models.User;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 public class RegisterActivity extends AppCompatActivity {
 
@@ -29,7 +30,7 @@ public class RegisterActivity extends AppCompatActivity {
     private Spinner daySpinner;
     private Spinner yearSpinner;
     private Spinner accountTypeSpinner;
-    private ArrayList<User> loginList;
+    private List<User> loginList;
 
 
     @Override

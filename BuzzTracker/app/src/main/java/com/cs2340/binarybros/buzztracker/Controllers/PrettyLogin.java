@@ -13,12 +13,13 @@ import com.cs2340.binarybros.buzztracker.Models.Database;
 import com.cs2340.binarybros.buzztracker.Models.User;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class PrettyLogin extends AppCompatActivity {
 
     private EditText username;
     private EditText password;
-    private ArrayList<User> loginList;
+    private List<User> loginList;
 
 
     @Override

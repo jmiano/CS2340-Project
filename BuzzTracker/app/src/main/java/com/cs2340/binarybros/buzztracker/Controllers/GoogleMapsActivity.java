@@ -14,6 +14,7 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 
@@ -44,7 +45,7 @@ public class GoogleMapsActivity extends FragmentActivity implements OnMapReadyCa
     @Override
     public void onMapReady(GoogleMap googleMap) {
         //get location data
-        ArrayList<Location> locList = Database.getInstance().getLocationList();
+        List<Location> locList = Database.getInstance().getLocationList();
         mMap = googleMap;
 
         LatLng latLng; //declares arbitrary latLng for looping

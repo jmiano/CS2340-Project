@@ -9,12 +9,13 @@ import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import com.cs2340.binarybros.buzztracker.Models.Donation;
 
 class DonationList extends ArrayAdapter {
     private Activity context;
-    private ArrayList<Donation> donationList;
+    private List<Donation> donationList;
 
     public DonationList(Activity context, ArrayList<Donation> thisList) {
         super(context, R.layout.inventory_list_adapterview, thisList);

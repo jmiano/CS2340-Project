@@ -29,7 +29,7 @@ import java.util.List;
 public class Inventory extends AppCompatActivity {
 
     private ArrayList<Donation> donationArrayList;
-    private ArrayList<String> categoryFilterList;
+    private List<String> categoryFilterList;
     private ArrayList<Donation> finalDonationArrayList;
     private Donation donation;
     private int donationItemId;
@@ -38,7 +38,7 @@ public class Inventory extends AppCompatActivity {
     private Button clearFiltersBtn;
     private Spinner locationSpinner;
     private EditText searchFilter;
-    private ArrayList<Location> locationArrayList;
+    private List<Location> locationArrayList;
     private String[] locationListTitles;
     private User currentUser;
     private InventoryListAdapter inventoryAdapter;

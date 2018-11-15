@@ -22,7 +22,7 @@ public class AddDonation extends AppCompatActivity {
     private EditText PriceField;
     private EditText ShortDescriptionField;
     private EditText LongDescriptionField;
-    private ArrayList<Donation> donationList;
+    private List<Donation> donationList;
 
     private Donation donation;
     private int donationItemId;
