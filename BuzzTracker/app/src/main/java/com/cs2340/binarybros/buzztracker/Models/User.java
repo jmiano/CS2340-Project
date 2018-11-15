@@ -105,7 +105,6 @@ public class User implements Serializable {
         int pwdL = password.length();
 
         if (pwdL >= min && pwdL <= max) {
-            System.out.print("u good fam");
             return true;
         }
         return false;

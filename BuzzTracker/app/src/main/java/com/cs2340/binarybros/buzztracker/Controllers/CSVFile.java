@@ -28,7 +28,7 @@ class CSVFile {
             String csvLine;
             reader.readLine();
             while ((csvLine = reader.readLine()) != null) {
-                String[] row = csvLine.split(",");
+                String[] row = csvLine.split(","); //result of assignment used here
 
                 //Prevents duplicates (adding the same file multiple times)
                 if (!locationList.contains(new Location(
