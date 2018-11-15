@@ -103,11 +103,9 @@ public class User implements Serializable {
 
 
     public boolean passwordIsValid() {
-        int min = MIN_PASSWORD_LENGTH;
-        int max = MAX_PASSWORD_LENGTH;
         int pwdL = password.length();
 
-        if ((pwdL >= min) && (pwdL <= max)) {
+        if ((pwdL >= MIN_PASSWORD_LENGTH) && (pwdL <= MAX_PASSWORD_LENGTH)) {
             return true;
         }
         return false;

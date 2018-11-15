@@ -59,7 +59,7 @@ public final class Database {
         return userList;
     }
 
-    public void setUserList(ArrayList<User> thisList) {
+    public void setUserList(List<User> thisList) {
         this.userList = thisList;
     }
 
