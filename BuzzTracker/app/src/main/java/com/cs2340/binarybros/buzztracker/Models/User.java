@@ -105,4 +105,15 @@ public class User implements Serializable {
     }
 
 
+    public boolean passwordIsValid() {
+        int min = 8;
+        int max = 16;
+        int pwdL = password.length();
+
+        if (pwdL >= min && pwdL <= max) {
+            System.out.print("u good fam");
+            return true;
+        }
+        return false;
+    }
 }
