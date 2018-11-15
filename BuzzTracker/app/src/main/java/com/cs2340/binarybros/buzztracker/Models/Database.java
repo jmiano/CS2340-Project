@@ -23,13 +23,13 @@ public final class Database {
     private static Database INSTANCE;
 
     //ArrayList that stores the user credential that are registered to login.
-    private ArrayList<User> userList;
+    private List<User> userList;
 
     //ArrayList that stores the locations that are entered
-    private ArrayList<Location> locationList;
+    private List<Location> locationList;
 
     //ArrayList that stores the locations that are entered
-    private ArrayList<Donation> donationList;
+    private List<Donation> donationList;
 
     //String indicating the current users' type
     private static User currentUser;
@@ -62,7 +62,7 @@ public final class Database {
         this.userList = thisList;
     }
 
-    public ArrayList<Location> getLocationList() {
+    public List<Location> getLocationList() {
         return locationList;
     }
 
@@ -78,7 +78,7 @@ public final class Database {
         Database.currentUser = currentUser;
     }
 
-    public ArrayList<Donation> getDonationList() { return donationList; }
+    public List<Donation> getDonationList() { return donationList; }
 
     public  void initialize() {
         userList = new ArrayList<>(10);

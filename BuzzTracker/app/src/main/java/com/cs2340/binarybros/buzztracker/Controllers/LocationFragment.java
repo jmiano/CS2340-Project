@@ -15,7 +15,7 @@ import android.widget.ListView;
 import com.cs2340.binarybros.buzztracker.Models.Database;
 import com.cs2340.binarybros.buzztracker.Models.Location;
 
-import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 
@@ -23,7 +23,7 @@ import java.util.Objects;
  * A simple {@link Fragment} subclass.
  */
 public class LocationFragment extends Fragment {
-    private ArrayList<Location> locationList;
+    private List<Location> locationList;
     private Location location;
 
     @Override

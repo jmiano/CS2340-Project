@@ -67,7 +67,7 @@ public class Donation implements Serializable {
         this.title = title;
     }
 
-    public String getTimestamp() {
+    public CharSequence getTimestamp() {
         return timestamp;
     }
 
@@ -82,10 +82,10 @@ public class Donation implements Serializable {
         return price;
     }
 
-    public String getShortDescription() {
+    public CharSequence getShortDescription() {
         return shortDescription;
     }
-    public String getLongDescription(){
+    public CharSequence getLongDescription(){
         return longDescription;
     }
 

@@ -26,9 +26,9 @@ import java.util.List;
 
 public class Inventory extends AppCompatActivity {
 
-    private ArrayList<Donation> donationArrayList;
+    private List<Donation> donationArrayList;
     private List<String> categoryFilterList;
-    private ArrayList<Donation> finalDonationArrayList;
+    private List<Donation> finalDonationArrayList;
     private Donation donation;
     private int donationItemId;
     private Button categoryFilterBtn;
@@ -306,12 +306,12 @@ public class Inventory extends AppCompatActivity {
      * @param categoriesSelected blah
      * @return blah
      */
-    private ArrayList<Donation> filterDonationListByCategory(ArrayList<Donation> donationList,
+    private List<Donation> filterDonationListByCategory(List<Donation> donationList,
                                                              List<String> categoriesSelected) {
         if ((categoriesSelected == null) || (categoriesSelected.size() <= 0)) {
             return donationList;
         } else if (donationList != null) {
-            ArrayList<Donation> returnDonationList = new ArrayList<>();
+            List<Donation> returnDonationList = new ArrayList<>();
             for (Donation donation: donationList) {
                 if (categoriesSelected.contains(donation.getCategory())) {
                     returnDonationList.add(donation);
@@ -329,7 +329,7 @@ public class Inventory extends AppCompatActivity {
      * @param donationList blah
      * @return blah
      */
-    private ArrayList<Donation> filterDonationListByLocation(ArrayList<Donation> donationList) {
+    private List<Donation> filterDonationListByLocation(List<Donation> donationList) {
         if ("ALL LOCATIONS".equals(locationSpinner.getSelectedItem().toString())) {
             return donationList;
         } else if ((donationList != null) && (locationSpinner.getSelectedItem() != null) &&
@@ -352,7 +352,7 @@ public class Inventory extends AppCompatActivity {
      * @param donationList list to be filtered
      * @return filtered donation list
      */
-    private ArrayList<Donation> filterDonationListBySearch(ArrayList<Donation> donationList) {
+    private List<Donation> filterDonationListBySearch(List<Donation> donationList) {
         String filterText = searchFilter.getText().toString();
         if (filterText.isEmpty()) {
             return donationList;
