@@ -309,7 +309,8 @@ public class Inventory extends AppCompatActivity {
      * @return blah
      */
     private ArrayList<Donation> filterDonationListByCategory(ArrayList<Donation> donationList,
-                                                             Collection<String> categoriesSelected) {
+                                                             Collection<String>
+                                                                     categoriesSelected) {
         if ((categoriesSelected == null) || (categoriesSelected.size() <= 0)) {
             return donationList;
         } else if (donationList != null) {

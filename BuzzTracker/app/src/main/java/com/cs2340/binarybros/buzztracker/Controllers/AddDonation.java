@@ -11,7 +11,6 @@ import android.widget.TextView;
 import com.cs2340.binarybros.buzztracker.Models.Database;
 import com.cs2340.binarybros.buzztracker.Models.Donation;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class AddDonation extends AppCompatActivity {

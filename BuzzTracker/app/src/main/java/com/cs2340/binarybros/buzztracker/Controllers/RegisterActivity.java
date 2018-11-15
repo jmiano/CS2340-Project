@@ -15,7 +15,6 @@ import com.cs2340.binarybros.buzztracker.Models.LocationEmployee;
 import com.cs2340.binarybros.buzztracker.Models.Manager;
 import com.cs2340.binarybros.buzztracker.Models.User;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 

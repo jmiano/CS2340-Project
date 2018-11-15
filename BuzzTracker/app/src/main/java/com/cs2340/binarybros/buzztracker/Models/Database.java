@@ -24,7 +24,7 @@ public final class Database {
     private static Database INSTANCE;
 
     //ArrayList that stores the user credential that are registered to login.
-    private ArrayList<User> userList;
+    private List<User> userList;
 
     //ArrayList that stores the locations that are entered
     private ArrayList<Location> locationList;
