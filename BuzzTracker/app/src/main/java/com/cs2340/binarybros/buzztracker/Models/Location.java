@@ -182,5 +182,31 @@ public class Location implements Serializable {
                 getLongitude(), getStreetAddress(), getCity(),
                 getState(), getZip(), getType(), getPhone(), getWebsite());
     }
+
+    /*
+     * This method checks if the coordinates (lat long) are valid for the given location object
+     */
+    public static boolean coordinatesAreValid(Location location) {
+
+        if (location == null) {
+            return false;
+        }
+        if (location.getLatitude() == null || location.getLongitude() == null) {
+            return false;
+        }
+        try {
+            double latitude = Double.parseDouble(location.getLatitude());
+            double longitude = Double.parseDouble(location.getLongitude());
+            if (latitude < 0 || latitude > 90) {
+                return false;
+            } else if (longitude < -180 || longitude > 180) {
+                return false;
+            } else {
+                return true;
+            }
+        } catch (Exception e) {
+            return false; //if exception, something went wrong and coordinates are not valid
+        }
+    }
 }
 
