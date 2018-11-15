@@ -18,11 +18,7 @@ import com.cs2340.binarybros.buzztracker.Models.User;
 import java.util.Arrays;
 import java.util.List;
 
-@SuppressWarnings({"ALL", "MagicNumber"})
 public class RegisterActivity extends AppCompatActivity {
-
-    //Firebase button
-    private Button mFirebaseBtn;
 
     private EditText nameField;
     private EditText emailField;
@@ -44,23 +40,25 @@ public class RegisterActivity extends AppCompatActivity {
         /*
           Grab the dialog widgets so we can get info for later
          */
-        nameField = (EditText) findViewById(R.id.name_field);
-        emailField = (EditText) findViewById(R.id.email_field);
-        addressField = (EditText) findViewById(R.id.address_field);
-        userNameField = (EditText) findViewById(R.id.username_field);
-        passwordField = (EditText) findViewById(R.id.password_field);
-        monthSpinner = (Spinner) findViewById(R.id.month_spinner);
-        daySpinner = (Spinner) findViewById(R.id.day_spinner);
-        yearSpinner = (Spinner) findViewById(R.id.year_spinner);
-        accountTypeSpinner = (Spinner) findViewById(R.id.account_spinner);
-        loginList = Database.getInstance().getUserList(); // Pulls the non-persistent ArrayList of registered users
+        nameField = findViewById(R.id.name_field);
+        emailField = findViewById(R.id.email_field);
+        addressField = findViewById(R.id.address_field);
+        userNameField = findViewById(R.id.username_field);
+        passwordField = findViewById(R.id.password_field);
+        monthSpinner = findViewById(R.id.month_spinner);
+        daySpinner = findViewById(R.id.day_spinner);
+        yearSpinner = findViewById(R.id.year_spinner);
+        accountTypeSpinner = findViewById(R.id.account_spinner);
+        loginList = Database.getInstance().getUserList();
+        // Pulls the non-persistent ArrayList of registered users
 
 
 
         /*
           Set up the adapter to display the allowable account types
          */
-        ArrayAdapter<String> accountTypeAdapter = new ArrayAdapter<>(this,android.R.layout.simple_spinner_item,
+        ArrayAdapter<String> accountTypeAdapter = new ArrayAdapter<>(this,android.R.layout
+                .simple_spinner_item,
                 Arrays.asList("Manager", "Location Employee", "Admin"));
         accountTypeAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         accountTypeSpinner.setAdapter(accountTypeAdapter);
@@ -69,23 +67,28 @@ public class RegisterActivity extends AppCompatActivity {
         /*
           Set up the adapter to display the allowable days
          */
-        ArrayAdapter<Integer> dayAdapter = new ArrayAdapter<>(this,android.R.layout.simple_spinner_item,
-                Arrays.asList(1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31));
+        ArrayAdapter<Integer> dayAdapter = new ArrayAdapter<>(this,android.R.layout
+                .simple_spinner_item,
+                Arrays.asList(1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,
+                        22,23,24,25,26,27,28,29,30,31));
         dayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         daySpinner.setAdapter(dayAdapter);
 
         /*
           Set up the adapter for allowable months
          */
-        ArrayAdapter<String> monthAdapter = new ArrayAdapter<>(this,android.R.layout.simple_spinner_item,
-                Arrays.asList("Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"));
+        ArrayAdapter<String> monthAdapter = new ArrayAdapter<>(this,android.R.layout.
+                simple_spinner_item,
+                Arrays.asList("Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep",
+                        "Oct", "Nov", "Dec"));
         monthAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         monthSpinner.setAdapter(monthAdapter);
 
         /*
           Set up the adapter for allowable years
          */
-        ArrayAdapter<Integer> yearAdapter = new ArrayAdapter<>(this,android.R.layout.simple_spinner_item,
+        ArrayAdapter<Integer> yearAdapter = new ArrayAdapter<>(this,android.R.layout.
+                simple_spinner_item,
                 Arrays.asList(2018,	2017,	2016,	2015,	2014,	2013,	2012,	2011,
                         2010,	2009,	2008,	2007,	2006,	2005,	2004,	2003,
                         2002,	2001,	2000,	1999,	1998,	1997,	1996,	1995,
@@ -104,20 +107,22 @@ public class RegisterActivity extends AppCompatActivity {
         yearAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         yearSpinner.setAdapter(yearAdapter);
 
-        Button cancelBtn = (Button) findViewById(R.id.cancel_btn);
+        Button cancelBtn = findViewById(R.id.cancel_btn);
         cancelBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(RegisterActivity.this, WelcomeActivity.class));
+                startActivity(new Intent(RegisterActivity.this, WelcomeActivity.
+                        class));
             }
         });
         //create the register Button
-        Button registerBtn = (Button) findViewById(R.id.register_btn);
+        Button registerBtn = findViewById(R.id.register_btn);
         registerBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (createObject()) {
-                    Intent intent = new Intent(RegisterActivity.this, PrettyLogin.class);
+                    Intent intent = new Intent(RegisterActivity.this, PrettyLogin.
+                            class);
                     startActivity(intent);
                 }
             }
@@ -139,14 +144,17 @@ public class RegisterActivity extends AppCompatActivity {
         String password = passwordField.getText().toString();
         String name = nameField.getText().toString();
         String email = emailField.getText().toString();
-        if (type.equals("Manager")) {
-            loginList.add(new Manager("Manager", name, username, password, email,"", 0));
+        if ("Manager".equals(type)) {
+            loginList.add(new Manager("Manager", name, username, password, email,
+                    "", 0));
             userCreated = true;
-        } else if (type.equals("Location Employee")) {
-            loginList.add(new LocationEmployee("Location Employee", name, username, password, email,"D&D CONVENIENCE STORE",0));
+        } else if ("Location Employee".equals(type)) {
+            loginList.add(new LocationEmployee("Location Employee", name, username, password,
+                    email,"D&D CONVENIENCE STORE",0));
             userCreated = true;
-        } else if (type.equals("Admin")) {
-            loginList.add(new Admin("Admin", name, username, password, email, "", 0));
+        } else if ("Admin".equals(type)) {
+            loginList.add(new Admin("Admin", name, username, password, email,
+                    "", 0));
             userCreated = true;
         }
         return userCreated;

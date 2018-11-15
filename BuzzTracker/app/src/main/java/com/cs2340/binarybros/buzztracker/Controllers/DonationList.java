@@ -10,14 +10,14 @@ import android.widget.TextView;
 import java.util.List;
 import com.cs2340.binarybros.buzztracker.Models.Donation;
 
-public class DonationList extends ArrayAdapter {
+class DonationList extends ArrayAdapter {
     private Activity context;
     private List<Donation> donationList;
 
-    public DonationList(Activity context, List<Donation> donationList) {
-        super(context, R.layout.inventory_list_adapterview, donationList);
+    public DonationList(Activity context, List<Donation> thisList) {
+        super(context, R.layout.inventory_list_adapterview, thisList);
         this.context = context;
-        this.donationList = donationList;
+        this.donationList = thisList;
     }
 
     @NonNull
@@ -28,10 +28,10 @@ public class DonationList extends ArrayAdapter {
 
         View listViewItem = inflater.inflate(R.layout.inventory_list_adapterview, null, true);
 
-        TextView textViewTitle = (TextView) listViewItem.findViewById(R.id.donation_title);
-        TextView textViewCategory = (TextView) listViewItem.findViewById(R.id.category_label);
-        TextView textViewLocation = (TextView) listViewItem.findViewById(R.id.location_label);
-        TextView textViewPrice = (TextView) listViewItem.findViewById(R.id.price_label);
+        TextView textViewTitle = listViewItem.findViewById(R.id.donation_title);
+        TextView textViewCategory = listViewItem.findViewById(R.id.category_label);
+        TextView textViewLocation = listViewItem.findViewById(R.id.location_label);
+        TextView textViewPrice = listViewItem.findViewById(R.id.price_label);
 
         Donation donation = donationList.get(position);
 

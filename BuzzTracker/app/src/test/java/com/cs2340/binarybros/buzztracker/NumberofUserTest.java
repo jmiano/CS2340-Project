@@ -9,7 +9,7 @@ import org.junit.Test;
 
 import java.util.ArrayList;
 
-public class NumberofUserTest {
+public class NumberOfUserTest {
     private Database database;
     /**
      * Do this before every test
