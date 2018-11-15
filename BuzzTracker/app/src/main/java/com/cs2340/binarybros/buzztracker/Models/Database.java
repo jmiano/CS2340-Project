@@ -10,6 +10,7 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutput;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
+import java.util.List;
 
 
 /**
@@ -54,7 +55,7 @@ public final class Database {
         return(INSTANCE);
     }
 
-    public ArrayList<User> getUserList() {
+    public List<User> getUserList() {
         return userList;
     }
 

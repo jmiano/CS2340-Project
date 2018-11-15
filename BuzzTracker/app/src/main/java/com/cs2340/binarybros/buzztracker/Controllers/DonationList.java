@@ -17,7 +17,7 @@ class DonationList extends ArrayAdapter {
     private Activity context;
     private List<Donation> donationList;
 
-    public DonationList(Activity context, ArrayList<Donation> thisList) {
+    public DonationList(Activity context, List<Donation> thisList) {
         super(context, R.layout.inventory_list_adapterview, thisList);
         this.context = context;
         this.donationList = thisList;
