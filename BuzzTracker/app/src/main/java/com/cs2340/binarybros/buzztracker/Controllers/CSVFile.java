@@ -10,24 +10,25 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CSVFile {
-    InputStream inputStream;
-    private ArrayList<Location> locationList;
+class CSVFile {
+    private final InputStream inputStream;
+    private List<Location> locationList;
 
     public CSVFile(InputStream inputStream){
         this.inputStream = inputStream;
     }
 
     public List read(){
-        List resultList = new ArrayList();
+        List<Location> resultList = new ArrayList<>();
         BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
         /* Grab the location list from facade to be populated */
-        this.locationList = Database.getInstance().getLocationList(); // Pulls the non-persistent ArrayList of locations
+        // Pulls the non-persistent ArrayList of locations
+        this.locationList = Database.getInstance().getLocationList();
         try {
             String csvLine;
             reader.readLine();
             while ((csvLine = reader.readLine()) != null) {
-                String[] row = csvLine.split(",");
+                String[] row = csvLine.split(","); //result of assignment used here
 
                 //Prevents duplicates (adding the same file multiple times)
                 if (!locationList.contains(new Location(
@@ -45,13 +46,11 @@ public class CSVFile {
         catch (IOException ex) {
             throw new RuntimeException("Error in reading CSV file: "+ex);
         }
-        finally {
-            try {
-                inputStream.close();
-            }
-            catch (IOException e) {
-                throw new RuntimeException("Error while closing input stream: "+e);
-            }
+        try {
+            inputStream.close();
+        }
+        catch (IOException e) {
+            throw new RuntimeException("Error while closing input stream: "+e);
         }
         return resultList;
     }

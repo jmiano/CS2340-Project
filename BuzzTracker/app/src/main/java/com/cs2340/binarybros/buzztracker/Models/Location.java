@@ -1,5 +1,9 @@
 package com.cs2340.binarybros.buzztracker.Models;
 
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
+
 import java.io.Serializable;
 import java.util.Objects;
 
@@ -122,6 +126,28 @@ public class Location implements Serializable {
         this.website = website;
     }
 
+    public static LatLng mapLocation(Location loc, GoogleMap mMap) {
+
+        if (loc == null) {
+            throw new NullPointerException("Cannot plot null location");
+        }
+
+        if (mMap == null) {
+            throw new NullPointerException("Map create error, map is null");
+        }
+
+        LatLng latLng = new LatLng(Double.parseDouble(loc.getLatitude())
+                , Double.parseDouble(loc.getLongitude())); //data is strings so convert to double
+
+        String title = String.format("%s", loc.getName()); //format marker title
+        String otherInfo = String.format("%s, Phone: %s",
+                loc.getStreetAddress(), loc.getPhone());
+        mMap.addMarker(new MarkerOptions().position(latLng)
+                .title(title).snippet(otherInfo)); //add marker to map
+
+        return latLng;
+    }
+
     @Override
     public String toString() {
         return name;
@@ -129,8 +155,12 @@ public class Location implements Serializable {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof Location)) return false;
+        if (this == o) {
+            return true;
+        }
+        if (!(o instanceof Location)) {
+            return false;
+        }
         Location location = (Location) o;
         return Objects.equals(getKey(), location.getKey()) &&
                 Objects.equals(getName(), location.getName()) &&
@@ -151,6 +181,32 @@ public class Location implements Serializable {
         return Objects.hash(getKey(), getName(), getLatitude(),
                 getLongitude(), getStreetAddress(), getCity(),
                 getState(), getZip(), getType(), getPhone(), getWebsite());
+    }
+
+    /*
+     * This method checks if the coordinates (lat long) are valid for the given location object
+     */
+    public static boolean coordinatesAreValid(Location location) {
+
+        if (location == null) {
+            return false;
+        }
+        if ((location.getLatitude() == null) || (location.getLongitude() == null)) {
+            return false;
+        }
+        try {
+            double latitude = Double.parseDouble(location.getLatitude());
+            double longitude = Double.parseDouble(location.getLongitude());
+            if ((latitude < 0) || (latitude > 90)) {
+                return false;
+            } else if ((longitude < -180) || (longitude > 180)) {
+                return false;
+            } else {
+                return true;
+            }
+        } catch (Exception e) {
+            return false; //if exception, something went wrong and coordinates are not valid
+        }
     }
 }
 

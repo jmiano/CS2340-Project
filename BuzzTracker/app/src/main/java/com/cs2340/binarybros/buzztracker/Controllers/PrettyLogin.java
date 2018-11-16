@@ -8,23 +8,17 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
 
 import com.cs2340.binarybros.buzztracker.Models.Database;
-import com.cs2340.binarybros.buzztracker.Models.LocationEmployee;
 import com.cs2340.binarybros.buzztracker.Models.User;
 
-import java.lang.reflect.Array;
-import java.util.ArrayList;
+import java.util.List;
 
 public class PrettyLogin extends AppCompatActivity {
 
-    RelativeLayout relay1;
-    private EditText username=null;
-    private EditText password=null;
-    private TextView attempts;
-    private ArrayList<User> loginList;
+    private EditText username;
+    private EditText password;
+    private List<User> loginList;
 
 
     @Override
@@ -32,7 +26,7 @@ public class PrettyLogin extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_prettylogin);
 
-        Button cancelBtn = (Button) findViewById(R.id.cancel_btn);
+        Button cancelBtn = findViewById(R.id.cancel_btn);
         cancelBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -40,12 +34,12 @@ public class PrettyLogin extends AppCompatActivity {
             }
         });
 
+        // This gets our non-persistent list of registered users
+        loginList = Database.getInstance().getUserList();
+        username = findViewById(R.id.username_field);
+        password = findViewById(R.id.password_field);
 
-        loginList = Database.getInstance().getUserList(); // This gets our non-persistent list of registered users
-        username = (EditText)findViewById(R.id.username_field);
-        password = (EditText)findViewById(R.id.password_field);
-
-        Button loginBtn = (Button) findViewById(R.id.login_btn);
+        Button loginBtn = findViewById(R.id.login_btn);
         loginBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -62,7 +56,7 @@ public class PrettyLogin extends AppCompatActivity {
         boolean validLogin = false;
         int i = 0;
 
-        while (loginList != null && !validLogin && i < loginList.size()) {
+        while ((loginList != null) && !validLogin && (i < loginList.size())) {
             String passedInUserName = loginList.get(i).getUsername();
             String passedInPassword = loginList.get(i).getPassword();
 
@@ -71,9 +65,10 @@ public class PrettyLogin extends AppCompatActivity {
             }
             i++;
         }
-
-       if (validLogin){//this is automatically bypassing the login screen for testing purposes - should have "validLogin" in the expression
-            Database.setCurrentUser(loginList.get(i - 1));
+        //this is automatically bypassing the login screen for testing purposes
+        // should have "validLogin" in the expression
+       if (validLogin){
+            Database.getInstance().setCurrentUser(loginList.get(i - 1));
            startActivity(new Intent(PrettyLogin.this, HomeScreen.class));
         } else {
             AlertDialog.Builder dlgAlert  = new AlertDialog.Builder(this);
@@ -84,6 +79,7 @@ public class PrettyLogin extends AppCompatActivity {
             dlgAlert.create().show();
 
             dlgAlert.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                @Override
                 public void onClick(DialogInterface dialog, int which) {
                     }
             });

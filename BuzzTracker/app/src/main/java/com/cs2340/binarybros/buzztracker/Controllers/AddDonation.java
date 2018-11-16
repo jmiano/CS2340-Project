@@ -11,7 +11,7 @@ import android.widget.TextView;
 import com.cs2340.binarybros.buzztracker.Models.Database;
 import com.cs2340.binarybros.buzztracker.Models.Donation;
 
-import java.util.ArrayList;
+import java.util.List;
 
 public class AddDonation extends AppCompatActivity {
     private EditText TitleField;
@@ -19,31 +19,31 @@ public class AddDonation extends AppCompatActivity {
     private EditText LocationField;
     private EditText CategoryField;
     private EditText PriceField;
-    private EditText ShortdescriptionField;
-    private EditText LongdescriptionField;
-    private ArrayList<Donation> donationList;
+    private EditText ShortDescriptionField;
+    private EditText LongDescriptionField;
+    private List<Donation> donationList;
 
     private Donation donation;
     private int donationItemId;
-    private boolean editing = false;
+    private boolean editing;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_donation);
-        /**
-         * Grab the dialog widgets so we can get info for later
+        /*
+          Grab the dialog widgets so we can get info for later
          */
-        TitleField = (EditText) findViewById(R.id.donation_title);
-        TimestampField = (EditText) findViewById(R.id.timestamp);
-        LocationField = (EditText) findViewById(R.id.location);
-        CategoryField = (EditText) findViewById(R.id.category);
-        PriceField = (EditText) findViewById(R.id.price);
-        ShortdescriptionField = (EditText) findViewById(R.id.shortDescription);
-        LongdescriptionField = (EditText) findViewById(R.id.longDescription);
+        TitleField = findViewById(R.id.donation_title);
+        TimestampField = findViewById(R.id.timestamp);
+        LocationField = findViewById(R.id.location);
+        CategoryField = findViewById(R.id.category);
+        PriceField = findViewById(R.id.price);
+        ShortDescriptionField = findViewById(R.id.shortDescription);
+        LongDescriptionField = findViewById(R.id.longDescription);
 
-        /**
-         * Get other data
+        /*
+          Get other data
          */
         donationList = Database.getInstance().getDonationList();
 
@@ -60,8 +60,8 @@ public class AddDonation extends AppCompatActivity {
 
 
 
-        /**
-         * If we are editing a donation, then fill the fields with the passed in donation object
+        /*
+          If we are editing a donation, then fill the fields with the passed in donation object
          */
         if (editing) {
             TitleField.setText(donation.getTitle(), TextView.BufferType.EDITABLE);
@@ -69,14 +69,16 @@ public class AddDonation extends AppCompatActivity {
             LocationField.setText(donation.getLocation(), TextView.BufferType.EDITABLE);
             CategoryField.setText(donation.getCategory(), TextView.BufferType.EDITABLE);
             PriceField.setText(donation.getPrice(), TextView.BufferType.EDITABLE);
-            ShortdescriptionField.setText(donation.getShortdescription(), TextView.BufferType.EDITABLE);
-            LongdescriptionField.setText(donation.getLongdescription(), TextView.BufferType.EDITABLE);
+            ShortDescriptionField.setText(donation.getShortDescription(),
+                    TextView.BufferType.EDITABLE);
+            LongDescriptionField.setText(donation.getLongDescription(),
+                    TextView.BufferType.EDITABLE);
         }
 
-        /**
-         * Set submit button action. It's action will depend on whether or not we are editing
+        /*
+          Set submit button action. It's action will depend on whether or not we are editing
          */
-        Button submitBtn = (Button) findViewById(R.id.submit);
+        Button submitBtn = findViewById(R.id.submit);
         submitBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -88,6 +90,7 @@ public class AddDonation extends AppCompatActivity {
 
                 Intent intent = new Intent(AddDonation.this, Inventory.class);
                 startActivity(intent);
+
             }
         });
 
@@ -102,10 +105,10 @@ public class AddDonation extends AppCompatActivity {
         String location = LocationField.getText().toString();
         String category = CategoryField.getText().toString();
         String price = PriceField.getText().toString();
-        String shortdescription = ShortdescriptionField.getText().toString();
-        String longdescription = LongdescriptionField.getText().toString();
-        donationList.add(new Donation(title, timestamp, location, category, price, shortdescription,
-                longdescription));
+        String shortDescription = ShortDescriptionField.getText().toString();
+        String longDescription = LongDescriptionField.getText().toString();
+        donationList.add(new Donation(title, timestamp, location, category, price, shortDescription,
+                longDescription));
     }
 
     /**
@@ -118,8 +121,8 @@ public class AddDonation extends AppCompatActivity {
         donation.setLocation(LocationField.getText().toString());
         donation.setCategory(CategoryField.getText().toString());
         donation.setPrice(PriceField.getText().toString());
-        donation.setShortdescription(ShortdescriptionField.getText().toString());
-        donation.setLongdescription(LongdescriptionField.getText().toString());
+        donation.setShortDescription(ShortDescriptionField.getText().toString());
+        donation.setLongDescription(LongDescriptionField.getText().toString());
     }
 
     /**
@@ -128,12 +131,12 @@ public class AddDonation extends AppCompatActivity {
      * @param donationItemId unique id of the Donation we want to find.
      * @return Correct reference to donation object
      */
-    private Donation getDonationObjectFromId(ArrayList<Donation> donationList, int donationItemId) {
+    private Donation getDonationObjectFromId(List<Donation> donationList, int donationItemId) {
         boolean found = false;
         int count = 0;
         Donation returnDonation = null;
 
-        while (!found && count < donationList.size()) {
+        while (!found && (count < donationList.size())) {
             if (donationList.get(count).getId() == donationItemId) {
                 found = true;
                 returnDonation = donationList.get(count);

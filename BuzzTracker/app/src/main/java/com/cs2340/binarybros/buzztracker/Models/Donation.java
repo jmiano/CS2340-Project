@@ -1,7 +1,6 @@
 package com.cs2340.binarybros.buzztracker.Models;
 
 import java.io.Serializable;
-import java.util.Random;
 
 public class Donation implements Serializable {
     private String title;
@@ -9,20 +8,19 @@ public class Donation implements Serializable {
     private String location;
     private String category;
     private String price;
-    private String shortdescription;
-    private String longdescription;
+    private String shortDescription;
+    private String longDescription;
     private int id;
 
     public Donation(String title, String timestampInput, String locationInput, String categoryInput,
-                    String priceInput, String shortdescriptionInput, String longdescriptionInput) {
+                    String priceInput, String shortDescriptionInput, String longDescriptionInput) {
         this.title = title;
         this.timestamp = timestampInput;
         this.category = categoryInput;
         this.price = priceInput;
         this.location = locationInput;
-        this.shortdescription = shortdescriptionInput;
-        this.longdescription = longdescriptionInput;
-        this.id = createID(10);
+        this.shortDescription = shortDescriptionInput;
+        this.longDescription = longDescriptionInput;
     }
 
     //This constructor is to only be used for the custom InventoryListViewAdapter
@@ -32,8 +30,8 @@ public class Donation implements Serializable {
         this.category = category;
         this.price = price;
         this.location = location;
-        this.shortdescription = "";
-        this.longdescription = "";
+        this.shortDescription = "";
+        this.longDescription = "";
 
     }
 
@@ -53,12 +51,12 @@ public class Donation implements Serializable {
         this.price = price;
     }
 
-    public void setShortdescription(String shortdescription) {
-        this.shortdescription = shortdescription;
+    public void setShortDescription(String shortDescription) {
+        this.shortDescription = shortDescription;
     }
 
-    public void setLongdescription(String longdescription) {
-        this.longdescription = longdescription;
+    public void setLongDescription(String longDescription) {
+        this.longDescription = longDescription;
     }
 
     public String getTitle() {
@@ -69,7 +67,7 @@ public class Donation implements Serializable {
         this.title = title;
     }
 
-    public String getTimestamp() {
+    public CharSequence getTimestamp() {
         return timestamp;
     }
 
@@ -84,11 +82,11 @@ public class Donation implements Serializable {
         return price;
     }
 
-    public String getShortdescription() {
-        return shortdescription;
+    public CharSequence getShortDescription() {
+        return shortDescription;
     }
-    public String getLongdescription(){
-        return longdescription;
+    public CharSequence getLongDescription(){
+        return longDescription;
     }
 
     public int getId() {
@@ -99,13 +97,4 @@ public class Donation implements Serializable {
         this.id = id;
     }
 
-    /**
-     * This is a method that will create a unique integer id for a given object
-     * @param id starting value
-     * @return final unique id
-     */
-    private int createID(int id) {
-        Random rand = new Random();
-        return rand.nextInt(1000000000) + 1;
-    }
 }
