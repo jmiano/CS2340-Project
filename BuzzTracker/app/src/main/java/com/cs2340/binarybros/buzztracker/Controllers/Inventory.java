@@ -250,25 +250,6 @@ public class Inventory extends AppCompatActivity {
         addDonationBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                /**These are used to troubleshooting
-                donationArrayList.add(new Donation("red bicycle", "today",
-                        "AFD Station 4", "Household", "5.00",
-                        "short", "long"));
-                donationArrayList.add(new Donation("white bicycle", "today",
-                        "AFD Station 4", "Household", "5.00",
-                        "short", "long"));
-                donationArrayList.add(new Donation("blue bicycle", "today",
-                        "AFD Station 4", "Kitchen", "5.00",
-                        "short", "long"));
-                donationArrayList.add(new Donation("yellow bicycle", "today",
-                        "AFD Station 4", "Kitchen", "5.00",
-                        "short", "long"));
-                donationArrayList.add(new Donation("orange bicycle", "today",
-                        "AFD Station 4", "Hat", "5.00",
-                        "short", "long"));
-                 */
-
                 Intent goToAddDonationActivity = new Intent(Inventory.this,
                         AddDonation.class);
                 startActivity(goToAddDonationActivity);

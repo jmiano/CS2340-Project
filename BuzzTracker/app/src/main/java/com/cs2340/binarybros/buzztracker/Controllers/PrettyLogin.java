@@ -14,6 +14,9 @@ import com.cs2340.binarybros.buzztracker.Models.User;
 
 import java.util.List;
 
+/**
+ * Login activity
+ */
 public class PrettyLogin extends AppCompatActivity {
 
     private EditText username;

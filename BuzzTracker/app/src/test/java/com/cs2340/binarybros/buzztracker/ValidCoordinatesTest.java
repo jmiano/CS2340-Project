@@ -6,7 +6,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 /**
- * This class tests to see if the method that I use to test for valid emails is correct
+ * This class tests to see if the method that I use to test for valid coordinates is correct
  */
 public class ValidCoordinatesTest {
     private Location location1;

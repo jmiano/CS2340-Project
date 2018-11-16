@@ -14,6 +14,9 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
+/**
+ * This class is the UI for managing locations
+ */
 public class LocationManageActivity extends AppCompatActivity {
     private List<Location> locationList;
 

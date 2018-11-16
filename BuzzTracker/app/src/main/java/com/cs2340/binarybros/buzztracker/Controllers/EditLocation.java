@@ -10,7 +10,9 @@ import android.widget.TextView;
 import com.cs2340.binarybros.buzztracker.Models.Location;
 
 
-
+/**
+ * This is the activity for the "Edit Location" thingy
+ */
 public class EditLocation extends AppCompatActivity {
     private final String[] stateList = {"AK","AL","AR","AZ","CA","CO","CT","DC","DE","FL",
             "GA","GU","HI","IA","ID", "IL","IN","KS","KY","LA","MA","MD","ME","MH","MI","MN","MO",

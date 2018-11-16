@@ -11,7 +11,9 @@ import com.cs2340.binarybros.buzztracker.Models.Database;
 
 import java.io.File;
 
-
+/**
+ * Welcome activity
+ */
 public class WelcomeActivity extends AppCompatActivity {
 
     @Override

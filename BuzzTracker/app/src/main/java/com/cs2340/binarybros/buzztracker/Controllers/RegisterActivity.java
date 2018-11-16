@@ -18,6 +18,9 @@ import com.cs2340.binarybros.buzztracker.Models.User;
 import java.util.Arrays;
 import java.util.List;
 
+/**
+ * Register activity
+ */
 public class RegisterActivity extends AppCompatActivity {
 
     private EditText nameField;
@@ -145,18 +148,22 @@ public class RegisterActivity extends AppCompatActivity {
         String password = passwordField.getText().toString();
         String name = nameField.getText().toString();
         String email = emailField.getText().toString();
-        if ("Manager".equals(type)) {
-            loginList.add(new Manager("Manager", name, username, password, email,
-                    "", 0));
-            userCreated = true;
-        } else if ("Location Employee".equals(type)) {
-            loginList.add(new LocationEmployee("Location Employee", name, username, password,
-                    email,"D&D CONVENIENCE STORE",0));
-            userCreated = true;
-        } else if ("Admin".equals(type)) {
-            loginList.add(new Admin("Admin", name, username, password, email,
-                    "", 0));
-            userCreated = true;
+        switch (type) {
+            case "Manager":
+                loginList.add(new Manager("Manager", name, username, password, email,
+                        "", 0));
+                userCreated = true;
+                break;
+            case "Location Employee":
+                loginList.add(new LocationEmployee("Location Employee", name, username, password,
+                        email, "D&D CONVENIENCE STORE", 0));
+                userCreated = true;
+                break;
+            case "Admin":
+                loginList.add(new Admin("Admin", name, username, password, email,
+                        "", 0));
+                userCreated = true;
+                break;
         }
         return userCreated;
     }
