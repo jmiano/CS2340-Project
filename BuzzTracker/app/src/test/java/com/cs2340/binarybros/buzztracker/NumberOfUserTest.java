@@ -8,7 +8,9 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.util.ArrayList;
-
+/**
+ * the test for count user
+ */
 public class NumberOfUserTest {
     private Database database;
     /**

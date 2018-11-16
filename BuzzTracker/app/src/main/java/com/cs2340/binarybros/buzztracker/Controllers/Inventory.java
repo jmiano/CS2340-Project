@@ -25,7 +25,9 @@ import com.cs2340.binarybros.buzztracker.Models.User;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
-
+/**
+ * the inventory
+ */
 public class Inventory extends AppCompatActivity {
 
     private ArrayList<Donation> donationArrayList;

@@ -16,7 +16,9 @@ import com.google.android.gms.maps.model.LatLng;
 import java.util.List;
 import java.util.Objects;
 
-
+/**
+ * the google map
+ */
 public class GoogleMapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap;

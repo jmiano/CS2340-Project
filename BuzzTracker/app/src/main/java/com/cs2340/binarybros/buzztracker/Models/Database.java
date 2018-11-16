@@ -54,40 +54,67 @@ public final class Database {
         }
         return(INSTANCE);
     }
-
+    /**
+     * the getter of user list
+     * @return the user list
+     */
     public List<User> getUserList() {
         return userList;
     }
-
+    /**
+     * the setter for user list
+     * @param thisList the user list
+     */
     public void setUserList(List<User> thisList) {
         this.userList = thisList;
     }
-
+    /**
+     * the getter for location list
+     * @return the location list
+     */
     public ArrayList<Location> getLocationList() {
         return locationList;
     }
-
+    /**
+     * the setter for location list
+     * @param thisList the location list
+     */
     public void setLocationList(ArrayList<Location> thisList) {
         this.locationList = thisList;
     }
-
+    /**
+     * the getter for current user
+     * @return the current user
+     */
     public User getCurrentUser() {
         return currentUser;
     }
-
+    /**
+     * the setter for current user
+     * @param currentUser the current user
+     */
     public static void setCurrentUser(User currentUser) {
         Database.currentUser = currentUser;
     }
-
+    /**
+     * the getter for donation list
+     * @return the donation list
+     */
     public ArrayList<Donation> getDonationList() { return donationList; }
-
+    /**
+     * the initialize method
+     */
     public  void initialize() {
         userList = new ArrayList<>(10);
         locationList = new ArrayList<>(10);
         donationList = new ArrayList<>(10);
 
     }
-
+    /**
+     * to load the binary data
+     * @param file the file
+     * @return if it is successful to load
+     */
     public boolean loadBinary(File file) {
         boolean success = true;
         try {
@@ -111,7 +138,11 @@ public final class Database {
 
         return success;
     }
-
+    /**
+     * to save the binary
+     * @param file the file
+     * @return if it is successful to save
+     */
     public boolean saveBinary(File file) {
         boolean success = true;
         try {
@@ -141,8 +172,9 @@ public final class Database {
         }
         return success;
     }
-    /*
+    /**
      * This method checks how many user do we have
+     * @return the number of valid user(have username)
      */
     public int countUser() {
         int numUser = 0;

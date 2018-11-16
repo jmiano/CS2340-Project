@@ -10,7 +10,9 @@ import android.util.Log;
 import com.cs2340.binarybros.buzztracker.Models.Database;
 
 import java.io.File;
-
+/**
+ * the home screen
+ */
 public class HomeScreen extends AppCompatActivity {
 
     @Override

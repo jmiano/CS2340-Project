@@ -13,6 +13,9 @@ import com.cs2340.binarybros.buzztracker.Models.Donation;
 
 import java.util.List;
 
+/**
+ * This class is to add the donation
+ */
 public class AddDonation extends AppCompatActivity {
     private EditText TitleField;
     private EditText TimestampField;
