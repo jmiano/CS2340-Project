@@ -18,6 +18,9 @@ public class ValidPasswordTest {
     private  User badUser;
     private User uglyUser;
 
+    /**
+     * setup method for validPasswordTest
+     */
     @Before
     public void setup() {
         goodUser = new User(
@@ -48,6 +51,9 @@ public class ValidPasswordTest {
                 2);
     }
 
+    /**
+     * Actual test for Valid Password
+     */
     @Test
     public void passwordValidator() {
         assertFalse(badUser.passwordIsValid());
