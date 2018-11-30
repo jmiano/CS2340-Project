@@ -6,6 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".AddDonation"
+    android:background="@drawable/grad_bg"
     tools:layout_editor_absoluteY="25dp">
 
     <TextView
@@ -14,6 +15,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="32dp"
+        android:textColor="@color/white"
         android:text="@string/label_add_donation"
         android:textSize="30sp"
         app:layout_constraintStart_toStartOf="parent"
@@ -99,6 +101,7 @@
         android:ems="10"
         android:hint="@string/edit_short_description"
         android:inputType="textPersonName"
+        android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/price" />
@@ -110,6 +113,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
+        android:textColor="@color/white"
         android:ems="10"
         android:hint="@string/edit_long_description"
         android:inputType="textMultiLine"
@@ -125,8 +129,13 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:text="@string/button_submit"
+        android:background="@drawable/btn_bg"
+        android:fontFamily="sans-serif-medium"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="15sp"
         app:layout_constraintTop_toBottomOf="@+id/longDescription" />
 
 </android.support.constraint.ConstraintLayout>
